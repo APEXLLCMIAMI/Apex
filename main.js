@@ -327,7 +327,6 @@ document.addEventListener('DOMContentLoaded', () => {
       'flabel-email': 'Email Address',
       'flabel-type': 'Service Type',
       'fopt-0': '— Select property type —',
-      'fopt-1': '🏖️ Airbnb / Vacation Rental',
       'fopt-2': '🏠 Residential / Apartment',
       'fopt-3': '🏢 Commercial / Corporate Office',
       'flabel-msg': 'Additional Details',
@@ -419,7 +418,6 @@ document.addEventListener('DOMContentLoaded', () => {
       'flabel-email': 'Correo Electrónico',
       'flabel-type': 'Tipo de Servicio',
       'fopt-0': '— Seleccione tipo de propiedad —',
-      'fopt-1': '🏖️ Airbnb / Alquiler Vacacional',
       'fopt-2': '🏠 Residencial / Apartamento',
       'fopt-3': '🏢 Comercial / Oficina Corporativa',
       'flabel-msg': 'Detalles Adicionales',
@@ -605,7 +603,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const opts = $$('#property-type option');
-    ['fopt-0','fopt-1','fopt-2','fopt-3'].forEach((k, i) => {
+    ['fopt-0','fopt-2','fopt-3'].forEach((k, i) => {
       if (opts[i] && t[k]) opts[i].textContent = t[k];
     });
 
