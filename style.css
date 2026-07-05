@@ -204,6 +204,10 @@ img {
   font-weight: 800;
   letter-spacing: 1.5px;
   color: var(--text-light);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  white-space: nowrap;
 }
 
 .logo-suffix {
@@ -1531,6 +1535,19 @@ section {
     padding: 10px 12px;
   }
   
+  .header-actions {
+    gap: 12px;
+  }
+  
+  .lang-text {
+    display: none;
+  }
+  
+  .lang-toggle-btn {
+    padding: 10px;
+    font-size: 16px;
+  }
+  
   .hero-title {
     font-size: 36px;
   }
@@ -1576,13 +1593,22 @@ section {
   }
 
   .pricing-tabs {
-    flex-wrap: wrap;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .pricing-tabs::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
   }
 
   .pricing-tab {
-    flex: 1 1 calc(50% - 8px);
+    flex: 0 0 auto;
     font-size: 13px;
-    padding: 10px 14px;
+    padding: 10px 16px;
   }
 
   .pricing-row-title {

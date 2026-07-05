@@ -145,7 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
       successClientName.textContent = fullName;
       
       const typeTranslations = {
-        'Airbnb': currentLang === 'en' ? 'Airbnb / Short-Term Rental' : 'Airbnb / Alquiler Vacacional',
         'Residential': currentLang === 'en' ? 'Residential / Luxury Apartment' : 'Residencial / Apartamento',
         'Commercial': currentLang === 'en' ? 'Commercial / Corporate Office' : 'Comercial / Oficina Corporativa'
       };
@@ -200,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <p>Apex LLC maintains active commercial liability insurance. Any claims regarding damages must be filed with photographic verification and client-log documentation within 24 hours of service completion.</p>
       
       <h4>3. Cancellation and Scheduling Turnarounds</h4>
-      <p>To support high-turnover operations such as Airbnb bookings, scheduling modifications or cancellations must be reported at least 24 hours prior to the scheduled service block to avoid reservation or idle-labor fees.</p>
+      <p>To support high-turnover operations, scheduling modifications or cancellations must be reported at least 24 hours prior to the scheduled service block to avoid reservation or idle-labor fees.</p>
     `
   };
 
@@ -263,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'hero-badge-1': "Miami's Most Trusted Cleaning Team",
       'hero-badge-2': 'Licensed, Bonded & Insured',
       'hero-title': 'Cleaning Services in Miami: <span class="highlight-text">Impeccable Spaces, Absolute Confidence.</span>',
-      'hero-desc': 'Experience the peace of mind that comes with a cleaning service built on trust, quality, and attention to detail — for your home, your rental, and your business.',
+      'hero-desc': 'Experience the peace of mind that comes with a cleaning service built on trust, quality, and attention to detail — for your home and your business.',
       'hero-cta-1': 'Get a Free Estimate',
       'hero-cta-2': 'Explore Services',
       'hero-trust-1': '2-Hour Operations Response',
@@ -279,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'svc-subtitle': 'Services',
       'svc-title': 'Cleaning Services',
       'svc-desc': 'We provide structured and reliable cleaning services designed to meet commercial standards and strict property management requirements.',
-      'c1-title': 'Airbnb & Vacation Rental Cleaning',
+      'c1-title': 'Vacation Rental Cleaning',
       'c1-text': 'Focused on strict schedule compliance, attention to operational details, and clear reporting after each stay.',
       'c1-li': ['<strong>Same-day turnovers:</strong> Fast and efficient preparation between reservations.', '<strong>Laundry management:</strong> Washing and drying of bed linens and towels.', '<strong>Status reports:</strong> Property inspection to notify of any damages or missing items.'],
       'c1-cta': 'Request Quote →',
@@ -301,13 +300,57 @@ document.addEventListener('DOMContentLoaded', () => {
       'p2-title': '100% Background-Verified Team',
       'p2-text': 'Every member of our team passes background screening before entering your property. We hire for integrity because your safety and privacy are non-negotiable.',
       'p3-title': 'Effortless, Flexible Scheduling',
-      'p3-text': 'We adapt to your operations. From tight same-day Airbnb turnovers to recurring residential schedules and after-hours commercial cleanings.',
+      'p3-text': 'We adapt to your operations. From tight same-day turnovers to recurring residential schedules and after-hours commercial cleanings.',
+      
+      // Pricing Section
+      'ps-sub': 'Our Services',
+      'ps-title': 'Cleaning Services',
+      'ps-desc': 'Services for home and business — tailored to the size and needs of every space.',
+      'ptab-1': 'Standard Cleaning', 'ptab-2': 'Deep Cleaning', 'ptab-3': 'Move In / Move Out', 'ptab-4': 'Large Homes / 2-Story', 'ptab-5': 'Offices / Commercial',
+      'pnote-1': 'Ideal for regular maintenance.', 'pnote-2': 'For the first time or every 3 months.', 'pnote-3': '50% deposit required to secure the date.', 'pnote-4': 'Large spaces with stairs or more than 4 bedrooms.', 'pnote-5': 'Rate guide for contracts and recurring visits, by square foot.',
+      
+      'pr-t-1': 'Standard Cleaning', 'pr-t-2': 'Standard Cleaning', 'pr-t-3': 'Standard Cleaning', 'pr-t-4': 'Standard Cleaning',
+      'pr-t-5': 'Deep Cleaning', 'pr-t-6': 'Deep Cleaning', 'pr-t-7': 'Deep Cleaning', 'pr-t-8': 'Deep Cleaning',
+      'pr-t-9': 'Move Out Cleaning', 'pr-t-10': 'Standard — Large Home', 'pr-t-11': 'Deep — Large Home',
+      
+      'pr-s-1': '1 bed · 1 bath', 'pr-s-2': '2 beds · 2 baths', 'pr-s-3': '3 beds · 2 baths', 'pr-s-4': '4 beds · 2 baths',
+      'pr-s-5': '1 bed · 1 bath', 'pr-s-6': '2 beds · 2 baths', 'pr-s-7': '3 beds · 2 baths', 'pr-s-8': '4 beds · 2 baths',
+      'pr-s-9': 'Based on size', 'pr-s-10': '2-story · 4+ beds', 'pr-s-11': '2-story · 4+ beds',
+      
+      'pr-d-1': '2–3 hours', 'pr-d-2': '3–4 hours', 'pr-d-3': '4–5 hours', 'pr-d-4': '5–6 hours',
+      'pr-d-5': '4–5 hours', 'pr-d-6': '5–6 hours', 'pr-d-7': '6–7 hours', 'pr-d-8': '7–8 hours',
+      'pr-d-9': 'Variable time', 'pr-d-10': '6–7 hours', 'pr-d-11': '8–9 hours',
+      
+      'pr-desc-1': 'Ideal for maintenance. Includes vacuuming, mopping, bathroom, kitchen exterior, dusting, and trash removal.',
+      'pr-desc-2': 'Most requested. Complete home cleaning: vacuuming, mopping, bathrooms, kitchen, and bedrooms.',
+      'pr-desc-3': 'Family home. General cleaning of all spaces in the house.',
+      'pr-desc-4': 'Spacious single-story home. Complete general cleaning of all spaces.',
+      'pr-desc-5': 'For the first time or every 3 months. Includes inside oven, microwave, fridge, baseboards, and inside windows.',
+      'pr-desc-6': 'Complete detailed cleaning: inside appliances, fans, door frames, and full shower.',
+      'pr-desc-7': 'More comprehensive. All basics plus inside cabinets, closets, and walls.',
+      'pr-desc-8': 'Total deep cleaning including appliances, closets, and walls.',
+      'pr-desc-9': 'Empty house ready to hand over or receive. Total deep cleaning. 50% deposit required.',
+      'pr-desc-10': 'Two-story home with more than 4 bedrooms. Includes surcharge for stairs and additional space.',
+      'pr-desc-11': 'Two-story home with more than 4 bedrooms. Total deep cleaning with surcharge for stairs and extra area.',
+      
+      'pt-h-1': 'Office Size', 'pt-h-2': '1x / Week', 'pt-h-3': '3x / Week', 'pt-h-4': '5x / Week',
+      'pt-r-1': 'Under 1,000 sqft', 'pt-r-2': 'Under 2,000 sqft', 'pt-r-3': '2,000 – 5,000 sqft', 'pt-r-4': '5,000 – 10,000 sqft',
+      'pt-quote': 'Quote',
+      
+      'pi-title': 'What standard office cleaning includes',
+      'pi-1': 'Empty all trash bins', 'pi-2': 'Vacuum and mop floors', 'pi-3': 'Clean full bathrooms + restock paper/soap', 'pi-4': 'Kitchen / coffee area: clean counters, microwave inside/out, and sink', 'pi-5': 'Clean desks, phones, and surfaces', 'pi-6': 'Clean entrance and conference room glass', 'pi-7': 'Take trash to dumpster',
+      
+      'pcta-note': 'Unsure which service to choose? Contact us for free advice.',
+      'pcta-btn': 'Request Free Quote',
+      
       // Coverage
       'cov-subtitle': 'Miami Operations',
       'cov-title': 'Our Service Area',
       'cov-text': 'Proudly serving Miami, Sweetwater, and surrounding areas. Headquartered near the SW 109th Ave corridor, our team handles properties across key local zip codes including 33174 with immediate availability.',
       'meta-1': 'Avg. dispatch response to Sweetwater corridor',
       'meta-2': 'Active cleaning operations per week',
+      'meta-num-1': '15 Min',
+      'meta-num-2': '6 Days',
       'map-title': 'Coverage Highlight',
       'map-text': 'Direct logistics dispatch to all property owners in the SW 109th Ave corridor.',
       // Contact
@@ -354,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'hero-badge-1': 'El Equipo de Limpieza más Confiable de Miami',
       'hero-badge-2': 'Licenciados, Afianzados y Asegurados',
       'hero-title': 'Servicios de Limpieza en Miami: <span class="highlight-text">Espacios Impecables, Confianza Absoluta.</span>',
-      'hero-desc': 'Experimente la tranquilidad de contar con un servicio de limpieza basado en la confianza, la calidad y la atención al detalle para su hogar, propiedad vacacional o negocio.',
+      'hero-desc': 'Experimente la tranquilidad de contar con un servicio de limpieza basado en la confianza, la calidad y la atención al detalle para su hogar o negocio.',
       'hero-cta-1': 'Solicitar Presupuesto Gratis',
       'hero-cta-2': 'Ver Servicios',
       'hero-trust-1': 'Respuesta en 2 Horas',
@@ -370,7 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'svc-subtitle': 'Servicios',
       'svc-title': 'Servicios de Limpieza',
       'svc-desc': 'Ofrecemos servicios de limpieza estructurados y confiables diseñados para cumplir con estándares comerciales y requisitos estrictos de administración de propiedades.',
-      'c1-title': 'Limpieza para Airbnb y Alquileres Vacacionales',
+      'c1-title': 'Limpieza para Alquileres Vacacionales',
       'c1-text': 'Enfocados en el cumplimiento estricto de horarios, atención a los detalles operativos y reportes claros tras cada estadía.',
       'c1-li': ['<strong>Cambios el mismo día:</strong> Preparación rápida y eficiente entre reservas.', '<strong>Gestión de lavandería:</strong> Lavado y secado de ropa de cama y toallas.', '<strong>Reporte de estado:</strong> Inspección de la propiedad para notificar daños o faltantes.'],
       'c1-cta': 'Solicitar Cotización →',
@@ -392,13 +435,57 @@ document.addEventListener('DOMContentLoaded', () => {
       'p2-title': 'Personal 100% Verificado',
       'p2-text': 'Todo nuestro equipo pasa por una estricta verificación de antecedentes antes de ingresar a su propiedad. Seleccionamos por integridad porque su seguridad es nuestra prioridad.',
       'p3-title': 'Programación Sencilla y Flexible',
-      'p3-text': 'Nos adaptamos a su horario de negocio y rutinas. Desde cambios rápidos el mismo día para Airbnb hasta limpieza residencial programada o limpiezas comerciales nocturnas.',
+      'p3-text': 'Nos adaptamos a su horario de negocio y rutinas. Desde cambios rápidos el mismo día hasta limpieza residencial programada o limpiezas comerciales nocturnas.',
+      
+      // Pricing Section
+      'ps-sub': 'Nuestros Servicios',
+      'ps-title': 'Servicios de Limpieza',
+      'ps-desc': 'Servicios para el hogar y la empresa — adaptados al tamaño y necesidad de cada espacio.',
+      'ptab-1': 'Limpieza Básica', 'ptab-2': 'Limpieza Profunda', 'ptab-3': 'Mudanza', 'ptab-4': 'Casas Grandes / 2 Plantas', 'ptab-5': 'Oficinas / Comercial',
+      'pnote-1': 'Ideal para mantenimiento regular.', 'pnote-2': 'Para primera vez o cada 3 meses.', 'pnote-3': 'Se pide 50% de depósito para apartar la fecha.', 'pnote-4': 'Espacios amplios con escaleras o más de 4 habitaciones.', 'pnote-5': 'Guía de tarifas para contratos y visitas recurrentes, por pie cuadrado.',
+      
+      'pr-t-1': 'Limpieza Básica', 'pr-t-2': 'Limpieza Básica', 'pr-t-3': 'Limpieza Básica', 'pr-t-4': 'Limpieza Básica',
+      'pr-t-5': 'Limpieza Profunda', 'pr-t-6': 'Limpieza Profunda', 'pr-t-7': 'Limpieza Profunda', 'pr-t-8': 'Limpieza Profunda',
+      'pr-t-9': 'Limpieza de Mudanza', 'pr-t-10': 'Básica — Casa Grande', 'pr-t-11': 'Profunda — Casa Grande',
+      
+      'pr-s-1': '1 cuarto · 1 baño', 'pr-s-2': '2 cuartos · 2 baños', 'pr-s-3': '3 cuartos · 2 baños', 'pr-s-4': '4 cuartos · 2 baños',
+      'pr-s-5': '1 cuarto · 1 baño', 'pr-s-6': '2 cuartos · 2 baños', 'pr-s-7': '3 cuartos · 2 baños', 'pr-s-8': '4 cuartos · 2 baños',
+      'pr-s-9': 'Según tamaño', 'pr-s-10': '2 plantas · 4+ cuartos', 'pr-s-11': '2 plantas · 4+ cuartos',
+      
+      'pr-d-1': '2–3 horas', 'pr-d-2': '3–4 horas', 'pr-d-3': '4–5 horas', 'pr-d-4': '5–6 horas',
+      'pr-d-5': '4–5 horas', 'pr-d-6': '5–6 horas', 'pr-d-7': '6–7 horas', 'pr-d-8': '7–8 horas',
+      'pr-d-9': 'Tiempo variable', 'pr-d-10': '6–7 horas', 'pr-d-11': '8–9 horas',
+      
+      'pr-desc-1': 'Ideal para mantenimiento. Incluye aspirar, mapeado, baño, cocina por fuera, sacudir y sacar la basura.',
+      'pr-desc-2': 'La más pedida. Limpieza completa de toda la casa: aspirar, mapeado, baños, cocina y cuartos.',
+      'pr-desc-3': 'Casa familiar. Limpieza general de todos los espacios de la casa.',
+      'pr-desc-4': 'Casa amplia de una planta. Limpieza general completa de todos los espacios de la casa.',
+      'pr-desc-5': 'Para primera vez o cada 3 meses. Incluye dentro de horno, microondas, nevera, rodapiés y ventanas por dentro.',
+      'pr-desc-6': 'Limpieza detallada completa: dentro de electrodomésticos, abanicos, marcos de puertas y ducha completa.',
+      'pr-desc-7': 'Más completa. Todo lo básico más interior de gabinetes, clósets y paredes.',
+      'pr-desc-8': 'Limpieza profunda total incluyendo electrodomésticos, clósets y paredes.',
+      'pr-desc-9': 'Casa vacía lista para entregar o recibir. Limpieza profunda total. Se pide 50% de depósito.',
+      'pr-desc-10': 'Casa de dos plantas con más de 4 cuartos. Incluye recargo por escaleras y espacio adicional a limpiar.',
+      'pr-desc-11': 'Casa de dos plantas con más de 4 cuartos. Limpieza profunda total con recargo por escaleras y área extra.',
+      
+      'pt-h-1': 'Tamaño Oficina', 'pt-h-2': '1x por Semana', 'pt-h-3': '3x por Semana', 'pt-h-4': '5x por Semana',
+      'pt-r-1': 'Menos de 1,000 sqft', 'pt-r-2': 'Menos de 2,000 sqft', 'pt-r-3': '2,000 – 5,000 sqft', 'pt-r-4': '5,000 – 10,000 sqft',
+      'pt-quote': 'Cotizar',
+      
+      'pi-title': 'Qué incluye la limpieza de oficina básica',
+      'pi-1': 'Vaciar todos los zafacones', 'pi-2': 'Aspirar y mapear pisos', 'pi-3': 'Limpiar baños completos + rellenar papel/jabón', 'pi-4': 'Cocina / área de café: limpiar mesones, microondas por fuera y por dentro, y fregadero', 'pi-5': 'Limpiar escritorios, teléfonos y superficies', 'pi-6': 'Limpiar vidrios de entrada y sala de conferencias', 'pi-7': 'Sacar la basura al contenedor',
+      
+      'pcta-note': '¿Tienes dudas sobre qué servicio elegir? Escríbenos y te asesoramos sin costo.',
+      'pcta-btn': 'Solicitar Cotización Gratis',
+
       // Coverage
       'cov-subtitle': 'Operaciones en Miami',
       'cov-title': 'Área de Cobertura',
       'cov-text': 'Servimos con orgullo a Miami, Sweetwater y zonas aledañas. Con oficinas centrales cerca del corredor de la SW 109th Ave, atendemos el código postal 33174 con disponibilidad inmediata.',
       'meta-1': 'Tiempo de respuesta promedio en Sweetwater',
       'meta-2': 'Operaciones de limpieza activas por semana',
+      'meta-num-1': '15 Min',
+      'meta-num-2': '6 Días',
       'map-title': 'Área Destacada',
       'map-text': 'Despacho logístico directo a todas las propiedades en el corredor de la SW 109th Ave.',
       // Contact
@@ -482,8 +569,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusText = $('.status-indicator-text');
     if (statusText) statusText.textContent = t['hero-status'];
     const metricLabels = $$('.metric-label');
-    if (metricLabels[0]) metricLabels[0].textContent = t['metric-1'];
-    if (metricLabels[1]) metricLabels[1].textContent = t['metric-2'];
+    if (metricLabels[0]) metricLabels[0].textContent = t['metric-2'];
     const checkItems = $$('.checklist-item');
     [t['check-1'], t['check-2'], t['check-3']].forEach((text, i) => {
       if (checkItems[i]) {
@@ -532,6 +618,67 @@ document.addEventListener('DOMContentLoaded', () => {
     translateCard(cards[1], 'c2-title', 'c2-text', 'c2-li', 'c2-cta', 'c2-badge');
     translateCard(cards[2], 'c3-title', 'c3-text', 'c3-li', 'c3-cta', null);
 
+    // Pricing Section Translation
+    const pricingSub = $('.pricing-section .section-subtitle');
+    const pricingTitle = $('.pricing-section .section-title');
+    const pricingDesc = $('.pricing-section .section-description');
+    if (pricingSub) pricingSub.textContent = t['ps-sub'];
+    if (pricingTitle) pricingTitle.textContent = t['ps-title'];
+    if (pricingDesc) pricingDesc.textContent = t['ps-desc'];
+
+    const pricingTabs = $$('.pricing-tab');
+    ['ptab-1','ptab-2','ptab-3','ptab-4','ptab-5'].forEach((k, i) => { if (pricingTabs[i] && t[k]) pricingTabs[i].textContent = t[k]; });
+
+    const pricingNotes = $$('.pricing-note');
+    ['pnote-1','pnote-2','pnote-3','pnote-4','pnote-5'].forEach((k, i) => { if (pricingNotes[i] && t[k]) pricingNotes[i].textContent = t[k]; });
+
+    const rowTitles = $$('.pricing-row-title');
+    const rowSpecs = $$('.pricing-row-spec');
+    const rowDurations = $$('.pricing-row-duration');
+    const rowDescs = $$('.pricing-row-desc');
+    
+    const rTitles = ['pr-t-1','pr-t-2','pr-t-3','pr-t-4','pr-t-5','pr-t-6','pr-t-7','pr-t-8','pr-t-9','pr-t-10','pr-t-11'];
+    const rSpecs = ['pr-s-1','pr-s-2','pr-s-3','pr-s-4','pr-s-5','pr-s-6','pr-s-7','pr-s-8','pr-s-9','pr-s-10','pr-s-11'];
+    const rDurs = ['pr-d-1','pr-d-2','pr-d-3','pr-d-4','pr-d-5','pr-d-6','pr-d-7','pr-d-8','pr-d-9','pr-d-10','pr-d-11'];
+    const rDescs = ['pr-desc-1','pr-desc-2','pr-desc-3','pr-desc-4','pr-desc-5','pr-desc-6','pr-desc-7','pr-desc-8','pr-desc-9','pr-desc-10','pr-desc-11'];
+    
+    rTitles.forEach((k, i) => {
+      if (rowTitles[i] && t[k]) {
+        let txtNode = Array.from(rowTitles[i].childNodes).find(n => n.nodeType === 3 && n.textContent.trim().length > 0);
+        if (txtNode) {
+          txtNode.textContent = t[k] + ' ';
+        } else {
+          rowTitles[i].insertBefore(document.createTextNode(t[k] + ' '), rowTitles[i].firstChild);
+        }
+      }
+      if (rowSpecs[i] && t[rSpecs[i]]) rowSpecs[i].textContent = t[rSpecs[i]];
+      if (rowDurations[i] && t[rDurs[i]]) rowDurations[i].textContent = t[rDurs[i]];
+      if (rowDescs[i] && t[rDescs[i]]) rowDescs[i].textContent = t[rDescs[i]];
+    });
+
+    const ths = $$('.office-sqft-table th');
+    ['pt-h-1','pt-h-2','pt-h-3','pt-h-4'].forEach((k, i) => { if (ths[i] && t[k]) ths[i].textContent = t[k]; });
+    
+    const trs = $$('.office-sqft-table tbody tr');
+    const rKeys = ['pt-r-1','pt-r-2','pt-r-3','pt-r-4'];
+    trs.forEach((tr, i) => {
+      if (t[rKeys[i]]) tr.children[0].textContent = t[rKeys[i]];
+      for(let j=1; j<=3; j++) {
+        if(tr.children[j]) tr.children[j].textContent = t['pt-quote'];
+      }
+    });
+
+    const incTitle = $('.office-includes-title');
+    if (incTitle) incTitle.textContent = t['pi-title'];
+    const incLis = $$('.office-includes-cols li');
+    const iKeys = ['pi-1','pi-2','pi-3','pi-4','pi-5','pi-6','pi-7'];
+    iKeys.forEach((k, i) => { if (incLis[i] && t[k]) incLis[i].textContent = t[k]; });
+
+    const ctaNote = $('.pricing-cta-note');
+    const ctaBtn = $('.pricing-cta-row .btn');
+    if (ctaNote) ctaNote.textContent = t['pcta-note'];
+    if (ctaBtn) ctaBtn.textContent = t['pcta-btn'];
+
     // Trust section
     const trustSection = $('.trust-section');
     if (trustSection) {
@@ -563,8 +710,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const covText = $('.coverage-text');
     if (covText) covText.textContent = t['cov-text'];
     const metaDescs = $$('.meta-description');
+    const metaNums = $$('.meta-number');
     if (metaDescs[0]) metaDescs[0].textContent = t['meta-1'];
     if (metaDescs[1]) metaDescs[1].textContent = t['meta-2'];
+    if (metaNums[0]) metaNums[0].textContent = t['meta-num-1'] || metaNums[0].textContent;
+    if (metaNums[1]) metaNums[1].textContent = t['meta-num-2'] || metaNums[1].textContent;
     const mapTitle = $('.map-overlay-title');
     const mapText = $('.map-overlay-text');
     if (mapTitle) mapTitle.textContent = t['map-title'];
@@ -655,6 +805,9 @@ document.addEventListener('DOMContentLoaded', () => {
       applyLang(currentLang);
     });
   }
+
+  // Initial translation apply on load to ensure everything matches currentLang
+  applyLang(currentLang);
 
 
   // --- 8. Residential Services Tab Switcher ---
