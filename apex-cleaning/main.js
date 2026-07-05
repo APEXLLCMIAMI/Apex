@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const T = {
     en: {
-      'translate-btn': '🌐 Ver en Español',
+      'translate-btn': '<span class="lang-icon">🌐</span><span class="lang-text"> Ver en Español</span>',
       // Nav
       'nav': ['Services', 'Why Apex', 'Service Area', 'Contact'],
       // Hero
@@ -392,7 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'terms': 'Terms of Service',
     },
     es: {
-      'translate-btn': '🌐 View in English',
+      'translate-btn': '<span class="lang-icon">🌐</span><span class="lang-text"> View in English</span>',
       'nav': ['Servicios', 'Confianza', 'Área de Servicio', 'Contacto'],
       'hero-badge-1': 'El Equipo de Limpieza más Confiable de Miami',
       'hero-badge-2': 'Licenciados, Afianzados y Asegurados',
@@ -534,7 +534,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const $$ = (sel) => document.querySelectorAll(sel);
 
     // Translate button label
-    translateBtn.textContent = t['translate-btn'];
+    if (translateBtn) translateBtn.innerHTML = t['translate-btn'];
 
     // Nav links
     const navLinks = $$('.desktop-nav .nav-link');
