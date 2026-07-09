@@ -2058,10 +2058,18 @@ section {
     gap: 8px;
   }
 
+  .office-sqft-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    display: block;
+  }
+
   .office-sqft-table thead th,
   .office-sqft-table tbody td {
-    padding: 10px 12px;
-    font-size: 13px;
+    padding: 8px 10px;
+    font-size: 12px;
+    white-space: nowrap;
   }
 }
 
