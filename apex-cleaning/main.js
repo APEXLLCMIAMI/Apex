@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Pricing Section
       'ps-sub': 'Our Services',
       'ps-title': 'Cleaning Services',
-      'ps-desc': 'Services for home and business — tailored to the size and needs of every space.',
+      'ps-desc': 'Services for home and business<br><span style="color: var(--accent-teal); font-weight: 500;">tailored to the size and needs of every space.</span>',
       'ptab-1': 'Standard Cleaning', 'ptab-2': 'Deep Cleaning', 'ptab-3': 'Move In / Move Out', 'ptab-4': 'Large Homes / 2-Story', 'ptab-5': 'Offices / Commercial',
       'pnote-1': 'Ideal for regular maintenance.', 'pnote-2': 'For the first time or every 3 months.', 'pnote-3': '50% deposit required to secure the date.', 'pnote-4': 'Large spaces with stairs or more than 4 bedrooms.', 'pnote-5': 'Rate guide for contracts and recurring visits, by square foot.',
       
@@ -440,7 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Pricing Section
       'ps-sub': 'Nuestros Servicios',
       'ps-title': 'Servicios de Limpieza',
-      'ps-desc': 'Servicios para el hogar y la empresa — adaptados al tamaño y necesidad de cada espacio.',
+      'ps-desc': 'Servicios para el hogar y la empresa<br><span style="color: var(--accent-teal); font-weight: 500;">adaptados al tamaño y necesidad de cada espacio.</span>',
       'ptab-1': 'Limpieza Básica', 'ptab-2': 'Limpieza Profunda', 'ptab-3': 'Mudanza', 'ptab-4': 'Casas Grandes / 2 Plantas', 'ptab-5': 'Oficinas / Comercial',
       'pnote-1': 'Ideal para mantenimiento regular.', 'pnote-2': 'Para primera vez o cada 3 meses.', 'pnote-3': 'Se pide 50% de depósito para apartar la fecha.', 'pnote-4': 'Espacios amplios con escaleras o más de 4 habitaciones.', 'pnote-5': 'Guía de tarifas para contratos y visitas recurrentes, por pie cuadrado.',
       
@@ -624,7 +624,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pricingDesc = $('.pricing-section .section-description');
     if (pricingSub) pricingSub.textContent = t['ps-sub'];
     if (pricingTitle) pricingTitle.textContent = t['ps-title'];
-    if (pricingDesc) pricingDesc.textContent = t['ps-desc'];
+    if (pricingDesc) pricingDesc.innerHTML = t['ps-desc'];
 
     const pricingTabs = $$('.pricing-tab');
     ['ptab-1','ptab-2','ptab-3','ptab-4','ptab-5'].forEach((k, i) => { if (pricingTabs[i] && t[k]) pricingTabs[i].textContent = t[k]; });
