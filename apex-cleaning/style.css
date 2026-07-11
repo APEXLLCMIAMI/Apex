@@ -296,7 +296,8 @@ img {
     0 8px 28px rgba(0, 180, 216, 0.35);
 }
 
-.btn.btn-form-submit {
+.btn.btn-form-submit,
+.btn.btn-success-reset {
   background: linear-gradient(
     160deg,
     rgba(100, 50, 240, 0.75) 0%,
@@ -320,7 +321,8 @@ img {
     inset -2px 0 0 rgba(0, 0, 0, 0.1);
 }
 
-.btn.btn-form-submit:hover {
+.btn.btn-form-submit:hover,
+.btn.btn-success-reset:hover {
   background: linear-gradient(
     160deg,
     rgba(115, 65, 255, 0.85) 0%,
@@ -1335,31 +1337,272 @@ section {
 }
 
 .form-input,
-.form-select,
 .form-textarea {
   width: 100%;
-  padding: 12px 16px;
-  border: 1px solid var(--border-color);
-  background-color: #F8FAFC;
+  padding: 13px 18px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 180, 216, 0.25);
   border-radius: var(--radius-sm);
   font-family: var(--font-family);
   font-size: 14px;
   color: var(--text-dark);
-  transition: var(--transition-fast);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
   outline: none;
 }
 
+.form-input:hover,
+.form-textarea:hover {
+  border-color: rgba(0, 180, 216, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(0, 180, 216, 0.05);
+}
+
 .form-input:focus,
-.form-select:focus,
 .form-textarea:focus {
   border-color: var(--accent-teal);
-  background-color: #FFFFFF;
-  box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.1);
+  background: #FFFFFF;
+  box-shadow:
+    0 0 0 3px rgba(0, 180, 216, 0.15),
+    0 4px 12px rgba(0, 180, 216, 0.08);
 }
 
 .form-textarea {
   resize: vertical;
   min-height: 100px;
+}
+
+/* ==========================================================================
+   Custom Service Type Select — Light Liquid Glass Premium
+   ========================================================================== */
+
+.cs-wrapper {
+  position: relative;
+  width: 100%;
+  user-select: none;
+}
+
+/* ── Trigger Button — Light Glass ── */
+.cs-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 13px 18px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 180, 216, 0.25);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family);
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.cs-trigger:hover {
+  border-color: rgba(0, 180, 216, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(0, 180, 216, 0.05);
+}
+
+.cs-trigger:focus-visible {
+  border-color: var(--accent-teal);
+  box-shadow:
+    0 0 0 3px rgba(0, 180, 216, 0.15),
+    0 4px 12px rgba(0, 180, 216, 0.08);
+}
+
+.cs-wrapper.open .cs-trigger {
+  border-color: var(--accent-teal);
+  background: #FFFFFF;
+  box-shadow:
+    0 0 0 3px rgba(0, 180, 216, 0.15),
+    0 8px 16px rgba(0, 180, 216, 0.06);
+}
+
+/* ── Display text ── */
+.cs-display {
+  flex: 1;
+  text-align: left;
+  color: var(--text-muted);
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+
+.cs-display.has-value {
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+/* ── Animated chevron ── */
+.cs-chevron {
+  flex-shrink: 0;
+  color: var(--accent-teal);
+  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cs-wrapper.open .cs-chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown Panel — Light Liquid Glass ── */
+.cs-panel {
+  position: fixed;
+  z-index: 9999;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(250, 252, 255, 0.90) 100%
+  );
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+
+  border: 1px solid rgba(0, 180, 216, 0.3);
+  border-radius: var(--radius-sm);
+
+  box-shadow:
+    0 12px 32px rgba(10, 25, 47, 0.08),
+    0 4px 12px rgba(10, 25, 47, 0.04),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+
+  overflow: hidden;
+  max-height: min(360px, 60vh);
+  overflow-y: auto;
+
+  /* ── Hidden state ── */
+  opacity: 0;
+  transform: translateY(-8px) scaleY(0.96);
+  transform-origin: top center;
+  pointer-events: none;
+  transition:
+    opacity 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Open State ── */
+.cs-panel.open {
+  opacity: 1;
+  transform: translateY(0) scaleY(1);
+  pointer-events: auto;
+}
+
+.cs-panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Option Groups ── */
+.cs-group {
+  padding: 8px 0;
+}
+
+.cs-group:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 180, 216, 0.08);
+  padding-bottom: 6px;
+  margin-bottom: 2px;
+}
+
+.cs-group-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  /* Premium gradient text blending Teal and Purple from the page palette */
+  background: linear-gradient(90deg, var(--accent-teal) 0%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  pointer-events: none;
+}
+
+/* ── Individual Options ── */
+.cs-option {
+  position: relative;
+  display: block;
+  padding: 10px 18px 10px 32px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    padding-left 0.15s ease;
+}
+
+/* Dot indicator */
+.cs-option::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: transparent;
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.cs-option:hover {
+  background: linear-gradient(90deg, rgba(0, 180, 216, 0.06), transparent);
+  color: var(--accent-teal);
+  padding-left: 36px;
+}
+
+.cs-option:hover::before {
+  background-color: var(--accent-teal);
+  box-shadow: 0 0 6px rgba(0, 180, 216, 0.3);
+  transform: translateY(-50%) scale(1.3);
+}
+
+/* ── Selected State ── */
+.cs-option.selected {
+  background: rgba(0, 180, 216, 0.08);
+  color: var(--accent-teal);
+  font-weight: 700;
+}
+
+.cs-option.selected::before {
+  background-color: var(--accent-teal);
+  box-shadow: 0 0 8px rgba(0, 180, 216, 0.4);
+}
+
+/* ── Scrollbar — Light Glass Style ── */
+.cs-panel::-webkit-scrollbar { width: 5px; }
+.cs-panel::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 5px;
+}
+.cs-panel::-webkit-scrollbar-thumb {
+  background: rgba(0, 180, 216, 0.3);
+  border-radius: 5px;
+}
+.cs-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 180, 216, 0.6);
 }
 
 .btn-form-submit {

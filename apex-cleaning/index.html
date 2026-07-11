@@ -988,17 +988,53 @@
 
               <div class="form-group full-width">
 
-                <label for="property-type" class="form-label">Service Type <span class="required">*</span></label>
+                <label class="form-label">Service Type <span class="required">*</span></label>
 
-                <select id="property-type" name="propertyType" class="form-select" required>
+                <!-- Custom Select Component — Liquid Glass Style -->
+                <div class="cs-wrapper" id="service-select-wrapper" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="cs-panel">
 
-                  <option value="" disabled selected>&mdash; Select property type &mdash;</option>
+                  <!-- Hidden input carries value for JS validation & form data -->
+                  <input type="hidden" id="property-type" name="propertyType">
 
-                  <option value="Residential">&#127968; Residential / Apartment</option>
+                  <!-- Visible trigger -->
+                  <div class="cs-trigger" id="cs-trigger" tabindex="0">
+                    <span class="cs-display" id="cs-display">&mdash; Select service type &mdash;</span>
+                    <svg class="cs-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none"
+                      stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                      stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </div>
 
-                  <option value="Commercial">&#127962; Commercial / Corporate Office</option>
+                  <!-- Dropdown panel -->
+                  <div class="cs-panel" id="cs-panel" role="listbox" aria-label="Service Type">
 
-                </select>
+                    <!-- Group 1: Residential -->
+                    <div class="cs-group">
+                      <div class="cs-group-label" data-i18n-key="foptg-1">🏠 Residential Services</div>
+                      <ul>
+                        <li class="cs-option" role="option" data-value="Standard-Cleaning"   data-i18n-key="fopt-res-1" tabindex="-1">Standard Cleaning</li>
+                        <li class="cs-option" role="option" data-value="Deep-Cleaning"       data-i18n-key="fopt-res-2" tabindex="-1">Deep Cleaning</li>
+                        <li class="cs-option" role="option" data-value="Move-InOut"          data-i18n-key="fopt-res-3" tabindex="-1">Move In / Move Out</li>
+                        <li class="cs-option" role="option" data-value="Large-Homes"         data-i18n-key="fopt-res-4" tabindex="-1">Large Homes</li>
+                      </ul>
+                    </div>
+
+                    <!-- Group 2: Commercial -->
+                    <div class="cs-group">
+                      <div class="cs-group-label" data-i18n-key="foptg-2">🏢 Commercial Services</div>
+                      <ul>
+                        <li class="cs-option" role="option" data-value="Office-Workspace"   data-i18n-key="fopt-com-1" tabindex="-1">Office / Workspace</li>
+                        <li class="cs-option" role="option" data-value="Retail-Storefront"  data-i18n-key="fopt-com-2" tabindex="-1">Retail / Storefront</li>
+                        <li class="cs-option" role="option" data-value="Airbnb-Vacation"    data-i18n-key="fopt-com-3" tabindex="-1">Airbnb / Vacation Rental</li>
+                        <li class="cs-option" role="option" data-value="Post-Construction"  data-i18n-key="fopt-com-4" tabindex="-1">Post-Construction</li>
+                        <li class="cs-option" role="option" data-value="Other-Commercial"   data-i18n-key="fopt-com-5" tabindex="-1">Other Commercial Space</li>
+                      </ul>
+                    </div>
+
+                  </div>
+
+                </div>
 
               </div>
 

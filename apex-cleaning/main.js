@@ -74,13 +74,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const serviceCardCtas = document.querySelectorAll('.service-card-cta');
   const propertySelect = document.getElementById('property-type');
 
-  serviceCardCtas.forEach(cta => {
-    cta.addEventListener('click', (e) => {
-      // Don't prevent default, allow smooth scroll to #contact
-      const targetService = cta.getAttribute('data-service');
-      if (targetService && propertySelect) {
-        propertySelect.value = targetService;
+  // Helper: programmatically select an option in the custom select
+  function selectCustomOption(value) {
+    if (!propertySelect) return;
+    const csDisplay = document.getElementById('cs-display');
+    const allOpts   = document.querySelectorAll('.cs-option');
+    let matched = null;
+    allOpts.forEach(opt => {
+      opt.classList.remove('selected');
+      if (opt.getAttribute('data-value') === value) matched = opt;
+    });
+    if (matched) {
+      matched.classList.add('selected');
+      propertySelect.value = value;
+      if (csDisplay) {
+        csDisplay.textContent = matched.textContent.trim();
+        csDisplay.classList.add('has-value');
       }
+    }
+  }
+
+  serviceCardCtas.forEach(cta => {
+    cta.addEventListener('click', () => {
+      const targetService = cta.getAttribute('data-service');
+      if (targetService) selectCustomOption(targetService);
     });
   });
 
@@ -145,11 +162,18 @@ document.addEventListener('DOMContentLoaded', () => {
       successClientName.textContent = fullName;
       
       const typeTranslations = {
-        'Residential': currentLang === 'en' ? 'Residential / Luxury Apartment' : 'Residencial / Apartamento',
-        'Commercial': currentLang === 'en' ? 'Commercial / Corporate Office' : 'Comercial / Oficina Corporativa'
+        'Standard-Cleaning':  currentLang === 'en' ? 'Standard Cleaning'       : 'Limpieza Estándar',
+        'Deep-Cleaning':      currentLang === 'en' ? 'Deep Cleaning'            : 'Limpieza Profunda',
+        'Move-InOut':         currentLang === 'en' ? 'Move In / Move Out'       : 'Limpieza de Mudanza',
+        'Large-Homes':        currentLang === 'en' ? 'Large Homes'              : 'Casas Grandes',
+        'Office-Workspace':   currentLang === 'en' ? 'Office / Workspace'       : 'Oficina / Área de Trabajo',
+        'Retail-Storefront':  currentLang === 'en' ? 'Retail / Storefront'      : 'Local / Frente Comercial',
+        'Airbnb-Vacation':    currentLang === 'en' ? 'Airbnb / Vacation Rental' : 'Airbnb / Alquiler Vacacional',
+        'Post-Construction':  currentLang === 'en' ? 'Post-Construction'        : 'Post-Construcción',
+        'Other-Commercial':   currentLang === 'en' ? 'Other Commercial Space'   : 'Otro Espacio Comercial'
       };
       
-      let readablePropertyType = typeTranslations[propertyType] || 'Selected Property';
+      let readablePropertyType = typeTranslations[propertyType] || propertyType;
       
       successPropertyType.textContent = readablePropertyType;
 
@@ -369,9 +393,18 @@ document.addEventListener('DOMContentLoaded', () => {
       'flabel-phone': 'Phone / WhatsApp',
       'flabel-email': 'Email Address',
       'flabel-type': 'Service Type',
-      'fopt-0': '— Select property type —',
-      'fopt-2': '🏠 Residential / Apartment',
-      'fopt-3': '🏢 Commercial / Corporate Office',
+      'fopt-0': '— Select service type —',
+      'foptg-1': '🏠 Residential Services',
+      'foptg-2': '🏢 Commercial Services',
+      'fopt-res-1': 'Standard Cleaning',
+      'fopt-res-2': 'Deep Cleaning',
+      'fopt-res-3': 'Move In / Move Out',
+      'fopt-res-4': 'Large Homes',
+      'fopt-com-1': 'Office / Workspace',
+      'fopt-com-2': 'Retail / Storefront',
+      'fopt-com-3': 'Airbnb / Vacation Rental',
+      'fopt-com-4': 'Post-Construction',
+      'fopt-com-5': 'Other Commercial Space',
       'flabel-msg': 'Additional Details',
       'fph-name': 'e.g. John Doe',
       'fph-phone': 'e.g. (305) 555-0100',
@@ -504,9 +537,18 @@ document.addEventListener('DOMContentLoaded', () => {
       'flabel-phone': 'Teléfono / WhatsApp',
       'flabel-email': 'Correo Electrónico',
       'flabel-type': 'Tipo de Servicio',
-      'fopt-0': '— Seleccione tipo de propiedad —',
-      'fopt-2': '🏠 Residencial / Apartamento',
-      'fopt-3': '🏢 Comercial / Oficina Corporativa',
+      'fopt-0': '— Seleccione tipo de servicio —',
+      'foptg-1': '🏠 Servicios Residenciales',
+      'foptg-2': '🏢 Servicios Comerciales',
+      'fopt-res-1': 'Limpieza Estándar',
+      'fopt-res-2': 'Limpieza Profunda',
+      'fopt-res-3': 'Limpieza de Mudanza',
+      'fopt-res-4': 'Casas Grandes',
+      'fopt-com-1': 'Oficina / Área de Trabajo',
+      'fopt-com-2': 'Local / Frente Comercial',
+      'fopt-com-3': 'Airbnb / Alquiler Vacacional',
+      'fopt-com-4': 'Post-Construcción',
+      'fopt-com-5': 'Otro Espacio Comercial',
       'flabel-msg': 'Detalles Adicionales',
       'fph-name': 'Ej. Juan Pérez',
       'fph-phone': 'Ej. (305) 555-0100',
@@ -752,10 +794,25 @@ document.addEventListener('DOMContentLoaded', () => {
       if (hasRequired[i] && req) el.appendChild(req);
     });
 
-    const opts = $$('#property-type option');
-    ['fopt-0','fopt-2','fopt-3'].forEach((k, i) => {
-      if (opts[i] && t[k]) opts[i].textContent = t[k];
+    // Translate Custom Select — group labels and options via data-i18n-key
+    document.querySelectorAll('#cs-panel [data-i18n-key]').forEach(el => {
+      const key = el.getAttribute('data-i18n-key');
+      if (t[key]) el.textContent = t[key];
     });
+
+    // Update the trigger display text
+    const csDisplay = document.getElementById('cs-display');
+    const selectedOpt = document.querySelector('#cs-panel .cs-option.selected');
+    if (csDisplay) {
+      if (selectedOpt) {
+        // Re-render the translated text of the currently selected option
+        const key = selectedOpt.getAttribute('data-i18n-key');
+        if (t[key]) csDisplay.textContent = t[key];
+      } else {
+        // No selection: update placeholder text
+        if (t['fopt-0']) csDisplay.textContent = t['fopt-0'];
+      }
+    }
 
     const nameI = document.getElementById('full-name');
     const phoneI = document.getElementById('phone-number');
@@ -810,7 +867,104 @@ document.addEventListener('DOMContentLoaded', () => {
   applyLang(currentLang);
 
 
-  // --- 8. Residential Services Tab Switcher ---
+  // --- 8. Custom Service Type Select — Interactive Logic ---
+  const csWrapper  = document.getElementById('service-select-wrapper');
+  const csTrigger  = document.getElementById('cs-trigger');
+  const csPanel    = document.getElementById('cs-panel');
+  const csDisplayEl = document.getElementById('cs-display');
+  const csOptionEls = document.querySelectorAll('.cs-option');
+
+  if (csWrapper && csTrigger && csPanel) {
+
+    // Move panel to body to completely escape overflow:hidden or transform stacking contexts
+    document.body.appendChild(csPanel);
+
+    // Position the panel using fixed coords
+    function positionPanel() {
+      const rect = csTrigger.getBoundingClientRect();
+      csPanel.style.top   = (rect.bottom + 4) + 'px';
+      csPanel.style.left  = rect.left + 'px';
+      csPanel.style.width = rect.width + 'px';
+    }
+
+    function openCustomSelect() {
+      positionPanel();
+      csWrapper.classList.add('open');
+      csWrapper.setAttribute('aria-expanded', 'true');
+      csPanel.classList.add('open');
+    }
+
+    function closeCustomSelect() {
+      csWrapper.classList.remove('open');
+      csWrapper.setAttribute('aria-expanded', 'false');
+      csPanel.classList.remove('open');
+    }
+
+    // Toggle on trigger click
+    csTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      csWrapper.classList.contains('open') ? closeCustomSelect() : openCustomSelect();
+    });
+
+    // Keyboard: Enter/Space = toggle, Escape = close
+    csTrigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        csWrapper.classList.contains('open') ? closeCustomSelect() : openCustomSelect();
+      }
+      if (e.key === 'Escape') { closeCustomSelect(); csTrigger.focus(); }
+    });
+
+    // Option click — select value and update UI
+    csOptionEls.forEach(option => {
+      option.addEventListener('click', () => {
+        const value = option.getAttribute('data-value');
+
+        // Write to hidden input (used by form validation & submission)
+        if (propertySelect) propertySelect.value = value;
+
+        // Update trigger display text
+        if (csDisplayEl) {
+          csDisplayEl.textContent = option.textContent.trim();
+          csDisplayEl.classList.add('has-value');
+        }
+
+        // Toggle selected visual state
+        csOptionEls.forEach(o => o.classList.remove('selected'));
+        option.classList.add('selected');
+
+        closeCustomSelect();
+      });
+    });
+
+    // Close when clicking outside the component
+    document.addEventListener('click', (e) => {
+      if (!csWrapper.contains(e.target) && !csPanel.contains(e.target)) closeCustomSelect();
+    });
+
+    // Close on page scroll (panel is fixed, would drift otherwise), except if scrolling inside the panel
+    window.addEventListener('scroll', (e) => {
+      if (csPanel.contains(e.target)) return;
+      closeCustomSelect();
+    }, { passive: true, capture: true });
+
+    // Reposition panel on window resize if open
+    window.addEventListener('resize', () => {
+      if (csWrapper.classList.contains('open')) positionPanel();
+    }, { passive: true });
+
+    // Close on Escape from anywhere
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && csWrapper.classList.contains('open')) {
+        closeCustomSelect();
+        csTrigger.focus();
+      }
+    });
+
+  }
+
+
+  // --- 9. Residential Services Tab Switcher ---
   const pricingTabs = document.querySelectorAll('.pricing-tab');
   const pricingPanels = document.querySelectorAll('.pricing-panel');
 
