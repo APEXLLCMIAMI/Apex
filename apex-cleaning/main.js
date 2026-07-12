@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'hero-badge-1': "Miami's Most Trusted Cleaning Team",
       'hero-badge-2': 'Licensed, Bonded & Insured',
       'hero-title': 'Cleaning Services in Miami: <span class="highlight-text">Impeccable Spaces, Absolute Confidence.</span>',
-      'hero-desc': 'Experience the peace of mind that comes with a cleaning service built on trust, quality, and attention to detail — for your home and your business.',
+      'hero-desc': 'Experience the peace of mind that comes with a cleaning service built on trust, quality, and attention to detail for your home and your business.',
       'hero-cta-1': 'Get a Free Estimate',
       'hero-cta-2': 'Explore Services',
       'hero-trust-1': '2-Hour Operations Response',
@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'check-1': 'Standardized Operational Checklists',
       'check-2': 'EPA-Approved Disinfectants Only',
       'check-3': 'Status Verification Reports',
-      'hero-card-cta': 'Book Cleaning Walkthrough',
+
       // Services
       'svc-subtitle': 'Services',
       'svc-title': 'Cleaning Services',
@@ -423,6 +423,58 @@ document.addEventListener('DOMContentLoaded', () => {
       'copyright': '© 2026 Apex LLC. All rights reserved.',
       'privacy': 'Privacy Policy',
       'terms': 'Terms of Service',
+      'calc-subtitle': 'Instant Estimate',
+      'calc-title': 'Quote Calculator',
+      'calc-desc': 'Get an estimated price based on your space and needs.',
+      'calc-st-1': '1. Select Property Type',
+      'calc-btn-res': 'Residential',
+      'calc-btn-com': 'Commercial',
+      'calc-st-2': '2. Select Service Type',
+      'calc-btn-basic': 'Standard Cleaning',
+      'calc-btn-deep': 'Deep Cleaning',
+      'calc-btn-1x': '1x / Week',
+      'calc-btn-3x': '3x / Week',
+      'calc-btn-5x': '5x / Week',
+      'calc-st-3': '3. Select Size',
+      'calc-price-lbl': 'Estimated Price',
+      'calc-disc': '* Reference prices; final cost may vary based on condition and exact size.',
+      'calc-book': 'Book with this Estimate',
+      'calc-btn-back': 'Back',
+      'calc-btn-1-1': '1 Bed / 1 Bath',
+      'calc-btn-2-2': '2 Beds / 2 Baths',
+      'calc-btn-3-2': '3 Beds / 2 Baths',
+      'calc-btn-4-2': '4 Beds / 2-3 Baths',
+      'calc-btn-2s': '2-Story (4+ Beds)',
+      'calc-btn-c1': '< 1,000 sqft',
+      'calc-btn-c2': '< 2,000 sqft',
+      'calc-btn-c3': '2,000 - 5,000 sqft',
+      'calc-btn-c4': '5,000 - 10,000 sqft',
+      'calc-btn-restart': 'Start Over',
+      'booking-badge-lbl': 'Free Estimate — No Commitment',
+      'booking-main-title': 'Ready for a Spotless Space?',
+      'booking-main-desc': "Tell us about your property and we'll send a tailored proposal within 2 business hours.",
+      'booking-stat-resp': 'Response Time',
+      'booking-stat-ver': 'Verified Team',
+      'booking-stat-days': 'Days a Week',
+      'booking-stat-val-resp': 'Under 2h',
+      'booking-cta-btn-txt': 'Request Free Estimate',
+      'bf-2-lbl': 'Under 2h Reply',
+      'calc-st-2b': '3. Select Frequency',
+      'calc-btn-off': 'Office / Workspace',
+      'calc-btn-ret': 'Retail / Storefront',
+      'calc-btn-air': 'Airbnb / Vacation',
+      'calc-btn-pco': 'Post-Construction',
+      'calc-btn-med': 'Medical / Clinic',
+      'calc-btn-rst': 'Restaurant / Kitchen',
+      'calc-btn-wrh': 'Warehouse / Industrial',
+      'calc-btn-oth': 'Other Commercial',
+      'calc-btn-mio': 'Move In / Out',
+      'calendly-sub': 'Virtual Inspection',
+      'calendly-title': 'Schedule a Walkthrough',
+      'calendly-desc': 'Select a time that works for you.',
+      'tc-1': 'Background Verified',
+      'tc-2': 'Professionally Trained',
+      'tc-3': 'Fully Insured',
     },
     es: {
       'translate-btn': '<span class="lang-icon">EN</span><span class="lang-text"> English</span>',
@@ -441,7 +493,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'check-1': 'Listas de Control Estandarizadas',
       'check-2': 'Solo Desinfectantes Aprobados por la EPA',
       'check-3': 'Reportes de Verificación de Estado',
-      'hero-card-cta': 'Solicitar Inspección de Limpieza',
+
       // Services
       'svc-subtitle': 'Servicios',
       'svc-title': 'Servicios de Limpieza',
@@ -567,6 +619,58 @@ document.addEventListener('DOMContentLoaded', () => {
       'copyright': '© 2026 Apex LLC. Todos los derechos reservados.',
       'privacy': 'Política de Privacidad',
       'terms': 'Términos de Servicio',
+      'calc-subtitle': 'Estimado Instantáneo',
+      'calc-title': 'Calculadora de Cotizaciones',
+      'calc-desc': 'Obtenga un precio estimado según su espacio y necesidades.',
+      'calc-st-1': '1. Seleccione Tipo de Propiedad',
+      'calc-btn-res': 'Residencial',
+      'calc-btn-com': 'Comercial',
+      'calc-st-2': '2. Seleccione Tipo de Servicio',
+      'calc-btn-basic': 'Limpieza Estándar',
+      'calc-btn-deep': 'Limpieza Profunda',
+      'calc-btn-1x': '1x / Semana',
+      'calc-btn-3x': '3x / Semana',
+      'calc-btn-5x': '5x / Semana',
+      'calc-st-3': '3. Seleccione Tamaño',
+      'calc-price-lbl': 'Precio Estimado',
+      'calc-disc': '* Precios de referencia; el costo final puede variar según el estado y tamaño exacto.',
+      'calc-book': 'Agendar con esta Cotización',
+      'calc-btn-back': 'Volver',
+      'calc-btn-1-1': '1 Hab / 1 Baño',
+      'calc-btn-2-2': '2 Habs / 2 Baños',
+      'calc-btn-3-2': '3 Habs / 2 Baños',
+      'calc-btn-4-2': '4 Habs / 2-3 Baños',
+      'calc-btn-2s': '2 Plantas (4+ Habs)',
+      'calc-btn-c1': '< 1,000 pies²',
+      'calc-btn-c2': '< 2,000 pies²',
+      'calc-btn-c3': '2,000 - 5,000 pies²',
+      'calc-btn-c4': '5,000 - 10,000 pies²',
+      'calc-btn-restart': 'Nueva Cotización',
+      'booking-badge-lbl': 'Estimado Gratis — Sin Compromiso',
+      'booking-main-title': '¿Listo para un Espacio Impecable?',
+      'booking-main-desc': 'Cuéntenos sobre su propiedad y le enviaremos una propuesta personalizada en menos de 2 horas.',
+      'booking-stat-resp': 'Tiempo de Respuesta',
+      'booking-stat-ver': 'Equipo Verificado',
+      'booking-stat-days': 'Días a la Semana',
+      'booking-stat-val-resp': 'Menos 2h',
+      'booking-cta-btn-txt': 'Solicitar Estimado Gratis',
+      'bf-2-lbl': 'Menos 2h Respuesta',
+      'calc-st-2b': '3. Seleccione Frecuencia',
+      'calc-btn-off': 'Oficina / Área de Trabajo',
+      'calc-btn-ret': 'Local / Frente Comercial',
+      'calc-btn-air': 'Airbnb / Vacacional',
+      'calc-btn-pco': 'Post-Construcción',
+      'calc-btn-med': 'Médico / Clínica',
+      'calc-btn-rst': 'Restaurante / Cocina',
+      'calc-btn-wrh': 'Bodega / Industrial',
+      'calc-btn-oth': 'Otro Comercial',
+      'calc-btn-mio': 'Mudanza (entrada/salida)',
+      'calendly-sub': 'Inspección Virtual',
+      'calendly-title': 'Agendar Recorrido',
+      'calendly-desc': 'Seleccione un horario que le convenga.',
+      'tc-1': 'Antecedentes Verificados',
+      'tc-2': 'Entrenamiento Profesional',
+      'tc-3': 'Totalmente Asegurados',
     }
   };
 
@@ -619,8 +723,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (spanEl) spanEl.textContent = text;
       }
     });
-    const cardCta = $('.visual-card-cta-wrapper .btn');
-    if (cardCta) cardCta.textContent = t['hero-card-cta'];
+
 
     // Services section header
     const svcSection = $('.services-section');
@@ -852,6 +955,41 @@ document.addEventListener('DOMContentLoaded', () => {
     if (privacyLink) privacyLink.textContent = t['privacy'];
     if (termsLink) termsLink.textContent = t['terms'];
 
+    // Quote Calculator & New Sections
+    const calcKeys = [
+      'calc-subtitle', 'calc-title', 'calc-desc', 'calc-st-1', 'calc-btn-res', 'calc-btn-com',
+      'calc-st-2', 'calc-btn-basic', 'calc-btn-deep', 'calc-btn-mio',
+      'calc-st-2b', 'calc-btn-1x', 'calc-btn-3x', 'calc-btn-5x',
+      'calc-st-3', 'calc-price-lbl', 'calc-disc', 'calc-btn-back',
+      'calc-btn-1-1', 'calc-btn-2-2', 'calc-btn-3-2', 'calc-btn-4-2', 'calc-btn-2s',
+      'calc-btn-c1', 'calc-btn-c2', 'calc-btn-c3', 'calc-btn-c4', 'calc-btn-restart',
+      'calc-btn-off', 'calc-btn-ret', 'calc-btn-air', 'calc-btn-pco',
+      'calc-btn-med', 'calc-btn-rst', 'calc-btn-wrh', 'calc-btn-oth'
+    ];
+    calcKeys.forEach(k => {
+      const el = document.querySelector(`.${k}`);
+      if (el) el.textContent = t[k];
+    });
+    const calcBookBtn = document.getElementById('calc-book-btn');
+    if (calcBookBtn) calcBookBtn.textContent = t['calc-book'];
+    
+    // Booking CTA
+    const bookingKeys = [
+      'booking-badge-lbl', 'booking-main-title', 'booking-main-desc',
+      'booking-stat-resp', 'booking-stat-ver', 'booking-stat-days',
+      'booking-stat-val-resp', 'booking-cta-btn-txt', 'bf-2-lbl'
+    ];
+    bookingKeys.forEach(k => {
+      const el = document.querySelector(`.${k}`);
+      if (el) el.textContent = t[k];
+    });
+    
+    const tcKeys = ['tc-1', 'tc-2', 'tc-3'];
+    tcKeys.forEach(k => {
+      const el = document.querySelector(`.${k}`);
+      if (el) el.textContent = t[k];
+    });
+
     // Update html lang attribute
     document.documentElement.lang = lang;
   }
@@ -988,6 +1126,230 @@ document.addEventListener('DOMContentLoaded', () => {
       if (activePanel) activePanel.classList.add('active');
     });
   });
+
+  // --- 10. Quote Calculator Logic ---
+  const step1Btns = document.querySelectorAll('#calc-step-1 .calc-btn');
+  const step2Btns = document.querySelectorAll('#calc-step-2 .calc-btn');
+  const step3Btns = document.querySelectorAll('#calc-step-3 .calc-btn');
+  
+  const step1 = document.getElementById('calc-step-1');
+  const step2 = document.getElementById('calc-step-2');
+  const step3 = document.getElementById('calc-step-3');
+  const resultPanel = document.getElementById('calc-result');
+  const navBtns = document.getElementById('calc-nav-btns');
+  const backBtn = document.getElementById('calc-back-btn');
+  const priceDisplay = document.getElementById('calc-price-display');
+  const bookBtn = document.getElementById('calc-book-btn');
+  
+  const resGroups = document.querySelectorAll('.calc-group-residential');
+  const comGroups = document.querySelectorAll('.calc-group-commercial');
+
+  let state = {
+    type: null,
+    sub: null,
+    size: null,
+    currentStep: 1
+  };
+
+  const prices = {
+    residential: {
+      'basic': { '1/1': 160, '2/2': 215, '3/2': 245, '4/2-3': 310, '2story': 420 },
+      'deep':  { '1/1': 260, '2/2': 350, '3/2': 460, '4/2-3': 520, '2story': 620 }
+    },
+    commercial: {
+      '1x': { '<1000': 110, '<2000': 160, '2000-5000': 320, '5000-10000': 550 },
+      '3x': { '<1000': 255, '<2000': 390, '2000-5000': 780, '5000-10000': 1350 },
+      '5x': { '<1000': 350, '<2000': 550, '2000-5000': 1100, '5000-10000': 2000 }
+    }
+  };
+
+  function updateSteps() {
+    if (!step1) return;
+    step1.style.display = state.currentStep === 1 ? 'block' : 'none';
+    step2.style.display = state.currentStep === 2 ? 'block' : 'none';
+    step3.style.display = state.currentStep === 3 ? 'block' : 'none';
+    resultPanel.style.display = state.currentStep === 4 ? 'block' : 'none';
+    navBtns.style.display = state.currentStep > 1 && state.currentStep < 4 ? 'flex' : 'none';
+    
+    if (state.currentStep === 4) {
+      if (prices[state.type] && prices[state.type][state.sub] && prices[state.type][state.sub][state.size]) {
+        priceDisplay.textContent = '$' + prices[state.type][state.sub][state.size];
+      } else {
+        priceDisplay.textContent = 'Quote';
+      }
+    }
+  }
+
+  // Commercial types that get frequency→size pricing
+  const COM_PRICED = ['office', 'retail'];
+  // Types that need custom quote
+  const COM_QUOTE  = ['airbnb', 'postconstruction', 'medical', 'restaurant', 'warehouse', 'other-com'];
+  // Residential types that skip to size directly
+  const RES_SIZED  = ['basic', 'deep'];
+
+  const step2b       = document.getElementById('calc-step-2b');
+  const step2bBtns   = document.querySelectorAll('#calc-step-2b .calc-btn');
+
+  // Extend updateSteps to cover step-2b (step 2.5)
+  const _origUpdate = updateSteps;
+  function updateSteps() {
+    if (!step1) return;
+    step1.style.display  = state.currentStep === 1    ? 'block' : 'none';
+    step2.style.display  = state.currentStep === 2    ? 'block' : 'none';
+    if (step2b) step2b.style.display = state.currentStep === 2.5  ? 'block' : 'none';
+    step3.style.display  = state.currentStep === 3    ? 'block' : 'none';
+    resultPanel.style.display = state.currentStep === 4 ? 'block' : 'none';
+
+    // Show back btn on steps 2, 2.5, 3
+    navBtns.style.display = (state.currentStep > 1 && state.currentStep < 4) ? 'flex' : 'none';
+
+    if (state.currentStep === 4) {
+      const p = prices[state.type];
+      const sub = state.sub;
+      const sz  = state.size;
+      if (p && p[sub] && p[sub][sz]) {
+        priceDisplay.textContent = '$' + p[sub][sz];
+        resultPanel.querySelector('.calc-disclaimer').style.display = '';
+        document.getElementById('calc-book-btn').style.display = '';
+      } else {
+        // Custom quote case
+        priceDisplay.textContent = '📋';
+        resultPanel.querySelector('.calc-price-label').textContent = 'Custom Quote';
+        resultPanel.querySelector('.calc-disclaimer').style.display = 'none';
+        document.getElementById('calc-book-btn').textContent = 'Request Custom Quote';
+        document.getElementById('calc-book-btn').style.display = '';
+      }
+    }
+  }
+
+  step1Btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      step1Btns.forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      state.type = btn.getAttribute('data-type');
+      state.sub = null; state.size = null; state.freq = null;
+
+      document.querySelectorAll('#quote-calculator .calc-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+
+      if (state.type === 'residential') {
+        resGroups.forEach(g => g.style.display = 'grid');
+        comGroups.forEach(g => g.style.display = 'none');
+      } else {
+        resGroups.forEach(g => g.style.display = 'none');
+        comGroups.forEach(g => g.style.display = 'grid');
+      }
+      state.currentStep = 2;
+      updateSteps();
+    });
+  });
+
+  step2Btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      step2Btns.forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      const sub = btn.getAttribute('data-sub');
+      state.sub = sub;
+
+      if (state.type === 'commercial') {
+        if (COM_PRICED.includes(sub)) {
+          // Goes to frequency step
+          state.currentStep = 2.5;
+        } else if (COM_QUOTE.includes(sub)) {
+          // Jump straight to result with custom quote
+          state.size = 'custom';
+          state.currentStep = 4;
+        }
+      } else {
+        // Residential: basic/deep → size | moveinout → result
+        if (sub === 'moveinout') {
+          state.size = 'moveinout';
+          state.currentStep = 4;
+        } else {
+          state.currentStep = 3;
+        }
+      }
+      updateSteps();
+    });
+  });
+
+  // Step 2b: frequency buttons (commercial office/retail)
+  step2bBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      step2bBtns.forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      // Store frequency into sub (overwrite service type → use freq as the key)
+      state.sub = btn.getAttribute('data-freq');
+      state.currentStep = 3;
+      updateSteps();
+    });
+  });
+
+  step3Btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      step3Btns.forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      state.size = btn.getAttribute('data-size');
+      state.currentStep = 4;
+      updateSteps();
+    });
+  });
+
+
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      if (state.currentStep > 1) {
+        state.currentStep--;
+        updateSteps();
+      }
+    });
+  }
+
+  if (bookBtn) {
+    bookBtn.addEventListener('click', () => {
+      const contactSec = document.getElementById('contact');
+      if (contactSec) contactSec.scrollIntoView({ behavior: 'smooth' });
+      
+      let valToSelect = '';
+      if (state.type === 'residential') {
+        if (state.sub === 'basic') valToSelect = 'Standard-Cleaning';
+        else if (state.sub === 'deep') valToSelect = 'Deep-Cleaning';
+      } else {
+        valToSelect = 'Office-Workspace';
+      }
+      
+      if (typeof selectCustomOption === 'function') {
+        selectCustomOption(valToSelect);
+      } else {
+        const opt = document.querySelector('#cs-panel .cs-option[data-value="' + valToSelect + '"]');
+        if (opt) opt.click();
+      }
+    });
+  }
+
+  const restartBtn = document.getElementById('calc-restart-btn');
+  if (restartBtn) {
+    restartBtn.addEventListener('click', () => {
+      // Reset all state
+      state.type = null;
+      state.sub = null;
+      state.size = null;
+      state.currentStep = 1;
+
+      // Clear all selected buttons
+      document.querySelectorAll('#quote-calculator .calc-btn').forEach(b => b.classList.remove('selected'));
+
+      // Hide type-specific option groups (they'll re-show when user picks type again)
+      resGroups.forEach(g => g.style.display = 'none');
+      comGroups.forEach(g => g.style.display = 'none');
+
+      updateSteps();
+
+      // Smooth scroll back to the top of the calculator
+      const calcSection = document.getElementById('quote-calculator');
+      if (calcSection) calcSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
 
 });
 
