@@ -628,28 +628,33 @@ img {
 }
 
 .mobile-nav-link {
+  display: block;
+  position: relative;
+  background: linear-gradient(145deg, rgba(0, 180, 216, 0.1) 0%, rgba(10, 25, 47, 0.2) 100%) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 180, 216, 0.2) !important;
+  border-top-color: rgba(0, 220, 255, 0.4) !important;
+  border-radius: 24px;
+  padding: 2px; /* For inner gradient effect */
+  text-decoration: none !important;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  overflow: hidden;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+.mn-content {
+  position: relative;
+  background: rgba(4, 12, 26, 0.3) !important;
+  border-radius: 22px;
+  padding: 16px;
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 16px;
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.25) !important;
-  border-radius: 20px;
-  text-decoration: none !important;
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-}
-
-.mobile-nav-link::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  z-index: 1;
+  transition: all 0.3s ease;
 }
 
 .mn-icon-wrapper {
@@ -657,7 +662,7 @@ img {
   height: 44px;
   background: rgba(255, 255, 255, 0.12) !important;
   border: 1px solid rgba(255, 255, 255, 0.25) !important;
-  border-radius: 12px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -674,8 +679,10 @@ img {
 }
 
 .mn-title {
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   color: #ffffff !important;
   transition: color 0.3s ease;
 }
@@ -686,25 +693,26 @@ img {
 }
 
 .mobile-nav-link:hover {
-  background: rgba(0, 180, 216, 0.08);
-  border-color: rgba(0, 180, 216, 0.3);
-  transform: translateX(6px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+  border-color: rgba(0, 220, 255, 0.5) !important;
+  box-shadow:
+    0 12px 32px rgba(0, 180, 216, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
 }
 
-.mobile-nav-link:hover::before {
-  opacity: 1;
+.mobile-nav-link:hover .mn-content {
+  background: rgba(4, 12, 26, 0.2) !important;
 }
 
 .mobile-nav-link:hover .mn-icon-wrapper {
-  background: rgba(0, 180, 216, 0.2);
-  border-color: rgba(0, 180, 216, 0.5);
-  color: #fff;
-  box-shadow: 0 0 16px rgba(0, 180, 216, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  background: rgba(0, 180, 216, 0.2) !important;
+  border-color: rgba(0, 180, 216, 0.5) !important;
+  color: #fff !important;
+  box-shadow: 0 0 16px rgba(0, 180, 216, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
 }
 
 .mobile-nav-link:hover .mn-title {
-  color: var(--accent-teal);
+  color: var(--accent-teal) !important;
 }
 
 /* Premium Call Button */
@@ -752,7 +760,7 @@ img {
   position: relative;
   background: rgba(4, 12, 26, 0.4) !important;
   border-radius: 22px;
-  padding: 20px;
+  padding: 16px 20px;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -760,8 +768,8 @@ img {
 }
 
 .mpb-icon {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   background: linear-gradient(135deg, var(--accent-teal) 0%, #00d4ff 100%) !important;
   border-radius: 14px;
   display: flex;
@@ -787,10 +795,10 @@ img {
 }
 
 .mpb-number {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 800;
   color: #ffffff !important;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.2px;
 }
 
 .mobile-premium-btn:hover {
