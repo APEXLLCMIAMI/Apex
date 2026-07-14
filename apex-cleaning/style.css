@@ -693,6 +693,26 @@ img {
   color: rgba(255, 255, 255, 0.85) !important;
 }
 
+/* High-specificity overrides to beat global `a { color: inherit }` */
+.mobile-nav-link .mn-content .mn-text .mn-title,
+.mobile-nav-link .mn-content .mn-text .mn-title:visited,
+.mobile-nav-link .mn-content .mn-text .mn-title:link {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.mobile-nav-link .mn-content .mn-text .mn-desc {
+  color: rgba(255, 255, 255, 0.85) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* The anchor itself must not inherit dark color */
+a.mobile-nav-link,
+a.mobile-nav-link:visited,
+a.mobile-nav-link:link {
+  color: #ffffff !important;
+}
+
 .mobile-nav-link:hover {
   transform: translateY(-4px);
   border-color: rgba(0, 220, 255, 0.5) !important;
