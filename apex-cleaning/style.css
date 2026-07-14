@@ -675,21 +675,22 @@ img {
 .mn-text {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
+  margin-left: 16px; /* Moving the text a bit to the right */
 }
 
 .mn-title {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   color: #ffffff !important;
   transition: color 0.3s ease;
 }
 
 .mn-desc {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85) !important;
 }
 
 .mobile-nav-link:hover {
