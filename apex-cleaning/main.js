@@ -472,9 +472,9 @@ document.addEventListener('DOMContentLoaded', () => {
       'calendly-sub': 'Virtual Inspection',
       'calendly-title': 'Schedule a Walkthrough',
       'calendly-desc': 'Select a time that works for you.',
-      'tc-1': 'Background Verified',
-      'tc-2': 'Professionally Trained',
-      'tc-3': 'Fully Insured',
+      'tc-1': 'Background-Verified Staff',
+      'tc-2': 'Professionally Trained Staff',
+      'tc-3': 'Fully Insured Staff',
     },
     es: {
       'translate-btn': '<span class="lang-icon">EN</span><span class="lang-text"> English</span>',
@@ -668,9 +668,9 @@ document.addEventListener('DOMContentLoaded', () => {
       'calendly-sub': 'Inspección Virtual',
       'calendly-title': 'Agendar Recorrido',
       'calendly-desc': 'Seleccione un horario que le convenga.',
-      'tc-1': 'Antecedentes Verificados',
-      'tc-2': 'Entrenamiento Profesional',
-      'tc-3': 'Totalmente Asegurados',
+      'tc-1': 'Personal con Antecedentes Verificados',
+      'tc-2': 'Personal con Entrenamiento Profesional',
+      'tc-3': 'Personal Totalmente Asegurado',
     }
   };
 
@@ -1353,3 +1353,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+/* ==========================================================================
+   DECORATIVE JS: Liquid Glass Interactions
+   (Added at the end to not interfere with core logic)
+   ========================================================================== */
+(function initLiquidGlassEffects() {
+  // 1. Cursor-reactive highlights for glass cards
+  const glassCards = document.querySelectorAll('.service-card, .pillar-item, .hero-visual-card');
+  
+  glassCards.forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      // Pass coordinates to CSS variables
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+    
+    // Reset on mouse leave so the glow doesn't stay stuck
+    card.addEventListener('mouseleave', () => {
+      card.style.setProperty('--mouse-x', `50%`);
+      card.style.setProperty('--mouse-y', `50%`);
+    });
+  });
+
+  // 2. Scroll Reveal Animation for Glass Elements
+  // Adds .glass-reveal class to elements we want to animate on scroll
+  const revealElements = document.querySelectorAll('.service-card, .pillar-item, .trust-glass-card, .pricing-panel');
+  
+  revealElements.forEach(el => {
+    // Only add if it doesn't already have a conflicting animation class
+    if (!el.classList.contains('fade-in')) {
+      el.classList.add('glass-reveal');
+    }
+  });
+
+  const revealOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, revealOptions);
+
+  document.querySelectorAll('.glass-reveal').forEach(el => {
+    revealObserver.observe(el);
+  });
+})();
