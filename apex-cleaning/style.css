@@ -658,7 +658,7 @@ img {
   position: relative;
   background: rgba(4, 12, 26, 0.3) !important;
   border-radius: 22px;
-  padding: 16px;
+  padding: 16px 16px 16px 28px;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -685,8 +685,7 @@ img {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin-left: 16px;
-  /* Moving the text a bit to the right */
+  margin-left: 24px;
 }
 
 .mn-title {
