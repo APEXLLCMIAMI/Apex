@@ -751,13 +751,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (badge) badge.textContent = t[badgeKey];
       }
       const lis = card.querySelectorAll('.service-deliverables li');
-      t[liKey].forEach((text, i) => {
-        if (lis[i]) {
-          const bullet = lis[i].querySelector('.bullet');
-          lis[i].innerHTML = text;
-          if (bullet) lis[i].prepend(bullet);
-        }
-      });
+      if (t[liKey] && Array.isArray(t[liKey])) {
+        t[liKey].forEach((text, i) => {
+          if (lis[i]) {
+            const bullet = lis[i].querySelector('.bullet');
+            lis[i].innerHTML = text;
+            if (bullet) lis[i].prepend(bullet);
+          }
+        });
+      }
     }
     translateCard(cards[0], 'c1-title', 'c1-text', 'c1-li', 'c1-cta', null);
     translateCard(cards[1], 'c2-title', 'c2-text', 'c2-li', 'c2-cta', 'c2-badge');
@@ -889,12 +891,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const formLabels = $$('.form-label');
     const formLabelKeys = ['flabel-name','flabel-phone','flabel-email','flabel-type','flabel-msg'];
-    const hasRequired = [true, true, true, true, false];
     formLabels.forEach((el, i) => {
       if (!t[formLabelKeys[i]]) return;
       const req = el.querySelector('.required');
+      // Replace text node or preserve required star
       el.textContent = t[formLabelKeys[i]] + ' ';
-      if (hasRequired[i] && req) el.appendChild(req);
+      if (req) el.appendChild(req);
     });
 
     // Translate Custom Select — group labels and options via data-i18n-key
@@ -1163,23 +1165,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  function updateSteps() {
-    if (!step1) return;
-    step1.style.display = state.currentStep === 1 ? 'block' : 'none';
-    step2.style.display = state.currentStep === 2 ? 'block' : 'none';
-    step3.style.display = state.currentStep === 3 ? 'block' : 'none';
-    resultPanel.style.display = state.currentStep === 4 ? 'block' : 'none';
-    navBtns.style.display = state.currentStep > 1 && state.currentStep < 4 ? 'flex' : 'none';
-    
-    if (state.currentStep === 4) {
-      if (prices[state.type] && prices[state.type][state.sub] && prices[state.type][state.sub][state.size]) {
-        priceDisplay.textContent = '$' + prices[state.type][state.sub][state.size];
-      } else {
-        priceDisplay.textContent = 'Quote';
-      }
-    }
-  }
-
   // Commercial types that get frequency→size pricing
   const COM_PRICED = ['office', 'retail'];
   // Types that need custom quote
@@ -1190,34 +1175,41 @@ document.addEventListener('DOMContentLoaded', () => {
   const step2b       = document.getElementById('calc-step-2b');
   const step2bBtns   = document.querySelectorAll('#calc-step-2b .calc-btn');
 
-  // Extend updateSteps to cover step-2b (step 2.5)
-  const _origUpdate = updateSteps;
   function updateSteps() {
     if (!step1) return;
     step1.style.display  = state.currentStep === 1    ? 'block' : 'none';
     step2.style.display  = state.currentStep === 2    ? 'block' : 'none';
     if (step2b) step2b.style.display = state.currentStep === 2.5  ? 'block' : 'none';
     step3.style.display  = state.currentStep === 3    ? 'block' : 'none';
-    resultPanel.style.display = state.currentStep === 4 ? 'block' : 'none';
+    if (resultPanel) resultPanel.style.display = state.currentStep === 4 ? 'block' : 'none';
 
     // Show back btn on steps 2, 2.5, 3
-    navBtns.style.display = (state.currentStep > 1 && state.currentStep < 4) ? 'flex' : 'none';
+    if (navBtns) navBtns.style.display = (state.currentStep > 1 && state.currentStep < 4) ? 'flex' : 'none';
 
-    if (state.currentStep === 4) {
+    if (state.currentStep === 4 && resultPanel) {
       const p = prices[state.type];
       const sub = state.sub;
       const sz  = state.size;
+      const disclaimer = resultPanel.querySelector('.calc-disclaimer');
+      const calcBookBtnEl = document.getElementById('calc-book-btn');
+      const calcPriceLbl = resultPanel.querySelector('.calc-price-label');
+
       if (p && p[sub] && p[sub][sz]) {
-        priceDisplay.textContent = '$' + p[sub][sz];
-        resultPanel.querySelector('.calc-disclaimer').style.display = '';
-        document.getElementById('calc-book-btn').style.display = '';
+        if (priceDisplay) priceDisplay.textContent = '$' + p[sub][sz];
+        if (disclaimer) disclaimer.style.display = '';
+        if (calcBookBtnEl) {
+          calcBookBtnEl.textContent = currentLang === 'es' ? 'Agendar con esta Cotización' : 'Book with this Estimate';
+          calcBookBtnEl.style.display = '';
+        }
       } else {
         // Custom quote case
-        priceDisplay.textContent = '📋';
-        resultPanel.querySelector('.calc-price-label').textContent = 'Custom Quote';
-        resultPanel.querySelector('.calc-disclaimer').style.display = 'none';
-        document.getElementById('calc-book-btn').textContent = 'Request Custom Quote';
-        document.getElementById('calc-book-btn').style.display = '';
+        if (priceDisplay) priceDisplay.textContent = '📋';
+        if (calcPriceLbl) calcPriceLbl.textContent = currentLang === 'es' ? 'Cotización Personalizada' : 'Custom Quote';
+        if (disclaimer) disclaimer.style.display = 'none';
+        if (calcBookBtnEl) {
+          calcBookBtnEl.textContent = currentLang === 'es' ? 'Solicitar Cotización Personalizada' : 'Request Custom Quote';
+          calcBookBtnEl.style.display = '';
+        }
       }
     }
   }
@@ -1298,10 +1290,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (backBtn) {
     backBtn.addEventListener('click', () => {
-      if (state.currentStep > 1) {
-        state.currentStep--;
-        updateSteps();
+      if (state.currentStep === 4) {
+        if (state.size === 'custom' || state.size === 'moveinout') {
+          state.currentStep = 2;
+        } else {
+          state.currentStep = 3;
+        }
+      } else if (state.currentStep === 3) {
+        if (state.type === 'commercial' && ['1x', '3x', '5x'].includes(state.sub)) {
+          state.currentStep = 2.5;
+        } else {
+          state.currentStep = 2;
+        }
+      } else if (state.currentStep === 2.5) {
+        state.currentStep = 2;
+      } else if (state.currentStep === 2) {
+        state.currentStep = 1;
       }
+      updateSteps();
     });
   }
 
