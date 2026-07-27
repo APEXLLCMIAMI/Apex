@@ -687,7 +687,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileLinks = $$('.mobile-nav-link');
     t['nav'].forEach((text, i) => {
       if (navLinks[i]) navLinks[i].textContent = text;
-      if (mobileLinks[i]) mobileLinks[i].textContent = text;
+      if (mobileLinks[i]) {
+        const mnTitle = mobileLinks[i].querySelector('.mn-title');
+        if (mnTitle) {
+          mnTitle.textContent = text;
+        } else {
+          mobileLinks[i].textContent = text;
+        }
+      }
     });
 
     // Hero badges
