@@ -282,6 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'translate-btn': '<span class="lang-icon">ES</span><span class="lang-text"> Español</span>',
       // Nav
       'nav': ['Services', 'Why Apex', 'Service Area', 'Contact'],
+      'call-now': 'Call Now',
       // Hero
       'hero-badge-1': "Miami's Most Trusted Cleaning Team",
       'hero-badge-2': 'Licensed, Bonded & Insured',
@@ -479,6 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
     es: {
       'translate-btn': '<span class="lang-icon">EN</span><span class="lang-text"> English</span>',
       'nav': ['Servicios', 'Confianza', 'Área de Servicio', 'Contacto'],
+      'call-now': 'Llamar Ahora',
       'hero-badge-1': 'El Equipo de Limpieza más Confiable de Miami',
       'hero-badge-2': 'Licenciados, Afianzados y Asegurados',
       'hero-title': 'Servicios de Limpieza en Miami: <span class="highlight-text">Espacios Impecables, Confianza Absoluta.</span>',
@@ -696,6 +698,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     });
+
+    const callNowTitle = $('.mpb-title');
+    if (callNowTitle) callNowTitle.textContent = t['call-now'];
 
     // Hero badges
     const badges = $$('.hero-badge');

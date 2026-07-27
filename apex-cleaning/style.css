@@ -591,8 +591,10 @@ img {
   position: fixed;
   top: 0;
   right: -100%;
-  width: 320px;
+  width: 100%;
+  max-width: 360px;
   height: 100vh;
+  overflow-y: auto;
   /* Much more transparent background for spectacular glass effect */
   background: linear-gradient(160deg,
       rgba(2, 7, 18, 0.35) 0%,
@@ -600,7 +602,7 @@ img {
   backdrop-filter: blur(48px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(48px) saturate(180%) !important;
   z-index: 999;
-  padding: 120px 40px 40px;
+  padding: 100px 24px 32px;
   /* Left edge: bright specular = glass edge catching light */
   border-left: 1px solid rgba(255, 255, 255, 0.25) !important;
   box-shadow:
@@ -659,7 +661,7 @@ img {
   position: relative;
   background: rgba(4, 12, 26, 0.3) !important;
   border-radius: 22px;
-  padding: 16px 16px 16px 40px;
+  padding: 16px;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -686,15 +688,15 @@ img {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin-left: 24px;
-  padding-left: 10px;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .mn-title {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   color: #ffffff !important;
   transition: color 0.3s ease;
 }
