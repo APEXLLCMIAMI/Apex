@@ -282,6 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'translate-btn': '<span class="lang-icon">ES</span><span class="lang-text"> Español</span>',
       // Nav
       'nav': ['Services', 'Why Apex', 'Service Area', 'Contact'],
+      'nav-desc': ['Explore our solutions', 'The Apex difference', 'Areas we cover', 'Get in touch with us'],
       'call-now': 'Call Now',
       // Hero
       'hero-badge-1': "Miami's Most Trusted Cleaning Team",
@@ -480,6 +481,7 @@ document.addEventListener('DOMContentLoaded', () => {
     es: {
       'translate-btn': '<span class="lang-icon">EN</span><span class="lang-text"> English</span>',
       'nav': ['Servicios', 'Confianza', 'Área de Servicio', 'Contacto'],
+      'nav-desc': ['Explora soluciones', 'La diferencia Apex', 'Zonas de cobertura', 'Ponte en contacto'],
       'call-now': 'Llamar Ahora',
       'hero-badge-1': 'El Equipo de Limpieza más Confiable de Miami',
       'hero-badge-2': 'Licenciados, Afianzados y Asegurados',
@@ -691,10 +693,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (navLinks[i]) navLinks[i].textContent = text;
       if (mobileLinks[i]) {
         const mnTitle = mobileLinks[i].querySelector('.mn-title');
+        const mnDesc = mobileLinks[i].querySelector('.mn-desc');
         if (mnTitle) {
           mnTitle.textContent = text;
         } else {
           mobileLinks[i].textContent = text;
+        }
+        if (mnDesc && t['nav-desc'] && t['nav-desc'][i]) {
+          mnDesc.textContent = t['nav-desc'][i];
         }
       }
     });
