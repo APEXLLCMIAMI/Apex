@@ -337,8 +337,10 @@ document.addEventListener('DOMContentLoaded', () => {
       'hero-desc': 'Experience the peace of mind that comes with a cleaning service built on trust, discretion, and obsessive attention to detail — for your home and your business.',
       'hero-cta-1': 'Get a Free Estimate',
       'hero-cta-2': 'Explore Services',
-      'hero-trust-1': '2-Hour Response Guarantee',
-      'hero-trust-2': '100% Background-Vetted Team',
+      'hero-ti-1': '100% Satisfaction Guarantee',
+      'hero-ti-2': 'Fully Licensed & Insured',
+      'hero-ti-3': '2-Hour Response Guarantee',
+      'hero-ti-4': '100% Background-Vetted Team',
       'hero-status': 'Operations Live & Booking',
       'metric-1': 'Google Rating',
       'metric-2': 'Cleanings Completed',
@@ -349,6 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'hiw-subtitle': 'Simple Process',
       'hiw-title': 'How It Works',
       'hiw-desc': "Getting your space professionally cleaned is easy. Three simple steps — that's it.",
+      'hiw-cta-btn': 'Book Your Cleaning Today',
       'hiw-t-1': 'Request a Free Estimate',
       'hiw-d-1': "Fill out our quick form, call, or message us on WhatsApp. Tell us about your space and we'll send a tailored proposal within 2 hours.",
       'hiw-t-2': 'We Clean Your Space',
@@ -358,7 +361,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // Pricing Section
       'ps-sub': 'Our Services',
       'ps-title': 'Cleaning Services',
-      'ps-desc': 'Services for home and business<br><span style="color: var(--accent-teal); font-weight: 500;">tailored to the size and needs of every space.</span>',
+      'ps-desc': 'Home and business services<br><span style="color: var(--accent-teal); font-weight: 500;">tailored to the size and needs of each space.</span>',
+      'pricing-cta-btn': 'Schedule Your Service',
       'ptab-1': 'Standard Cleaning', 'ptab-2': 'Deep Cleaning', 'ptab-3': 'Move In / Move Out', 'ptab-4': 'Large Homes / 2-Story', 'ptab-5': 'Offices / Commercial',
       'pnote-1': 'Ideal for regular maintenance.', 'pnote-2': 'For the first time or every 3 months.', 'pnote-3': '50% deposit required to secure the date.', 'pnote-4': 'Large spaces with stairs or more than 4 bedrooms.', 'pnote-5': 'Rate guide for contracts and recurring visits, by square foot.',
       'pr-t-1': 'Standard Cleaning', 'pr-t-2': 'Standard Cleaning', 'pr-t-3': 'Standard Cleaning', 'pr-t-4': 'Standard Cleaning',
@@ -435,6 +439,12 @@ document.addEventListener('DOMContentLoaded', () => {
       'faq-a-7': 'We accept cash, Zelle, Venmo, and bank transfers. For commercial contracts, we can arrange invoicing with net-15 or net-30 payment terms.',
       'faq-q-8': 'Do you offer same-day cleaning?',
       'faq-a-8': 'Yes, subject to availability. We regularly handle same-day turnovers for Airbnb hosts and urgent cleaning requests. Call us at (786) 817-7387 to check availability.',
+      'faq-q-9': 'Do I need to be home during the cleaning?',
+      'faq-a-9': "It's entirely up to you. Most of our clients prefer to provide a key, lockbox code, or grant access remotely. Our team is 100% background-checked, so your home is safe in our hands.",
+      'faq-q-10': 'How long does a cleaning service take?',
+      'faq-a-10': 'It depends on the size of your property and the type of cleaning. A standard cleaning for a 2-bedroom home typically takes 3-4 hours, while a deep cleaning can take 5-8 hours. We always provide an estimated duration.',
+      'faq-q-11': 'Do you offer recurring cleaning services?',
+      'faq-a-11': 'Yes! We offer weekly, bi-weekly, and monthly recurring cleaning services. Recurring clients enjoy priority scheduling, dedicated cleaning teams, and discounted rates compared to one-time cleanings.',
       // Contact
       'cont-subtitle': 'Secure Your Schedule',
       'cont-title': 'Request a Free Estimate Today',
@@ -486,8 +496,10 @@ document.addEventListener('DOMContentLoaded', () => {
       'hero-desc': 'Experimente la tranquilidad de contar con un servicio de limpieza basado en la confianza, la discreción y la atención obsesiva al detalle para su hogar o negocio.',
       'hero-cta-1': 'Solicitar Presupuesto Gratis',
       'hero-cta-2': 'Ver Servicios',
-      'hero-trust-1': 'Respuesta Garantizada en 2 Horas',
-      'hero-trust-2': 'Equipo 100% Verificado',
+      'hero-ti-1': 'Satisfacción 100% Garantizada',
+      'hero-ti-2': 'Licenciados y Asegurados',
+      'hero-ti-3': 'Respuesta Garantizada en 2 Horas',
+      'hero-ti-4': 'Equipo 100% Verificado',
       'hero-status': 'Operaciones Activas y Reservando',
       'metric-1': 'Calificación Google',
       'metric-2': 'Limpiezas Realizadas',
@@ -498,6 +510,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'hiw-subtitle': 'Proceso Simple',
       'hiw-title': 'Cómo Funciona',
       'hiw-desc': 'Conseguir que limpien su espacio profesionalmente es fácil. Tres simples pasos — eso es todo.',
+      'hiw-cta-btn': 'Reserve su Limpieza Hoy',
       'hiw-t-1': 'Solicite un Presupuesto Gratis',
       'hiw-d-1': 'Complete nuestro formulario rápido, llame o escríbanos por WhatsApp. Cuéntenos sobre su espacio y le enviaremos una propuesta personalizada en 2 horas.',
       'hiw-t-2': 'Limpiamos su Espacio',
@@ -508,6 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'ps-sub': 'Nuestros Servicios',
       'ps-title': 'Servicios de Limpieza',
       'ps-desc': 'Servicios para el hogar y la empresa<br><span style="color: var(--accent-teal); font-weight: 500;">adaptados al tamaño y necesidad de cada espacio.</span>',
+      'pricing-cta-btn': 'Programe su Servicio',
       'ptab-1': 'Limpieza Básica', 'ptab-2': 'Limpieza Profunda', 'ptab-3': 'Mudanza', 'ptab-4': 'Casas Grandes / 2 Plantas', 'ptab-5': 'Oficinas / Comercial',
       'pnote-1': 'Ideal para mantenimiento regular.', 'pnote-2': 'Para primera vez o cada 3 meses.', 'pnote-3': 'Se pide 50% de depósito para apartar la fecha.', 'pnote-4': 'Espacios amplios con escaleras o más de 4 habitaciones.', 'pnote-5': 'Guía de tarifas para contratos y visitas recurrentes, por pie cuadrado.',
       'pr-t-1': 'Limpieza Básica', 'pr-t-2': 'Limpieza Básica', 'pr-t-3': 'Limpieza Básica', 'pr-t-4': 'Limpieza Básica',
@@ -584,6 +598,12 @@ document.addEventListener('DOMContentLoaded', () => {
       'faq-a-7': 'Aceptamos efectivo, Zelle, Venmo y transferencias bancarias. Para contratos comerciales, podemos organizar facturación con términos de pago de 15 o 30 días.',
       'faq-q-8': '¿Ofrecen limpieza el mismo día?',
       'faq-a-8': 'Sí, sujeto a disponibilidad. Regularmente manejamos cambios el mismo día para anfitriones de Airbnb y solicitudes urgentes. Llame al (786) 817-7387 para verificar disponibilidad.',
+      'faq-q-9': '¿Necesito estar en casa durante la limpieza?',
+      'faq-a-9': 'Es su decisión. La mayoría de nuestros clientes prefieren dejarnos una llave, un código de acceso o abrir a distancia. Nuestro equipo está 100% verificado, así que su hogar está seguro.',
+      'faq-q-10': '¿Cuánto tarda un servicio de limpieza?',
+      'faq-a-10': 'Depende del tamaño de su propiedad y el tipo de limpieza. Una limpieza básica para una casa de 2 cuartos suele tomar 3-4 horas, mientras que una profunda puede tomar 5-8 horas. Siempre estimamos el tiempo.',
+      'faq-q-11': '¿Ofrecen servicios de limpieza recurrentes?',
+      'faq-a-11': '¡Sí! Ofrecemos servicios semanales, quincenales y mensuales. Nuestros clientes recurrentes disfrutan de prioridad en la programación, equipos dedicados y tarifas preferenciales.',
       // Contact
       'cont-subtitle': 'Reserve su Fecha',
       'cont-title': 'Solicite un Presupuesto Gratis Hoy',
@@ -662,8 +682,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (heroCtas[0]) heroCtas[0].textContent = t['hero-cta-1'];
     if (heroCtas[1]) heroCtas[1].textContent = t['hero-cta-2'];
     const trustTexts = $$('.indicator-text');
-    if (trustTexts[0]) trustTexts[0].textContent = t['hero-trust-1'];
-    if (trustTexts[1]) trustTexts[1].textContent = t['hero-trust-2'];
+    if (trustTexts[0]) trustTexts[0].textContent = t['hero-ti-1'];
+    if (trustTexts[1]) trustTexts[1].textContent = t['hero-ti-2'];
+    if (trustTexts[2]) trustTexts[2].textContent = t['hero-ti-3'];
+    if (trustTexts[3]) trustTexts[3].textContent = t['hero-ti-4'];
     const statusText = $('.status-indicator-text');
     if (statusText) statusText.textContent = t['hero-status'];
     const metricLabels = $$('.metric-label');
@@ -890,7 +912,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ['booking-badge-lbl', 'booking-main-title', 'booking-main-desc',
      'booking-stat-resp', 'booking-stat-ver', 'booking-stat-days',
      'booking-stat-val-resp', 'booking-cta-btn-txt', 'bf-2-lbl',
-     'tc-1', 'tc-2', 'tc-3'].forEach(k => {
+     'tc-1', 'tc-2', 'tc-3', 'pricing-cta-btn', 'hiw-cta-btn'].forEach(k => {
       const el = $(`.${k}`);
       if (el) el.textContent = t[k];
     });
