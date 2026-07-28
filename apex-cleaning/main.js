@@ -1,5 +1,6 @@
 /**
- * Apex LLC - Main Interactive Behaviors
+ * Apex LLC — Main Interactive Behaviors
+ * Optimized: FAQ accordion, inline validation, fixed translations, removed dead code
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,9 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
       header.classList.remove('scrolled');
     }
   }
-  
+
   window.addEventListener('scroll', handleScroll);
-  handleScroll(); // Initial check on load
+  handleScroll();
 
 
   // --- 2. Mobile Navigation Toggle & Drawer ---
@@ -28,12 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function toggleMobileMenu() {
     mobileNavToggle.classList.toggle('open');
     mobileMenuDrawer.classList.toggle('open');
-    document.body.style.overflow = mobileMenuDrawer.classList.contains('open') ? 'hidden' : '';
+    const isOpen = mobileMenuDrawer.classList.contains('open');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    mobileNavToggle.setAttribute('aria-expanded', isOpen);
   }
 
   mobileNavToggle.addEventListener('click', toggleMobileMenu);
 
-  // Close mobile menu when clicking a link
   mobileNavLinks.forEach(link => {
     link.addEventListener('click', () => {
       if (mobileMenuDrawer.classList.contains('open')) {
@@ -49,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const observerOptions = {
     root: null,
-    rootMargin: '-30% 0px -60% 0px', // Trigger active when section occupies center viewport
+    rootMargin: '-30% 0px -60% 0px',
     threshold: 0
   };
 
@@ -71,14 +73,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // --- 4. Dynamic Form Dropdown Pre-selection ---
-  const serviceCardCtas = document.querySelectorAll('.service-card-cta');
   const propertySelect = document.getElementById('property-type');
 
-  // Helper: programmatically select an option in the custom select
   function selectCustomOption(value) {
     if (!propertySelect) return;
     const csDisplay = document.getElementById('cs-display');
-    const allOpts   = document.querySelectorAll('.cs-option');
+    const allOpts = document.querySelectorAll('.cs-option');
     let matched = null;
     allOpts.forEach(opt => {
       opt.classList.remove('selected');
@@ -94,15 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  serviceCardCtas.forEach(cta => {
-    cta.addEventListener('click', () => {
-      const targetService = cta.getAttribute('data-service');
-      if (targetService) selectCustomOption(targetService);
-    });
-  });
 
-
-  // --- 5. Quote Request Form Submission State Handling ---
+  // --- 5. Quote Request Form — Inline Validation & Submission ---
   const quoteForm = document.getElementById('quote-form');
   const formSuccessState = document.getElementById('form-success-state');
   const successClientName = document.getElementById('success-client-name');
@@ -112,19 +105,63 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnSubmitText = btnSubmit.querySelector('.btn-text');
   const loadingSpinner = btnSubmit.querySelector('.loading-spinner');
 
+  // Inline validation helpers
+  function showError(fieldId, message) {
+    const field = document.getElementById(fieldId);
+    const errorEl = document.getElementById(fieldId + '-error');
+    if (field) field.classList.add('error');
+    if (errorEl) errorEl.textContent = message;
+  }
+
+  function clearError(fieldId) {
+    const field = document.getElementById(fieldId);
+    const errorEl = document.getElementById(fieldId + '-error');
+    if (field) field.classList.remove('error');
+    if (errorEl) errorEl.textContent = '';
+  }
+
+  function clearAllErrors() {
+    ['full-name', 'phone-number', 'email-address', 'property-type'].forEach(clearError);
+  }
+
+  // Clear errors on input
+  ['full-name', 'phone-number', 'email-address'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', () => clearError(id));
+  });
+
   quoteForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    clearAllErrors();
 
-    // Basic Input validations
     const fullName = document.getElementById('full-name').value.trim();
     const phone = document.getElementById('phone-number').value.trim();
     const email = document.getElementById('email-address').value.trim();
     const propertyType = propertySelect.value;
 
-    if (!fullName || !phone || !email || !propertyType) {
-      alert('Please fill out all required fields.');
-      return;
+    let hasError = false;
+
+    if (!fullName) {
+      showError('full-name', currentLang === 'en' ? 'Name is required.' : 'El nombre es obligatorio.');
+      hasError = true;
     }
+    if (!phone) {
+      showError('phone-number', currentLang === 'en' ? 'Phone number is required.' : 'El teléfono es obligatorio.');
+      hasError = true;
+    }
+    if (!email) {
+      showError('email-address', currentLang === 'en' ? 'Email is required.' : 'El correo es obligatorio.');
+      hasError = true;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showError('email-address', currentLang === 'en' ? 'Please enter a valid email.' : 'Ingrese un correo válido.');
+      hasError = true;
+    }
+    if (!propertyType) {
+      showError('property-type', currentLang === 'en' ? 'Please select a service type.' : 'Seleccione un tipo de servicio.');
+      hasError = true;
+    }
+
+    if (hasError) return;
 
     // Enter Loading State
     btnSubmit.disabled = true;
@@ -145,22 +182,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetch(formAction, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(formData)
     })
     .then(response => response.json())
     .then(data => {
-      // Exit Loading State
       btnSubmit.disabled = false;
       btnSubmitText.textContent = currentLang === 'en' ? 'Submit Quote Request' : 'Enviar Solicitud';
       loadingSpinner.style.display = 'none';
 
-      // Set Success Info
       successClientName.textContent = fullName;
-      
+
       const typeTranslations = {
         'Standard-Cleaning':  currentLang === 'en' ? 'Standard Cleaning'       : 'Limpieza Estándar',
         'Deep-Cleaning':      currentLang === 'en' ? 'Deep Cleaning'            : 'Limpieza Profunda',
@@ -172,31 +204,38 @@ document.addEventListener('DOMContentLoaded', () => {
         'Post-Construction':  currentLang === 'en' ? 'Post-Construction'        : 'Post-Construcción',
         'Other-Commercial':   currentLang === 'en' ? 'Other Commercial Space'   : 'Otro Espacio Comercial'
       };
-      
-      let readablePropertyType = typeTranslations[propertyType] || propertyType;
-      
-      successPropertyType.textContent = readablePropertyType;
 
-      // Show Success State
+      successPropertyType.textContent = typeTranslations[propertyType] || propertyType;
       formSuccessState.classList.add('active');
     })
     .catch(error => {
       console.error('Error submitting form:', error);
-      alert('Hubo un problema al enviar su solicitud. Por favor intente de nuevo.');
+      // Fixed: error message now respects current language (was hardcoded in Spanish)
+      const errorMsg = currentLang === 'en'
+        ? 'There was a problem submitting your request. Please try again.'
+        : 'Hubo un problema al enviar su solicitud. Por favor intente de nuevo.';
+      showError('full-name', errorMsg);
       btnSubmit.disabled = false;
       btnSubmitText.textContent = currentLang === 'en' ? 'Submit Quote Request' : 'Enviar Solicitud';
       loadingSpinner.style.display = 'none';
     });
   });
 
-  // Reset form to write another query
   btnSuccessReset.addEventListener('click', () => {
     quoteForm.reset();
     formSuccessState.classList.remove('active');
+    clearAllErrors();
+    // Reset custom select display
+    const csDisplay = document.getElementById('cs-display');
+    if (csDisplay) {
+      csDisplay.textContent = currentLang === 'en' ? '— Select service type —' : '— Seleccione tipo de servicio —';
+      csDisplay.classList.remove('has-value');
+    }
+    document.querySelectorAll('.cs-option').forEach(o => o.classList.remove('selected'));
   });
 
 
-  // --- 6. Legal Modal (Privacy Policy & Terms) Logic ---
+  // --- 6. Legal Modal ---
   const legalModal = document.getElementById('legal-modal');
   const modalTitle = document.getElementById('modal-title');
   const modalBody = document.getElementById('modal-body');
@@ -208,20 +247,16 @@ document.addEventListener('DOMContentLoaded', () => {
     privacy: `
       <h4>1. Collection of Operational Information</h4>
       <p>We collect corporate and contact information submitted through our estimate request forms, including full names, contact phone numbers, e-mail addresses, and specific property profiles. This information is utilized solely to deliver accurate commercial or residential service proposals.</p>
-      
       <h4>2. Security and Data Protection</h4>
       <p>Apex LLC implements standard administrative, technical, and physical safety measures to protect client records and details from unauthorized access, modification, or distribution. We do not sell or lease property or contact directories to third parties.</p>
-      
       <h4>3. Service Disclaimers</h4>
       <p>Data provided is handled strictly in compliance with US privacy frameworks. Communication from our logistics managers is based on active consent given by submitting requests.</p>
     `,
     terms: `
       <h4>1. Service Agreements</h4>
       <p>All cleaning services provided by Apex LLC are executed under customized corporate proposals or residential service checklists agreed upon prior to dispatching teams.</p>
-      
       <h4>2. Insurance and Liability Coverage</h4>
       <p>Apex LLC maintains active commercial liability insurance. Any claims regarding damages must be filed with photographic verification and client-log documentation within 24 hours of service completion.</p>
-      
       <h4>3. Cancellation and Scheduling Turnarounds</h4>
       <p>To support high-turnover operations, scheduling modifications or cancellations must be reported at least 24 hours prior to the scheduled service block to avoid reservation or idle-labor fees.</p>
     `
@@ -246,107 +281,95 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  privacyLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    openModal('privacy');
-  });
-
-  termsLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    openModal('terms');
-  });
-
+  privacyLink.addEventListener('click', (e) => { e.preventDefault(); openModal('privacy'); });
+  termsLink.addEventListener('click', (e) => { e.preventDefault(); openModal('terms'); });
   closeModalBtn.addEventListener('click', closeModal);
-  
-  // Close on backdrop click
-  legalModal.addEventListener('click', (e) => {
-    if (e.target === legalModal) {
-      closeModal();
-    }
-  });
-
-  // Close on Escape press
+  legalModal.addEventListener('click', (e) => { if (e.target === legalModal) closeModal(); });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && legalModal.classList.contains('open')) {
-      closeModal();
-    }
+    if (e.key === 'Escape' && legalModal.classList.contains('open')) closeModal();
   });
 
 
-  // --- 7. Language Toggle (EN / ES) ---
+  // --- 7. FAQ Accordion ---
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    if (!question) return;
+
+    question.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+
+      // Close all others
+      faqItems.forEach(other => {
+        other.classList.remove('open');
+        const btn = other.querySelector('.faq-question');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+        const answer = other.querySelector('.faq-answer');
+        if (answer) answer.setAttribute('aria-hidden', 'true');
+      });
+
+      // Toggle current
+      if (!isOpen) {
+        item.classList.add('open');
+        question.setAttribute('aria-expanded', 'true');
+        const answer = item.querySelector('.faq-answer');
+        if (answer) answer.setAttribute('aria-hidden', 'false');
+      }
+    });
+  });
+
+
+  // --- 8. Language Toggle (EN / ES) ---
   const translateBtn = document.getElementById('translate-btn');
   let currentLang = 'en';
 
   const T = {
     en: {
       'translate-btn': '<span class="lang-icon">ES</span><span class="lang-text"> Español</span>',
-      // Nav
       'nav': ['Services', 'Why Apex', 'Service Area', 'Contact'],
       'nav-desc': ['Explore our solutions', 'Why choose us', 'Areas we cover', 'Get in touch with us'],
       'call-now': 'Call Now',
       // Hero
       'hero-badge-1': "Miami's Most Trusted Cleaning Team",
       'hero-badge-2': 'Licensed, Bonded & Insured',
-      'hero-title': 'Cleaning Services in Miami: <span class="highlight-text">Impeccable Spaces, Absolute Confidence.</span>',
-      'hero-desc': 'Experience the peace of mind that comes with a cleaning service built on trust, quality, and attention to detail for your home and your business.',
+      'hero-title': 'Professional Cleaning Services in Miami: <span class="highlight-text">Trusted, Thorough, On Time.</span>',
+      'hero-desc': 'Experience the peace of mind that comes with a cleaning service built on trust, discretion, and obsessive attention to detail — for your home and your business.',
       'hero-cta-1': 'Get a Free Estimate',
       'hero-cta-2': 'Explore Services',
-      'hero-trust-1': '2-Hour Operations Response',
+      'hero-trust-1': '2-Hour Response Guarantee',
       'hero-trust-2': '100% Background-Vetted Team',
       'hero-status': 'Operations Live & Booking',
       'metric-1': 'Google Rating',
       'metric-2': 'Cleanings Completed',
-      'check-1': 'Standardized Operational Checklists',
+      'check-1': 'Property Manager Approved Protocols',
       'check-2': 'EPA-Approved Disinfectants Only',
-      'check-3': 'Status Verification Reports',
-
-      // Services
-      'svc-subtitle': 'Services',
-      'svc-title': 'Cleaning Services',
-      'svc-desc': 'We provide structured and reliable cleaning services designed to meet commercial standards and strict property management requirements.',
-      'c1-title': 'Vacation Rental Cleaning',
-      'c1-text': 'Focused on strict schedule compliance, attention to operational details, and clear reporting after each stay.',
-      'c1-li': ['<strong>Same-day turnovers:</strong> Fast and efficient preparation between reservations.', '<strong>Laundry management:</strong> Washing and drying of bed linens and towels.', '<strong>Status reports:</strong> Property inspection to notify of any damages or missing items.'],
-      'c1-cta': 'Request Quote →',
-      'c2-badge': 'Popular Service',
-      'c2-title': 'Residential Cleaning',
-      'c2-text': 'Consistent maintenance and comprehensive organization for homes, performed by reliable and organized staff.',
-      'c2-li': ['<strong>Recurring service:</strong> Weekly or bi-weekly cleaning options.', '<strong>Deep cleaning:</strong> Detailed attention to all areas of the home.', '<strong>Move-in/Move-out services:</strong> Complete cleaning when entering or leaving the property.', '<strong>Surface cleaning:</strong> Proper maintenance for different types of materials and fixtures.'],
-      'c2-cta': 'Schedule Cleaning →',
-      'c3-title': 'Commercial & Office Cleaning',
-      'c3-text': 'Structured operations under strict protocol compliance and low impact on your company\'s activities.',
-      'c3-li': ['<strong>Flexible schedules:</strong> Nighttime or after-hours cleaning.', '<strong>Area disinfection:</strong> Consistent attention to common areas, desks, and meeting rooms.', '<strong>General maintenance:</strong> Systematic emptying of trash bins, floor, and window cleaning.', '<strong>Custom protocols:</strong> Tailored checklists adapted to your commercial facilities.'],
-      'c3-cta': 'Consult Contracts →',
-      // Trust
-      'trust-subtitle': 'Our Pillars',
-      'trust-title': 'Built on Security, Driven by Excellence',
-      'trust-desc': 'When you invite someone into your property, trust is everything. That\'s why every element of our operation is designed to give you complete peace of mind.',
-      'p1-title': 'Fully Licensed, Bonded & Insured',
-      'p1-text': 'Your assets are protected. As a fully registered Florida LLC with comprehensive liability coverage, we stand behind every service with complete financial accountability.',
-      'p2-title': '100% Background-Verified Team',
-      'p2-text': 'Every member of our team passes background screening before entering your property. We hire for integrity because your safety and privacy are non-negotiable.',
-      'p3-title': 'Effortless, Flexible Scheduling',
-      'p3-text': 'We adapt to your operations. From tight same-day turnovers to recurring residential schedules and after-hours commercial cleanings.',
-      
+      'check-3': 'Instant Photo Verification Reports',
+      // How It Works
+      'hiw-subtitle': 'Simple Process',
+      'hiw-title': 'How It Works',
+      'hiw-desc': "Getting your space professionally cleaned is easy. Three simple steps — that's it.",
+      'hiw-t-1': 'Request a Free Estimate',
+      'hiw-d-1': "Fill out our quick form, call, or message us on WhatsApp. Tell us about your space and we'll send a tailored proposal within 2 hours.",
+      'hiw-t-2': 'We Clean Your Space',
+      'hiw-d-2': 'Our background-verified team arrives on schedule with all professional supplies. We follow standardized checklists and send photo verification reports.',
+      'hiw-t-3': 'Enjoy Your Spotless Space',
+      'hiw-d-3': 'Walk into a sparkling clean home or office. Love it? Set up recurring service and never worry about cleaning again.',
       // Pricing Section
       'ps-sub': 'Our Services',
       'ps-title': 'Cleaning Services',
       'ps-desc': 'Services for home and business<br><span style="color: var(--accent-teal); font-weight: 500;">tailored to the size and needs of every space.</span>',
       'ptab-1': 'Standard Cleaning', 'ptab-2': 'Deep Cleaning', 'ptab-3': 'Move In / Move Out', 'ptab-4': 'Large Homes / 2-Story', 'ptab-5': 'Offices / Commercial',
       'pnote-1': 'Ideal for regular maintenance.', 'pnote-2': 'For the first time or every 3 months.', 'pnote-3': '50% deposit required to secure the date.', 'pnote-4': 'Large spaces with stairs or more than 4 bedrooms.', 'pnote-5': 'Rate guide for contracts and recurring visits, by square foot.',
-      
       'pr-t-1': 'Standard Cleaning', 'pr-t-2': 'Standard Cleaning', 'pr-t-3': 'Standard Cleaning', 'pr-t-4': 'Standard Cleaning',
       'pr-t-5': 'Deep Cleaning', 'pr-t-6': 'Deep Cleaning', 'pr-t-7': 'Deep Cleaning', 'pr-t-8': 'Deep Cleaning',
       'pr-t-9': 'Move Out Cleaning', 'pr-t-10': 'Standard — Large Home', 'pr-t-11': 'Deep — Large Home',
-      
       'pr-s-1': '1 bed · 1 bath', 'pr-s-2': '2 beds · 2 baths', 'pr-s-3': '3 beds · 2 baths', 'pr-s-4': '4 beds · 2 baths',
       'pr-s-5': '1 bed · 1 bath', 'pr-s-6': '2 beds · 2 baths', 'pr-s-7': '3 beds · 2 baths', 'pr-s-8': '4 beds · 2 baths',
       'pr-s-9': 'Based on size', 'pr-s-10': '2-story · 4+ beds', 'pr-s-11': '2-story · 4+ beds',
-      
       'pr-d-1': '2–3 hours', 'pr-d-2': '3–4 hours', 'pr-d-3': '4–5 hours', 'pr-d-4': '5–6 hours',
       'pr-d-5': '4–5 hours', 'pr-d-6': '5–6 hours', 'pr-d-7': '6–7 hours', 'pr-d-8': '7–8 hours',
       'pr-d-9': 'Variable time', 'pr-d-10': '6–7 hours', 'pr-d-11': '8–9 hours',
-      
       'pr-desc-1': 'Ideal for maintenance. Includes vacuuming, mopping, bathroom, kitchen exterior, dusting, and trash removal.',
       'pr-desc-2': 'Most requested. Complete home cleaning: vacuuming, mopping, bathrooms, kitchen, and bedrooms.',
       'pr-desc-3': 'Family home. General cleaning of all spaces in the house.',
@@ -358,27 +381,60 @@ document.addEventListener('DOMContentLoaded', () => {
       'pr-desc-9': 'Empty house ready to hand over or receive. Total deep cleaning. 50% deposit required.',
       'pr-desc-10': 'Two-story home with more than 4 bedrooms. Includes surcharge for stairs and additional space.',
       'pr-desc-11': 'Two-story home with more than 4 bedrooms. Total deep cleaning with surcharge for stairs and extra area.',
-      
       'pt-h-1': 'Office Size', 'pt-h-2': '1x / Week', 'pt-h-3': '3x / Week', 'pt-h-4': '5x / Week',
       'pt-r-1': 'Under 1,000 sqft', 'pt-r-2': 'Under 2,000 sqft', 'pt-r-3': '2,000 – 5,000 sqft', 'pt-r-4': '5,000 – 10,000 sqft',
       'pt-quote': 'Quote',
-      
       'pi-title': 'What standard office cleaning includes',
       'pi-1': 'Empty all trash bins', 'pi-2': 'Vacuum and mop floors', 'pi-3': 'Clean full bathrooms + restock paper/soap', 'pi-4': 'Kitchen / coffee area: clean counters, microwave inside/out, and sink', 'pi-5': 'Clean desks, phones, and surfaces', 'pi-6': 'Clean entrance and conference room glass', 'pi-7': 'Take trash to dumpster',
-      
-      'pcta-note': 'Unsure which service to choose? Contact us for free advice.',
-      'pcta-btn': 'Request Free Quote',
-      
+      // Trust
+      'trust-subtitle': 'Why Clients Trust Us',
+      'trust-title': 'Built on Security, Driven by Excellence',
+      'trust-desc': "When you invite someone into your property, trust isn't optional — it's everything. Every element of our operation is designed to give you complete peace of mind.",
+      'p1-title': 'Fully Licensed, Bonded & Insured',
+      'p1-text': "Your assets are protected from day one. As a fully registered Florida LLC with comprehensive commercial liability coverage, we stand behind every service with complete financial accountability — so you never have to worry.",
+      'p2-title': '100% Background-Verified Team',
+      'p2-text': 'Every member of our team passes rigorous background screening before they ever step into your property. We hire for integrity first — because your safety and privacy are non-negotiable.',
+      'p3-title': 'Effortless, Flexible Scheduling',
+      'p3-text': "Your time is valuable — that's why we adapt to your life, not the other way around. From tight same-day turnovers to recurring weekly plans and discreet overnight commercial operations, we're always on your schedule.",
+      // Testimonials
+      'testimonials-subtitle': 'Client Reviews',
+      'testimonials-title': 'What Our Clients Say',
+      'testimonials-desc': "Don't just take our word for it — hear from homeowners and property managers who trust Apex with their spaces.",
+      'testimonial-1': '"Apex has been cleaning my 3-bedroom home for over a year now. They are always punctual, thorough, and respectful. The background check guarantee gave me confidence to hand over my keys. Highly recommend!"',
+      'testimonial-2': '"We use Apex for our office building in Coral Gables — 3 times per week. Their team follows a strict checklist, always stocks our bathrooms, and the quality has been consistent for months. Great communication too."',
+      'testimonial-3': '"I manage 4 Airbnb properties in Brickell. Apex handles all same-day turnovers between guests — laundry, deep clean, restocking. They send photo reports after every job. Absolutely reliable."',
+      'testimonial-detail-1': 'Homeowner · Sweetwater',
+      'testimonial-detail-2': 'Property Manager · Coral Gables',
+      'testimonial-detail-3': 'Airbnb Host · Brickell',
       // Coverage
       'cov-subtitle': 'Miami Operations',
       'cov-title': 'Our Service Area',
-      'cov-text': 'Proudly serving Miami, Sweetwater, and surrounding areas. Headquartered near the SW 109th Ave corridor, our team handles properties across key local zip codes including 33174 with immediate availability.',
+      'cov-text': 'Proudly serving Miami, Sweetwater, and surrounding areas. Headquartered near the SW 109th Ave corridor, our team handles properties across key local zip codes including 33174 and nearby sectors with immediate availability.',
       'meta-1': 'Avg. dispatch response to Sweetwater corridor',
       'meta-2': 'Active cleaning operations per week',
-      'meta-num-1': '15 Min',
-      'meta-num-2': '6 Days',
+      'meta-num-1': '15 Min', 'meta-num-2': '6 Days',
       'map-title': 'Coverage Highlight',
       'map-text': 'Direct logistics dispatch to all property owners in the SW 109th Ave corridor.',
+      // FAQ
+      'faq-subtitle': 'Common Questions',
+      'faq-title': 'Frequently Asked Questions',
+      'faq-desc': 'Everything you need to know before booking your first cleaning.',
+      'faq-q-1': 'Are your cleaning staff background-checked?',
+      'faq-a-1': 'Yes. Every member of our team passes a comprehensive background screening before they are assigned to any property. We hire for integrity first — your safety and privacy are non-negotiable.',
+      'faq-q-2': 'Is Apex LLC licensed and insured?',
+      'faq-a-2': 'Absolutely. Apex LLC is a fully registered Florida LLC with comprehensive commercial liability insurance. Your property and assets are protected from day one.',
+      'faq-q-3': 'What areas do you serve in Miami?',
+      'faq-a-3': 'We proudly serve Miami, Sweetwater, Coral Gables, Brickell, Downtown Miami, Doral, Kendall, and Coconut Grove. Our headquarters is near the SW 109th Ave corridor (33174) with 15-minute dispatch availability.',
+      'faq-q-4': 'How quickly can I get an estimate?',
+      'faq-a-4': 'We respond to all quote requests within 2 business hours. For urgent needs, call us directly at (786) 817-7387 or message us on WhatsApp for immediate response.',
+      'faq-q-5': 'Do I need to provide cleaning supplies?',
+      'faq-a-5': 'No. Our team brings all professional-grade, EPA-approved cleaning supplies and equipment. We use eco-friendly disinfectants that are safe for families, pets, and the environment.',
+      'faq-q-6': 'What is your cancellation policy?',
+      'faq-a-6': 'We ask for at least 24 hours notice for cancellations or rescheduling to avoid idle-labor fees. We understand plans change and always work with you to find a suitable alternative time.',
+      'faq-q-7': 'What payment methods do you accept?',
+      'faq-a-7': 'We accept cash, Zelle, Venmo, and bank transfers. For commercial contracts, we can arrange invoicing with net-15 or net-30 payment terms.',
+      'faq-q-8': 'Do you offer same-day cleaning?',
+      'faq-a-8': 'Yes, subject to availability. We regularly handle same-day turnovers for Airbnb hosts and urgent cleaning requests. Call us at (786) 817-7387 to check availability.',
       // Contact
       'cont-subtitle': 'Secure Your Schedule',
       'cont-title': 'Request a Free Estimate Today',
@@ -390,93 +446,34 @@ document.addEventListener('DOMContentLoaded', () => {
       'wa-link': 'Chat on WhatsApp →',
       // Form
       'form-title': 'Request Your Free Quote',
-      'form-sub': 'Fill out the form and we\'ll respond in less than 2 hours.',
-      'flabel-name': 'Full Name',
-      'flabel-phone': 'Phone / WhatsApp',
-      'flabel-email': 'Email Address',
-      'flabel-type': 'Service Type',
+      'form-sub': "Fill out the form and we'll respond in less than 2 hours.",
+      'flabel-name': 'Full Name', 'flabel-phone': 'Phone / WhatsApp', 'flabel-email': 'Email Address', 'flabel-type': 'Service Type', 'flabel-msg': 'Additional Details',
       'fopt-0': '— Select service type —',
-      'foptg-1': '🏠 Residential Services',
-      'foptg-2': '🏢 Commercial Services',
-      'fopt-res-1': 'Standard Cleaning',
-      'fopt-res-2': 'Deep Cleaning',
-      'fopt-res-3': 'Move In / Move Out',
-      'fopt-res-4': 'Large Homes',
-      'fopt-com-1': 'Office / Workspace',
-      'fopt-com-2': 'Retail / Storefront',
-      'fopt-com-3': 'Airbnb / Vacation Rental',
-      'fopt-com-4': 'Post-Construction',
-      'fopt-com-5': 'Other Commercial Space',
-      'flabel-msg': 'Additional Details',
-      'fph-name': 'e.g. John Doe',
-      'fph-phone': 'e.g. (305) 555-0100',
-      'fph-email': 'e.g. yourname@gmail.com',
-      'fph-msg': 'Tell us about property size, target dates, frequency...',
+      'foptg-1': '🏠 Residential Services', 'foptg-2': '🏢 Commercial Services',
+      'fopt-res-1': 'Standard Cleaning', 'fopt-res-2': 'Deep Cleaning', 'fopt-res-3': 'Move In / Move Out', 'fopt-res-4': 'Large Homes',
+      'fopt-com-1': 'Office / Workspace', 'fopt-com-2': 'Retail / Storefront', 'fopt-com-3': 'Airbnb / Vacation Rental', 'fopt-com-4': 'Post-Construction', 'fopt-com-5': 'Other Commercial Space',
+      'fph-name': 'e.g. John Doe', 'fph-phone': 'e.g. (305) 555-0100', 'fph-email': 'e.g. yourname@gmail.com', 'fph-msg': 'Tell us about property size, target dates, frequency of service or any special instructions...',
       'form-btn': 'Submit Quote Request',
       'form-disclaimer': 'By submitting, you agree to our terms. We protect your privacy & contact data. Response guaranteed in <2 business hours.',
       'success-title': 'Proposal Request Received',
       'success-reset': 'Submit Another Request',
-      'st-1': 'Thank you, ',
-      'st-2': '. Your request for ',
-      'st-3': ' cleaning operations has been registered. Our operations officer will review and reach out within 2 hours.',
-      // Footer
-      'footer-tagline': 'Trusted cleaning services in Miami, Sweetwater & surrounding areas — built on integrity, delivered with excellence.',
-      'flink': ['Services', 'The Trust Factor', 'Service Area', 'Request Estimate'],
-      'copyright': '© 2026 Apex LLC. All rights reserved.',
-      'privacy': 'Privacy Policy',
-      'terms': 'Terms of Service',
-      'calc-subtitle': 'Instant Estimate',
-      'calc-title': 'Quote Calculator',
-      'calc-desc': 'Get an estimated price based on your space and needs.',
-      'calc-st-1': '1. Select Property Type',
-      'calc-btn-res': 'Residential',
-      'calc-btn-com': 'Commercial',
-      'calc-st-2': '2. Select Service Type',
-      'calc-btn-basic': 'Standard Cleaning',
-      'calc-btn-deep': 'Deep Cleaning',
-      'calc-btn-1x': '1x / Week',
-      'calc-btn-3x': '3x / Week',
-      'calc-btn-5x': '5x / Week',
-      'calc-st-3': '3. Select Size',
-      'calc-price-lbl': 'Estimated Price',
-      'calc-disc': '* Reference prices; final cost may vary based on condition and exact size.',
-      'calc-book': 'Book with this Estimate',
-      'calc-btn-back': 'Back',
-      'calc-btn-1-1': '1 Bed / 1 Bath',
-      'calc-btn-2-2': '2 Beds / 2 Baths',
-      'calc-btn-3-2': '3 Beds / 2 Baths',
-      'calc-btn-4-2': '4 Beds / 2-3 Baths',
-      'calc-btn-2s': '2-Story (4+ Beds)',
-      'calc-btn-c1': '< 1,000 sqft',
-      'calc-btn-c2': '< 2,000 sqft',
-      'calc-btn-c3': '2,000 - 5,000 sqft',
-      'calc-btn-c4': '5,000 - 10,000 sqft',
-      'calc-btn-restart': 'Start Over',
+      'st-1': 'Thank you, ', 'st-2': '. Your request for ', 'st-3': ' cleaning operations has been registered. Our operations officer will review and reach out within 2 hours.',
+      // Booking CTA
       'booking-badge-lbl': 'Free Estimate — No Commitment',
       'booking-main-title': 'Ready for a Spotless Space?',
       'booking-main-desc': "Tell us about your property and we'll send a tailored proposal within 1 business hour.",
-      'booking-stat-resp': 'Response Time',
-      'booking-stat-ver': 'Verified Team',
-      'booking-stat-days': 'Days a Week',
+      'booking-stat-resp': 'Response Time', 'booking-stat-ver': 'Verified Team', 'booking-stat-days': 'Days a Week',
       'booking-stat-val-resp': 'Under 1h',
       'booking-cta-btn-txt': 'Request Free Estimate',
       'bf-2-lbl': 'Under 1h Reply',
-      'calc-st-2b': '3. Select Frequency',
-      'calc-btn-off': 'Office / Workspace',
-      'calc-btn-ret': 'Retail / Storefront',
-      'calc-btn-air': 'Airbnb / Vacation',
-      'calc-btn-pco': 'Post-Construction',
-      'calc-btn-med': 'Medical / Clinic',
-      'calc-btn-rst': 'Restaurant / Kitchen',
-      'calc-btn-wrh': 'Warehouse / Industrial',
-      'calc-btn-oth': 'Other Commercial',
-      'calc-btn-mio': 'Move In / Out',
-      'calendly-sub': 'Virtual Inspection',
-      'calendly-title': 'Schedule a Walkthrough',
-      'calendly-desc': 'Select a time that works for you.',
-      'tc-1': 'Background-Verified Staff',
-      'tc-2': 'Professionally Trained Staff',
-      'tc-3': 'Fully Insured Staff',
+      // Trust Cards
+      'tc-1': 'Background-Verified Staff', 'tc-2': 'Professionally Trained Staff', 'tc-3': 'Fully Insured Staff',
+      // Footer
+      'footer-tagline': 'Trusted cleaning services in Miami, Sweetwater & surrounding areas — built on integrity, delivered with excellence.',
+      'flink': ['Services', 'The Trust Factor', 'Service Area', 'FAQ', 'Request Estimate'],
+      'copyright': '© 2026 Apex LLC. All rights reserved.',
+      'privacy': 'Privacy Policy', 'terms': 'Terms of Service',
+      'footer-hours': '🕐 Mon–Sat: 7:00 AM – 7:00 PM',
     },
     es: {
       'translate-btn': '<span class="lang-icon">EN</span><span class="lang-text"> English</span>',
@@ -485,66 +482,43 @@ document.addEventListener('DOMContentLoaded', () => {
       'call-now': 'Llamar Ahora',
       'hero-badge-1': 'El Equipo de Limpieza más Confiable de Miami',
       'hero-badge-2': 'Licenciados, Afianzados y Asegurados',
-      'hero-title': 'Servicios de Limpieza en Miami: <span class="highlight-text">Espacios Impecables, Confianza Absoluta.</span>',
-      'hero-desc': 'Experimente la tranquilidad de contar con un servicio de limpieza basado en la confianza, la calidad y la atención al detalle para su hogar o negocio.',
+      'hero-title': 'Servicios de Limpieza Profesional en Miami: <span class="highlight-text">Confianza, Detalle, Puntualidad.</span>',
+      'hero-desc': 'Experimente la tranquilidad de contar con un servicio de limpieza basado en la confianza, la discreción y la atención obsesiva al detalle para su hogar o negocio.',
       'hero-cta-1': 'Solicitar Presupuesto Gratis',
       'hero-cta-2': 'Ver Servicios',
-      'hero-trust-1': 'Respuesta en 2 Horas',
+      'hero-trust-1': 'Respuesta Garantizada en 2 Horas',
       'hero-trust-2': 'Equipo 100% Verificado',
       'hero-status': 'Operaciones Activas y Reservando',
       'metric-1': 'Calificación Google',
       'metric-2': 'Limpiezas Realizadas',
-      'check-1': 'Listas de Control Estandarizadas',
+      'check-1': 'Protocolos Aprobados por Administradores',
       'check-2': 'Solo Desinfectantes Aprobados por la EPA',
-      'check-3': 'Reportes de Verificación de Estado',
-
-      // Services
-      'svc-subtitle': 'Servicios',
-      'svc-title': 'Servicios de Limpieza',
-      'svc-desc': 'Ofrecemos servicios de limpieza estructurados y confiables diseñados para cumplir con estándares comerciales y requisitos estrictos de administración de propiedades.',
-      'c1-title': 'Limpieza para Alquileres Vacacionales',
-      'c1-text': 'Enfocados en el cumplimiento estricto de horarios, atención a los detalles operativos y reportes claros tras cada estadía.',
-      'c1-li': ['<strong>Cambios el mismo día:</strong> Preparación rápida y eficiente entre reservas.', '<strong>Gestión de lavandería:</strong> Lavado y secado de ropa de cama y toallas.', '<strong>Reporte de estado:</strong> Inspección de la propiedad para notificar daños o faltantes.'],
-      'c1-cta': 'Solicitar Cotización →',
-      'c2-badge': 'Servicio Popular',
-      'c2-title': 'Limpieza Residencial',
-      'c2-text': 'Mantenimiento constante y orden integral para hogares, realizado por personal confiable y organizado.',
-      'c2-li': ['<strong>Servicio recurrente:</strong> Opciones de limpieza semanal o quincenal.', '<strong>Limpieza profunda:</strong> Atención detallada a todas las áreas del hogar.', '<strong>Servicios de mudanza:</strong> Limpieza completa al entrar o salir de la propiedad.', '<strong>Limpieza de superficies:</strong> Mantenimiento adecuado para distintos tipos de materiales e instalaciones.'],
-      'c2-cta': 'Agendar Limpieza →',
-      'c3-title': 'Limpieza Comercial y de Oficinas',
-      'c3-text': 'Operaciones estructuradas bajo cumplimiento de protocolos y bajo impacto en las actividades de su empresa.',
-      'c3-li': ['<strong>Horarios flexibles:</strong> Limpiezas nocturnas o fuera del horario comercial.', '<strong>Desinfección de áreas:</strong> Atención constante en zonas comunes, escritorios y salas de reuniones.', '<strong>Mantenimiento general:</strong> Vaciado de papeleras, limpieza de pisos y ventanas de manera sistemática.', '<strong>Protocolos personalizados:</strong> Listas de verificación (checklists) adaptadas a las instalaciones comerciales.'],
-      'c3-cta': 'Consultar Contratos →',
-      // Trust
-      'trust-subtitle': 'Nuestros Pilares',
-      'trust-title': 'Seguridad y Consistencia Operativa',
-      'trust-desc': 'Cuando permite el ingreso de personas a su propiedad, la confianza lo es todo. Por eso, diseñamos nuestra operación para darle tranquilidad absoluta.',
-      'p1-title': 'Licenciados, Afianzados y Asegurados',
-      'p1-text': 'Sus activos están protegidos. Como entidad LLC registrada en Florida con cobertura de responsabilidad civil, respaldamos cada servicio con responsabilidad financiera completa.',
-      'p2-title': 'Personal 100% Verificado',
-      'p2-text': 'Todo nuestro equipo pasa por una estricta verificación de antecedentes antes de ingresar a su propiedad. Seleccionamos por integridad porque su seguridad es nuestra prioridad.',
-      'p3-title': 'Programación Sencilla y Flexible',
-      'p3-text': 'Nos adaptamos a su horario de negocio y rutinas. Desde cambios rápidos el mismo día hasta limpieza residencial programada o limpiezas comerciales nocturnas.',
-      
-      // Pricing Section
+      'check-3': 'Reportes Fotográficos de Verificación',
+      // How It Works
+      'hiw-subtitle': 'Proceso Simple',
+      'hiw-title': 'Cómo Funciona',
+      'hiw-desc': 'Conseguir que limpien su espacio profesionalmente es fácil. Tres simples pasos — eso es todo.',
+      'hiw-t-1': 'Solicite un Presupuesto Gratis',
+      'hiw-d-1': 'Complete nuestro formulario rápido, llame o escríbanos por WhatsApp. Cuéntenos sobre su espacio y le enviaremos una propuesta personalizada en 2 horas.',
+      'hiw-t-2': 'Limpiamos su Espacio',
+      'hiw-d-2': 'Nuestro equipo verificado llega puntual con todos los suministros profesionales. Seguimos listas de control estandarizadas y enviamos reportes fotográficos.',
+      'hiw-t-3': 'Disfrute su Espacio Impecable',
+      'hiw-d-3': 'Entre a un hogar u oficina impecable. ¿Le gustó? Configure servicio recurrente y olvídese de la limpieza para siempre.',
+      // Pricing
       'ps-sub': 'Nuestros Servicios',
       'ps-title': 'Servicios de Limpieza',
       'ps-desc': 'Servicios para el hogar y la empresa<br><span style="color: var(--accent-teal); font-weight: 500;">adaptados al tamaño y necesidad de cada espacio.</span>',
       'ptab-1': 'Limpieza Básica', 'ptab-2': 'Limpieza Profunda', 'ptab-3': 'Mudanza', 'ptab-4': 'Casas Grandes / 2 Plantas', 'ptab-5': 'Oficinas / Comercial',
       'pnote-1': 'Ideal para mantenimiento regular.', 'pnote-2': 'Para primera vez o cada 3 meses.', 'pnote-3': 'Se pide 50% de depósito para apartar la fecha.', 'pnote-4': 'Espacios amplios con escaleras o más de 4 habitaciones.', 'pnote-5': 'Guía de tarifas para contratos y visitas recurrentes, por pie cuadrado.',
-      
       'pr-t-1': 'Limpieza Básica', 'pr-t-2': 'Limpieza Básica', 'pr-t-3': 'Limpieza Básica', 'pr-t-4': 'Limpieza Básica',
       'pr-t-5': 'Limpieza Profunda', 'pr-t-6': 'Limpieza Profunda', 'pr-t-7': 'Limpieza Profunda', 'pr-t-8': 'Limpieza Profunda',
       'pr-t-9': 'Limpieza de Mudanza', 'pr-t-10': 'Básica — Casa Grande', 'pr-t-11': 'Profunda — Casa Grande',
-      
       'pr-s-1': '1 cuarto · 1 baño', 'pr-s-2': '2 cuartos · 2 baños', 'pr-s-3': '3 cuartos · 2 baños', 'pr-s-4': '4 cuartos · 2 baños',
       'pr-s-5': '1 cuarto · 1 baño', 'pr-s-6': '2 cuartos · 2 baños', 'pr-s-7': '3 cuartos · 2 baños', 'pr-s-8': '4 cuartos · 2 baños',
       'pr-s-9': 'Según tamaño', 'pr-s-10': '2 plantas · 4+ cuartos', 'pr-s-11': '2 plantas · 4+ cuartos',
-      
       'pr-d-1': '2–3 horas', 'pr-d-2': '3–4 horas', 'pr-d-3': '4–5 horas', 'pr-d-4': '5–6 horas',
       'pr-d-5': '4–5 horas', 'pr-d-6': '5–6 horas', 'pr-d-7': '6–7 horas', 'pr-d-8': '7–8 horas',
       'pr-d-9': 'Tiempo variable', 'pr-d-10': '6–7 horas', 'pr-d-11': '8–9 horas',
-      
       'pr-desc-1': 'Ideal para mantenimiento. Incluye aspirar, mapeado, baño, cocina por fuera, sacudir y sacar la basura.',
       'pr-desc-2': 'La más pedida. Limpieza completa de toda la casa: aspirar, mapeado, baños, cocina y cuartos.',
       'pr-desc-3': 'Casa familiar. Limpieza general de todos los espacios de la casa.',
@@ -556,27 +530,60 @@ document.addEventListener('DOMContentLoaded', () => {
       'pr-desc-9': 'Casa vacía lista para entregar o recibir. Limpieza profunda total. Se pide 50% de depósito.',
       'pr-desc-10': 'Casa de dos plantas con más de 4 cuartos. Incluye recargo por escaleras y espacio adicional a limpiar.',
       'pr-desc-11': 'Casa de dos plantas con más de 4 cuartos. Limpieza profunda total con recargo por escaleras y área extra.',
-      
       'pt-h-1': 'Tamaño Oficina', 'pt-h-2': '1x por Semana', 'pt-h-3': '3x por Semana', 'pt-h-4': '5x por Semana',
       'pt-r-1': 'Menos de 1,000 sqft', 'pt-r-2': 'Menos de 2,000 sqft', 'pt-r-3': '2,000 – 5,000 sqft', 'pt-r-4': '5,000 – 10,000 sqft',
       'pt-quote': 'Cotizar',
-      
       'pi-title': 'Qué incluye la limpieza de oficina básica',
       'pi-1': 'Vaciar todos los zafacones', 'pi-2': 'Aspirar y mapear pisos', 'pi-3': 'Limpiar baños completos + rellenar papel/jabón', 'pi-4': 'Cocina / área de café: limpiar mesones, microondas por fuera y por dentro, y fregadero', 'pi-5': 'Limpiar escritorios, teléfonos y superficies', 'pi-6': 'Limpiar vidrios de entrada y sala de conferencias', 'pi-7': 'Sacar la basura al contenedor',
-      
-      'pcta-note': '¿Tienes dudas sobre qué servicio elegir? Escríbenos y te asesoramos sin costo.',
-      'pcta-btn': 'Solicitar Cotización Gratis',
-
+      // Trust
+      'trust-subtitle': 'Por qué Confían en Nosotros',
+      'trust-title': 'Seguridad y Excelencia Operativa',
+      'trust-desc': 'Cuando permite el ingreso de personas a su propiedad, la confianza no es opcional — lo es todo. Cada elemento de nuestra operación está diseñado para darle tranquilidad absoluta.',
+      'p1-title': 'Licenciados, Afianzados y Asegurados',
+      'p1-text': 'Sus activos están protegidos desde el primer día. Como entidad LLC registrada en Florida con cobertura completa de responsabilidad civil, respaldamos cada servicio con responsabilidad financiera total.',
+      'p2-title': 'Personal 100% Verificado',
+      'p2-text': 'Todo nuestro equipo pasa por una rigurosa verificación de antecedentes antes de ingresar a su propiedad. Seleccionamos por integridad primero — su seguridad y privacidad no son negociables.',
+      'p3-title': 'Programación Sencilla y Flexible',
+      'p3-text': 'Su tiempo es valioso — por eso nos adaptamos a su vida, no al revés. Desde cambios rápidos el mismo día hasta planes semanales recurrentes y operaciones comerciales nocturnas.',
+      // Testimonials
+      'testimonials-subtitle': 'Opiniones de Clientes',
+      'testimonials-title': 'Lo que Dicen Nuestros Clientes',
+      'testimonials-desc': 'No solo confíe en nuestra palabra — escuche a propietarios y administradores que confían en Apex para sus espacios.',
+      'testimonial-1': '"Apex ha estado limpiando mi casa de 3 habitaciones por más de un año. Siempre son puntuales, minuciosos y respetuosos. La garantía de verificación de antecedentes me dio confianza para entregar mis llaves. ¡Muy recomendados!"',
+      'testimonial-2': '"Usamos Apex para nuestro edificio de oficinas en Coral Gables — 3 veces por semana. Su equipo sigue una lista de verificación estricta, siempre abastece nuestros baños, y la calidad ha sido consistente por meses. Excelente comunicación también."',
+      'testimonial-3': '"Administro 4 propiedades de Airbnb en Brickell. Apex maneja todos los cambios el mismo día entre huéspedes — lavandería, limpieza profunda, reabastecimiento. Envían reportes fotográficos después de cada trabajo. Absolutamente confiables."',
+      'testimonial-detail-1': 'Propietaria · Sweetwater',
+      'testimonial-detail-2': 'Administrador de Propiedad · Coral Gables',
+      'testimonial-detail-3': 'Anfitriona Airbnb · Brickell',
       // Coverage
       'cov-subtitle': 'Operaciones en Miami',
       'cov-title': 'Área de Cobertura',
-      'cov-text': 'Servimos con orgullo a Miami, Sweetwater y zonas aledañas. Con oficinas centrales cerca del corredor de la SW 109th Ave, atendemos el código postal 33174 con disponibilidad inmediata.',
+      'cov-text': 'Servimos con orgullo a Miami, Sweetwater y zonas aledañas. Con oficinas centrales cerca del corredor de la SW 109th Ave, atendemos propiedades en códigos postales clave incluyendo 33174 y sectores cercanos con disponibilidad inmediata.',
       'meta-1': 'Tiempo de respuesta promedio en Sweetwater',
       'meta-2': 'Operaciones de limpieza activas por semana',
-      'meta-num-1': '15 Min',
-      'meta-num-2': '6 Días',
+      'meta-num-1': '15 Min', 'meta-num-2': '6 Días',
       'map-title': 'Área Destacada',
       'map-text': 'Despacho logístico directo a todas las propiedades en el corredor de la SW 109th Ave.',
+      // FAQ
+      'faq-subtitle': 'Preguntas Frecuentes',
+      'faq-title': 'Preguntas Frecuentes',
+      'faq-desc': 'Todo lo que necesita saber antes de reservar su primera limpieza.',
+      'faq-q-1': '¿Su personal de limpieza tiene antecedentes verificados?',
+      'faq-a-1': 'Sí. Cada miembro de nuestro equipo pasa una verificación exhaustiva de antecedentes antes de ser asignado a cualquier propiedad. Contratamos por integridad primero — su seguridad y privacidad no son negociables.',
+      'faq-q-2': '¿Apex LLC está licenciado y asegurado?',
+      'faq-a-2': 'Absolutamente. Apex LLC es una LLC registrada en Florida con seguro de responsabilidad civil comercial completo. Su propiedad y activos están protegidos desde el primer día.',
+      'faq-q-3': '¿Qué áreas atienden en Miami?',
+      'faq-a-3': 'Servimos con orgullo a Miami, Sweetwater, Coral Gables, Brickell, Downtown Miami, Doral, Kendall y Coconut Grove. Nuestra sede está cerca del corredor SW 109th Ave (33174) con disponibilidad de despacho en 15 minutos.',
+      'faq-q-4': '¿Qué tan rápido puedo obtener un presupuesto?',
+      'faq-a-4': 'Respondemos a todas las solicitudes de cotización en 2 horas hábiles. Para necesidades urgentes, llámenos directamente al (786) 817-7387 o escríbanos por WhatsApp.',
+      'faq-q-5': '¿Necesito proporcionar productos de limpieza?',
+      'faq-a-5': 'No. Nuestro equipo trae todos los suministros y equipos de limpieza profesional aprobados por la EPA. Usamos desinfectantes ecológicos seguros para familias, mascotas y el medio ambiente.',
+      'faq-q-6': '¿Cuál es su política de cancelación?',
+      'faq-a-6': 'Solicitamos al menos 24 horas de aviso para cancelaciones o reprogramaciones para evitar cargos por tiempo inactivo. Entendemos que los planes cambian y siempre trabajamos con usted para encontrar un horario alternativo.',
+      'faq-q-7': '¿Qué métodos de pago aceptan?',
+      'faq-a-7': 'Aceptamos efectivo, Zelle, Venmo y transferencias bancarias. Para contratos comerciales, podemos organizar facturación con términos de pago de 15 o 30 días.',
+      'faq-q-8': '¿Ofrecen limpieza el mismo día?',
+      'faq-a-8': 'Sí, sujeto a disponibilidad. Regularmente manejamos cambios el mismo día para anfitriones de Airbnb y solicitudes urgentes. Llame al (786) 817-7387 para verificar disponibilidad.',
       // Contact
       'cont-subtitle': 'Reserve su Fecha',
       'cont-title': 'Solicite un Presupuesto Gratis Hoy',
@@ -589,92 +596,33 @@ document.addEventListener('DOMContentLoaded', () => {
       // Form
       'form-title': 'Solicite su Presupuesto Gratis',
       'form-sub': 'Complete el formulario y le responderemos en menos de 2 horas.',
-      'flabel-name': 'Nombre Completo',
-      'flabel-phone': 'Teléfono / WhatsApp',
-      'flabel-email': 'Correo Electrónico',
-      'flabel-type': 'Tipo de Servicio',
+      'flabel-name': 'Nombre Completo', 'flabel-phone': 'Teléfono / WhatsApp', 'flabel-email': 'Correo Electrónico', 'flabel-type': 'Tipo de Servicio', 'flabel-msg': 'Detalles Adicionales',
       'fopt-0': '— Seleccione tipo de servicio —',
-      'foptg-1': '🏠 Servicios Residenciales',
-      'foptg-2': '🏢 Servicios Comerciales',
-      'fopt-res-1': 'Limpieza Estándar',
-      'fopt-res-2': 'Limpieza Profunda',
-      'fopt-res-3': 'Limpieza de Mudanza',
-      'fopt-res-4': 'Casas Grandes',
-      'fopt-com-1': 'Oficina / Área de Trabajo',
-      'fopt-com-2': 'Local / Frente Comercial',
-      'fopt-com-3': 'Airbnb / Alquiler Vacacional',
-      'fopt-com-4': 'Post-Construcción',
-      'fopt-com-5': 'Otro Espacio Comercial',
-      'flabel-msg': 'Detalles Adicionales',
-      'fph-name': 'Ej. Juan Pérez',
-      'fph-phone': 'Ej. (305) 555-0100',
-      'fph-email': 'Ej. tucorreo@gmail.com',
-      'fph-msg': 'Cuéntanos sobre el tamaño del espacio, fechas, frecuencia...',
+      'foptg-1': '🏠 Servicios Residenciales', 'foptg-2': '🏢 Servicios Comerciales',
+      'fopt-res-1': 'Limpieza Estándar', 'fopt-res-2': 'Limpieza Profunda', 'fopt-res-3': 'Limpieza de Mudanza', 'fopt-res-4': 'Casas Grandes',
+      'fopt-com-1': 'Oficina / Área de Trabajo', 'fopt-com-2': 'Local / Frente Comercial', 'fopt-com-3': 'Airbnb / Alquiler Vacacional', 'fopt-com-4': 'Post-Construcción', 'fopt-com-5': 'Otro Espacio Comercial',
+      'fph-name': 'Ej. Juan Pérez', 'fph-phone': 'Ej. (305) 555-0100', 'fph-email': 'Ej. tucorreo@gmail.com', 'fph-msg': 'Cuéntanos sobre el tamaño del espacio, fechas, frecuencia o instrucciones especiales...',
       'form-btn': 'Enviar Solicitud',
       'form-disclaimer': 'Al enviar, acepta nuestros términos. Protegemos su privacidad y datos. Respuesta garantizada en menos de 2 horas hábiles.',
       'success-title': 'Solicitud de Presupuesto Recibida',
       'success-reset': 'Enviar Otra Solicitud',
-      'st-1': 'Gracias, ',
-      'st-2': '. Su solicitud para limpieza de ',
-      'st-3': ' ha sido registrada. Nuestro equipo revisará y le contactará en menos de 2 horas.',
-      // Footer
-      'footer-tagline': 'Servicios de limpieza confiables en Miami, Sweetwater y alrededores, basados en la integridad y el trabajo consistente.',
-      'flink': ['Servicios', 'Confianza', 'Área de Cobertura', 'Solicitar Presupuesto'],
-      'copyright': '© 2026 Apex LLC. Todos los derechos reservados.',
-      'privacy': 'Política de Privacidad',
-      'terms': 'Términos de Servicio',
-      'calc-subtitle': 'Estimado Instantáneo',
-      'calc-title': 'Calculadora de Cotizaciones',
-      'calc-desc': 'Obtenga un precio estimado según su espacio y necesidades.',
-      'calc-st-1': '1. Seleccione Tipo de Propiedad',
-      'calc-btn-res': 'Residencial',
-      'calc-btn-com': 'Comercial',
-      'calc-st-2': '2. Seleccione Tipo de Servicio',
-      'calc-btn-basic': 'Limpieza Estándar',
-      'calc-btn-deep': 'Limpieza Profunda',
-      'calc-btn-1x': '1x / Semana',
-      'calc-btn-3x': '3x / Semana',
-      'calc-btn-5x': '5x / Semana',
-      'calc-st-3': '3. Seleccione Tamaño',
-      'calc-price-lbl': 'Precio Estimado',
-      'calc-disc': '* Precios de referencia; el costo final puede variar según el estado y tamaño exacto.',
-      'calc-book': 'Agendar con esta Cotización',
-      'calc-btn-back': 'Volver',
-      'calc-btn-1-1': '1 Hab / 1 Baño',
-      'calc-btn-2-2': '2 Habs / 2 Baños',
-      'calc-btn-3-2': '3 Habs / 2 Baños',
-      'calc-btn-4-2': '4 Habs / 2-3 Baños',
-      'calc-btn-2s': '2 Plantas (4+ Habs)',
-      'calc-btn-c1': '< 1,000 pies²',
-      'calc-btn-c2': '< 2,000 pies²',
-      'calc-btn-c3': '2,000 - 5,000 pies²',
-      'calc-btn-c4': '5,000 - 10,000 pies²',
-      'calc-btn-restart': 'Nueva Cotización',
+      'st-1': 'Gracias, ', 'st-2': '. Su solicitud para limpieza de ', 'st-3': ' ha sido registrada. Nuestro equipo revisará y le contactará en menos de 2 horas.',
+      // Booking CTA
       'booking-badge-lbl': 'Estimado Gratis — Sin Compromiso',
       'booking-main-title': '¿Listo para un Espacio Impecable?',
       'booking-main-desc': 'Cuéntenos sobre su propiedad y le enviaremos una propuesta personalizada en menos de 1 hora.',
-      'booking-stat-resp': 'Tiempo de Respuesta',
-      'booking-stat-ver': 'Equipo Verificado',
-      'booking-stat-days': 'Días a la Semana',
+      'booking-stat-resp': 'Tiempo de Respuesta', 'booking-stat-ver': 'Equipo Verificado', 'booking-stat-days': 'Días a la Semana',
       'booking-stat-val-resp': '< 1 Hora',
       'booking-cta-btn-txt': 'Solicitar Estimado Gratis',
       'bf-2-lbl': 'Respuesta < 1h',
-      'calc-st-2b': '3. Seleccione Frecuencia',
-      'calc-btn-off': 'Oficina / Área de Trabajo',
-      'calc-btn-ret': 'Local / Frente Comercial',
-      'calc-btn-air': 'Airbnb / Vacacional',
-      'calc-btn-pco': 'Post-Construcción',
-      'calc-btn-med': 'Médico / Clínica',
-      'calc-btn-rst': 'Restaurante / Cocina',
-      'calc-btn-wrh': 'Bodega / Industrial',
-      'calc-btn-oth': 'Otro Comercial',
-      'calc-btn-mio': 'Mudanza (entrada/salida)',
-      'calendly-sub': 'Inspección Virtual',
-      'calendly-title': 'Agendar Recorrido',
-      'calendly-desc': 'Seleccione un horario que le convenga.',
-      'tc-1': 'Personal con Antecedentes Verificados',
-      'tc-2': 'Personal con Entrenamiento Profesional',
-      'tc-3': 'Personal Totalmente Asegurado',
+      // Trust Cards
+      'tc-1': 'Personal con Antecedentes Verificados', 'tc-2': 'Personal con Entrenamiento Profesional', 'tc-3': 'Personal Totalmente Asegurado',
+      // Footer
+      'footer-tagline': 'Servicios de limpieza confiables en Miami, Sweetwater y alrededores — basados en la integridad y el trabajo consistente.',
+      'flink': ['Servicios', 'Confianza', 'Área de Cobertura', 'FAQ', 'Solicitar Presupuesto'],
+      'copyright': '© 2026 Apex LLC. Todos los derechos reservados.',
+      'privacy': 'Política de Privacidad', 'terms': 'Términos de Servicio',
+      'footer-hours': '🕐 Lun–Sáb: 7:00 AM – 7:00 PM',
     }
   };
 
@@ -686,54 +634,41 @@ document.addEventListener('DOMContentLoaded', () => {
     // Translate button label
     if (translateBtn) translateBtn.innerHTML = t['translate-btn'];
 
-    // Nav links
-    const navLinks = $$('.desktop-nav .nav-link');
+    // Nav
+    const desktopNavLinks = $$('.desktop-nav .nav-link');
     const mobileLinks = $$('.mobile-nav-link');
     t['nav'].forEach((text, i) => {
-      if (navLinks[i]) navLinks[i].textContent = text;
+      if (desktopNavLinks[i]) desktopNavLinks[i].textContent = text;
       if (mobileLinks[i]) {
         const mnTitle = mobileLinks[i].querySelector('.mn-title');
         const mnDesc = mobileLinks[i].querySelector('.mn-desc');
-        if (mnTitle) {
-          mnTitle.textContent = text;
-        } else {
-          mobileLinks[i].textContent = text;
-        }
-        if (mnDesc && t['nav-desc'] && t['nav-desc'][i]) {
-          mnDesc.textContent = t['nav-desc'][i];
-        }
+        if (mnTitle) mnTitle.textContent = text;
+        if (mnDesc && t['nav-desc'] && t['nav-desc'][i]) mnDesc.textContent = t['nav-desc'][i];
       }
     });
 
     const callNowTitle = $('.mpb-title');
     if (callNowTitle) callNowTitle.textContent = t['call-now'];
 
-    // Hero badges
+    // Hero
     const badges = $$('.hero-badge');
     if (badges[0]) badges[0].textContent = t['hero-badge-1'];
     if (badges[1]) badges[1].textContent = t['hero-badge-2'];
-
-    // Hero title (has inner HTML span)
     const heroTitle = $('.hero-title');
     if (heroTitle) heroTitle.innerHTML = t['hero-title'];
-
-    // Hero description & CTAs
     const heroDesc = $('.hero-description');
     if (heroDesc) heroDesc.textContent = t['hero-desc'];
     const heroCtas = $$('.hero-cta-group .btn');
     if (heroCtas[0]) heroCtas[0].textContent = t['hero-cta-1'];
     if (heroCtas[1]) heroCtas[1].textContent = t['hero-cta-2'];
-
-    // Trust indicators
     const trustTexts = $$('.indicator-text');
     if (trustTexts[0]) trustTexts[0].textContent = t['hero-trust-1'];
     if (trustTexts[1]) trustTexts[1].textContent = t['hero-trust-2'];
-
-    // Hero card
     const statusText = $('.status-indicator-text');
     if (statusText) statusText.textContent = t['hero-status'];
     const metricLabels = $$('.metric-label');
-    if (metricLabels[0]) metricLabels[0].textContent = t['metric-2'];
+    if (metricLabels[0]) metricLabels[0].textContent = t['metric-1'];
+    if (metricLabels[1]) metricLabels[1].textContent = t['metric-2'];
     const checkItems = $$('.checklist-item');
     [t['check-1'], t['check-2'], t['check-3']].forEach((text, i) => {
       if (checkItems[i]) {
@@ -742,58 +677,30 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-
-    // Services section header
-    const svcSection = $('.services-section');
-    if (svcSection) {
-      const sub = svcSection.querySelector('.section-subtitle');
-      const title = svcSection.querySelector('.section-title');
-      const desc = svcSection.querySelector('.section-description');
-      if (sub) sub.textContent = t['svc-subtitle'];
-      if (title) title.textContent = t['svc-title'];
-      if (desc) desc.textContent = t['svc-desc'];
+    // How It Works
+    const hiwSection = $('.how-it-works-section');
+    if (hiwSection) {
+      const sub = hiwSection.querySelector('.section-subtitle');
+      const title = hiwSection.querySelector('.section-title');
+      const desc = hiwSection.querySelector('.section-description');
+      if (sub) sub.textContent = t['hiw-subtitle'];
+      if (title) title.textContent = t['hiw-title'];
+      if (desc) desc.textContent = t['hiw-desc'];
     }
+    ['hiw-t-1', 'hiw-t-2', 'hiw-t-3', 'hiw-d-1', 'hiw-d-2', 'hiw-d-3'].forEach(k => {
+      const el = $(`.${k}`);
+      if (el) el.textContent = t[k];
+    });
 
-    // Service cards
-    const cards = $$('.service-card');
-    function translateCard(card, titleKey, textKey, liKey, ctaKey, badgeKey) {
-      if (!card) return;
-      const title = card.querySelector('.service-card-title');
-      const text = card.querySelector('.service-card-text');
-      const cta = card.querySelector('.service-card-cta');
-      if (title) title.textContent = t[titleKey];
-      if (text) text.textContent = t[textKey];
-      if (cta) cta.textContent = t[ctaKey];
-      if (badgeKey) {
-        const badge = card.querySelector('.badge-ribbon');
-        if (badge) badge.textContent = t[badgeKey];
-      }
-      const lis = card.querySelectorAll('.service-deliverables li');
-      if (t[liKey] && Array.isArray(t[liKey])) {
-        t[liKey].forEach((text, i) => {
-          if (lis[i]) {
-            const bullet = lis[i].querySelector('.bullet');
-            lis[i].innerHTML = text;
-            if (bullet) lis[i].prepend(bullet);
-          }
-        });
-      }
-    }
-    translateCard(cards[0], 'c1-title', 'c1-text', 'c1-li', 'c1-cta', null);
-    translateCard(cards[1], 'c2-title', 'c2-text', 'c2-li', 'c2-cta', 'c2-badge');
-    translateCard(cards[2], 'c3-title', 'c3-text', 'c3-li', 'c3-cta', null);
-
-    // Pricing Section Translation
+    // Pricing Section
     const pricingSub = $('.pricing-section .section-subtitle');
     const pricingTitle = $('.pricing-section .section-title');
     const pricingDesc = $('.pricing-section .section-description');
     if (pricingSub) pricingSub.textContent = t['ps-sub'];
     if (pricingTitle) pricingTitle.textContent = t['ps-title'];
     if (pricingDesc) pricingDesc.innerHTML = t['ps-desc'];
-
     const pricingTabs = $$('.pricing-tab');
     ['ptab-1','ptab-2','ptab-3','ptab-4','ptab-5'].forEach((k, i) => { if (pricingTabs[i] && t[k]) pricingTabs[i].textContent = t[k]; });
-
     const pricingNotes = $$('.pricing-note');
     ['pnote-1','pnote-2','pnote-3','pnote-4','pnote-5'].forEach((k, i) => { if (pricingNotes[i] && t[k]) pricingNotes[i].textContent = t[k]; });
 
@@ -801,20 +708,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const rowSpecs = $$('.pricing-row-spec');
     const rowDurations = $$('.pricing-row-duration');
     const rowDescs = $$('.pricing-row-desc');
-    
     const rTitles = ['pr-t-1','pr-t-2','pr-t-3','pr-t-4','pr-t-5','pr-t-6','pr-t-7','pr-t-8','pr-t-9','pr-t-10','pr-t-11'];
     const rSpecs = ['pr-s-1','pr-s-2','pr-s-3','pr-s-4','pr-s-5','pr-s-6','pr-s-7','pr-s-8','pr-s-9','pr-s-10','pr-s-11'];
     const rDurs = ['pr-d-1','pr-d-2','pr-d-3','pr-d-4','pr-d-5','pr-d-6','pr-d-7','pr-d-8','pr-d-9','pr-d-10','pr-d-11'];
     const rDescs = ['pr-desc-1','pr-desc-2','pr-desc-3','pr-desc-4','pr-desc-5','pr-desc-6','pr-desc-7','pr-desc-8','pr-desc-9','pr-desc-10','pr-desc-11'];
-    
     rTitles.forEach((k, i) => {
       if (rowTitles[i] && t[k]) {
         let txtNode = Array.from(rowTitles[i].childNodes).find(n => n.nodeType === 3 && n.textContent.trim().length > 0);
-        if (txtNode) {
-          txtNode.textContent = t[k] + ' ';
-        } else {
-          rowTitles[i].insertBefore(document.createTextNode(t[k] + ' '), rowTitles[i].firstChild);
-        }
+        if (txtNode) txtNode.textContent = t[k] + ' ';
+        else rowTitles[i].insertBefore(document.createTextNode(t[k] + ' '), rowTitles[i].firstChild);
       }
       if (rowSpecs[i] && t[rSpecs[i]]) rowSpecs[i].textContent = t[rSpecs[i]];
       if (rowDurations[i] && t[rDurs[i]]) rowDurations[i].textContent = t[rDurs[i]];
@@ -823,26 +725,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const ths = $$('.office-sqft-table th');
     ['pt-h-1','pt-h-2','pt-h-3','pt-h-4'].forEach((k, i) => { if (ths[i] && t[k]) ths[i].textContent = t[k]; });
-    
     const trs = $$('.office-sqft-table tbody tr');
     const rKeys = ['pt-r-1','pt-r-2','pt-r-3','pt-r-4'];
     trs.forEach((tr, i) => {
       if (t[rKeys[i]]) tr.children[0].textContent = t[rKeys[i]];
-      for(let j=1; j<=3; j++) {
-        if(tr.children[j]) tr.children[j].textContent = t['pt-quote'];
-      }
+      for(let j=1; j<=3; j++) { if(tr.children[j]) tr.children[j].textContent = t['pt-quote']; }
     });
 
     const incTitle = $('.office-includes-title');
     if (incTitle) incTitle.textContent = t['pi-title'];
     const incLis = $$('.office-includes-cols li');
-    const iKeys = ['pi-1','pi-2','pi-3','pi-4','pi-5','pi-6','pi-7'];
-    iKeys.forEach((k, i) => { if (incLis[i] && t[k]) incLis[i].textContent = t[k]; });
-
-    const ctaNote = $('.pricing-cta-note');
-    const ctaBtn = $('.pricing-cta-row .btn');
-    if (ctaNote) ctaNote.textContent = t['pcta-note'];
-    if (ctaBtn) ctaBtn.textContent = t['pcta-btn'];
+    ['pi-1','pi-2','pi-3','pi-4','pi-5','pi-6','pi-7'].forEach((k, i) => { if (incLis[i] && t[k]) incLis[i].textContent = t[k]; });
 
     // Trust section
     const trustSection = $('.trust-section');
@@ -864,7 +757,29 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Coverage section
+    // Testimonials
+    const testSection = $('.testimonials-section');
+    if (testSection) {
+      const sub = testSection.querySelector('.section-subtitle');
+      const title = testSection.querySelector('.section-title');
+      const desc = testSection.querySelector('.section-description');
+      if (sub) sub.textContent = t['testimonials-subtitle'];
+      if (title) title.textContent = t['testimonials-title'];
+      if (desc) desc.textContent = t['testimonials-desc'];
+    }
+    const testCards = $$('.testimonial-card');
+    ['testimonial-1', 'testimonial-2', 'testimonial-3'].forEach((k, i) => {
+      if (testCards[i]) {
+        const textEl = testCards[i].querySelector('.testimonial-text');
+        if (textEl) textEl.textContent = t[k];
+      }
+    });
+    ['testimonial-detail-1', 'testimonial-detail-2', 'testimonial-detail-3'].forEach(k => {
+      const el = $(`.${k}`);
+      if (el) el.textContent = t[k];
+    });
+
+    // Coverage
     const covSection = $('.coverage-section');
     if (covSection) {
       const sub = covSection.querySelector('.section-subtitle');
@@ -878,14 +793,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const metaNums = $$('.meta-number');
     if (metaDescs[0]) metaDescs[0].textContent = t['meta-1'];
     if (metaDescs[1]) metaDescs[1].textContent = t['meta-2'];
-    if (metaNums[0]) metaNums[0].textContent = t['meta-num-1'] || metaNums[0].textContent;
-    if (metaNums[1]) metaNums[1].textContent = t['meta-num-2'] || metaNums[1].textContent;
+    if (metaNums[0]) metaNums[0].textContent = t['meta-num-1'];
+    if (metaNums[1]) metaNums[1].textContent = t['meta-num-2'];
     const mapTitle = $('.map-overlay-title');
     const mapText = $('.map-overlay-text');
     if (mapTitle) mapTitle.textContent = t['map-title'];
     if (mapText) mapText.textContent = t['map-text'];
 
-    // Contact section
+    // FAQ
+    const faqSection = $('.faq-section');
+    if (faqSection) {
+      const sub = faqSection.querySelector('.section-subtitle');
+      const title = faqSection.querySelector('.section-title');
+      const desc = faqSection.querySelector('.section-description');
+      if (sub) sub.textContent = t['faq-subtitle'];
+      if (title) title.textContent = t['faq-title'];
+      if (desc) desc.textContent = t['faq-desc'];
+    }
+    for (let i = 1; i <= 8; i++) {
+      const qEl = $(`.faq-q-${i}`);
+      const aEl = $(`.faq-a-${i}`);
+      if (qEl) qEl.textContent = t[`faq-q-${i}`];
+      if (aEl) aEl.textContent = t[`faq-a-${i}`];
+    }
+
+    // Contact
     const contSection = $('.contact-section');
     if (contSection) {
       const sub = contSection.querySelector('.section-subtitle');
@@ -896,8 +828,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const contIntro = $('.contact-intro');
     if (contIntro) contIntro.textContent = t['cont-intro'];
     const detailLabels = $$('.detail-label');
-    const labelKeys = ['dlabel-phone','dlabel-email','dlabel-addr','dlabel-wa'];
-    detailLabels.forEach((el, i) => { if (t[labelKeys[i]]) el.textContent = t[labelKeys[i]]; });
+    ['dlabel-phone','dlabel-email','dlabel-addr','dlabel-wa'].forEach((k, i) => { if (detailLabels[i] && t[k]) detailLabels[i].textContent = t[k]; });
     const waLink = $('.whatsapp-link');
     if (waLink) waLink.textContent = t['wa-link'];
 
@@ -906,33 +837,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const formSub = $('.form-card-sub');
     if (formTitle) formTitle.textContent = t['form-title'];
     if (formSub) formSub.textContent = t['form-sub'];
-
     const formLabels = $$('.form-label');
     const formLabelKeys = ['flabel-name','flabel-phone','flabel-email','flabel-type','flabel-msg'];
     formLabels.forEach((el, i) => {
       if (!t[formLabelKeys[i]]) return;
       const req = el.querySelector('.required');
-      // Replace text node or preserve required star
       el.textContent = t[formLabelKeys[i]] + ' ';
       if (req) el.appendChild(req);
     });
 
-    // Translate Custom Select — group labels and options via data-i18n-key
+    // Custom Select i18n
     document.querySelectorAll('#cs-panel [data-i18n-key]').forEach(el => {
       const key = el.getAttribute('data-i18n-key');
       if (t[key]) el.textContent = t[key];
     });
-
-    // Update the trigger display text
     const csDisplay = document.getElementById('cs-display');
     const selectedOpt = document.querySelector('#cs-panel .cs-option.selected');
     if (csDisplay) {
       if (selectedOpt) {
-        // Re-render the translated text of the currently selected option
         const key = selectedOpt.getAttribute('data-i18n-key');
         if (t[key]) csDisplay.textContent = t[key];
       } else {
-        // No selection: update placeholder text
         if (t['fopt-0']) csDisplay.textContent = t['fopt-0'];
       }
     }
@@ -951,17 +876,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const disclaimer = $('.form-disclaimer');
     if (disclaimer) disclaimer.textContent = t['form-disclaimer'];
 
-    // Success state
+    // Success
     const successTitle = $('.success-title');
     const resetBtn = document.getElementById('btn-success-reset');
-    const st1 = $('.st-1');
-    const st2 = $('.st-2');
-    const st3 = $('.st-3');
+    const st1 = $('.st-1'); const st2 = $('.st-2'); const st3 = $('.st-3');
     if (successTitle) successTitle.textContent = t['success-title'];
     if (resetBtn) resetBtn.textContent = t['success-reset'];
     if (st1) st1.textContent = t['st-1'];
     if (st2) st2.textContent = t['st-2'];
     if (st3) st3.textContent = t['st-3'];
+
+    // Booking CTA & Trust Cards (class-based lookup)
+    ['booking-badge-lbl', 'booking-main-title', 'booking-main-desc',
+     'booking-stat-resp', 'booking-stat-ver', 'booking-stat-days',
+     'booking-stat-val-resp', 'booking-cta-btn-txt', 'bf-2-lbl',
+     'tc-1', 'tc-2', 'tc-3'].forEach(k => {
+      const el = $(`.${k}`);
+      if (el) el.textContent = t[k];
+    });
 
     // Footer
     const footerTagline = $('.footer-tagline');
@@ -969,48 +901,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const footerLinks = $$('.footer-link');
     t['flink'].forEach((text, i) => { if (footerLinks[i]) footerLinks[i].textContent = text; });
     const copyright = $('.copyright');
-    const privacyLink = document.getElementById('privacy-link');
-    const termsLink = document.getElementById('terms-link');
     if (copyright) copyright.textContent = t['copyright'];
-    if (privacyLink) privacyLink.textContent = t['privacy'];
-    if (termsLink) termsLink.textContent = t['terms'];
+    const privLink = document.getElementById('privacy-link');
+    const trmLink = document.getElementById('terms-link');
+    if (privLink) privLink.textContent = t['privacy'];
+    if (trmLink) trmLink.textContent = t['terms'];
+    const footerHours = $('.footer-hours');
+    if (footerHours) footerHours.textContent = t['footer-hours'];
 
-    // Quote Calculator & New Sections
-    const calcKeys = [
-      'calc-subtitle', 'calc-title', 'calc-desc', 'calc-st-1', 'calc-btn-res', 'calc-btn-com',
-      'calc-st-2', 'calc-btn-basic', 'calc-btn-deep', 'calc-btn-mio',
-      'calc-st-2b', 'calc-btn-1x', 'calc-btn-3x', 'calc-btn-5x',
-      'calc-st-3', 'calc-price-lbl', 'calc-disc', 'calc-btn-back',
-      'calc-btn-1-1', 'calc-btn-2-2', 'calc-btn-3-2', 'calc-btn-4-2', 'calc-btn-2s',
-      'calc-btn-c1', 'calc-btn-c2', 'calc-btn-c3', 'calc-btn-c4', 'calc-btn-restart',
-      'calc-btn-off', 'calc-btn-ret', 'calc-btn-air', 'calc-btn-pco',
-      'calc-btn-med', 'calc-btn-rst', 'calc-btn-wrh', 'calc-btn-oth'
-    ];
-    calcKeys.forEach(k => {
-      const el = document.querySelector(`.${k}`);
-      if (el) el.textContent = t[k];
-    });
-    const calcBookBtn = document.getElementById('calc-book-btn');
-    if (calcBookBtn) calcBookBtn.textContent = t['calc-book'];
-    
-    // Booking CTA
-    const bookingKeys = [
-      'booking-badge-lbl', 'booking-main-title', 'booking-main-desc',
-      'booking-stat-resp', 'booking-stat-ver', 'booking-stat-days',
-      'booking-stat-val-resp', 'booking-cta-btn-txt', 'bf-2-lbl'
-    ];
-    bookingKeys.forEach(k => {
-      const el = document.querySelector(`.${k}`);
-      if (el) el.textContent = t[k];
-    });
-    
-    const tcKeys = ['tc-1', 'tc-2', 'tc-3'];
-    tcKeys.forEach(k => {
-      const el = document.querySelector(`.${k}`);
-      if (el) el.textContent = t[k];
-    });
-
-    // Update html lang attribute
     document.documentElement.lang = lang;
   }
 
@@ -1021,11 +919,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Initial translation apply on load to ensure everything matches currentLang
   applyLang(currentLang);
 
 
-  // --- 8. Custom Service Type Select — Interactive Logic ---
+  // --- 9. Custom Service Type Select ---
   const csWrapper  = document.getElementById('service-select-wrapper');
   const csTrigger  = document.getElementById('cs-trigger');
   const csPanel    = document.getElementById('cs-panel');
@@ -1033,11 +930,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const csOptionEls = document.querySelectorAll('.cs-option');
 
   if (csWrapper && csTrigger && csPanel) {
-
-    // Move panel to body to completely escape overflow:hidden or transform stacking contexts
     document.body.appendChild(csPanel);
 
-    // Position the panel using fixed coords
     function positionPanel() {
       const rect = csTrigger.getBoundingClientRect();
       csPanel.style.top   = (rect.bottom + 4) + 'px';
@@ -1058,366 +952,89 @@ document.addEventListener('DOMContentLoaded', () => {
       csPanel.classList.remove('open');
     }
 
-    // Toggle on trigger click
     csTrigger.addEventListener('click', (e) => {
       e.stopPropagation();
       csWrapper.classList.contains('open') ? closeCustomSelect() : openCustomSelect();
     });
 
-    // Keyboard: Enter/Space = toggle, Escape = close
     csTrigger.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        csWrapper.classList.contains('open') ? closeCustomSelect() : openCustomSelect();
-      }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); csWrapper.classList.contains('open') ? closeCustomSelect() : openCustomSelect(); }
       if (e.key === 'Escape') { closeCustomSelect(); csTrigger.focus(); }
     });
 
-    // Option click — select value and update UI
     csOptionEls.forEach(option => {
       option.addEventListener('click', () => {
         const value = option.getAttribute('data-value');
-
-        // Write to hidden input (used by form validation & submission)
         if (propertySelect) propertySelect.value = value;
-
-        // Update trigger display text
-        if (csDisplayEl) {
-          csDisplayEl.textContent = option.textContent.trim();
-          csDisplayEl.classList.add('has-value');
-        }
-
-        // Toggle selected visual state
+        if (csDisplayEl) { csDisplayEl.textContent = option.textContent.trim(); csDisplayEl.classList.add('has-value'); }
         csOptionEls.forEach(o => o.classList.remove('selected'));
         option.classList.add('selected');
-
+        clearError('property-type');
         closeCustomSelect();
       });
     });
 
-    // Close when clicking outside the component
     document.addEventListener('click', (e) => {
       if (!csWrapper.contains(e.target) && !csPanel.contains(e.target)) closeCustomSelect();
     });
 
-    // Close on page scroll (panel is fixed, would drift otherwise), except if scrolling inside the panel
     window.addEventListener('scroll', (e) => {
       if (csPanel.contains(e.target)) return;
       closeCustomSelect();
     }, { passive: true, capture: true });
 
-    // Reposition panel on window resize if open
     window.addEventListener('resize', () => {
       if (csWrapper.classList.contains('open')) positionPanel();
     }, { passive: true });
 
-    // Close on Escape from anywhere
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && csWrapper.classList.contains('open')) {
-        closeCustomSelect();
-        csTrigger.focus();
-      }
+      if (e.key === 'Escape' && csWrapper.classList.contains('open')) { closeCustomSelect(); csTrigger.focus(); }
     });
-
   }
 
 
-  // --- 9. Residential Services Tab Switcher ---
-  const pricingTabs = document.querySelectorAll('.pricing-tab');
+  // --- 10. Service Tab Switcher ---
+  const pricingTabBtns = document.querySelectorAll('.pricing-tab');
   const pricingPanels = document.querySelectorAll('.pricing-panel');
 
-  pricingTabs.forEach(tab => {
+  pricingTabBtns.forEach(tab => {
     tab.addEventListener('click', () => {
       const target = tab.getAttribute('data-tab');
-
-      // Update tabs
-      pricingTabs.forEach(t => {
-        t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
-      });
+      pricingTabBtns.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
       tab.classList.add('active');
       tab.setAttribute('aria-selected', 'true');
-
-      // Update panels
-      pricingPanels.forEach(panel => {
-        panel.classList.remove('active');
-      });
+      pricingPanels.forEach(panel => panel.classList.remove('active'));
       const activePanel = document.getElementById(`panel-${target}`);
       if (activePanel) activePanel.classList.add('active');
     });
   });
 
-  // --- 10. Quote Calculator Logic ---
-  const step1Btns = document.querySelectorAll('#calc-step-1 .calc-btn');
-  const step2Btns = document.querySelectorAll('#calc-step-2 .calc-btn');
-  const step3Btns = document.querySelectorAll('#calc-step-3 .calc-btn');
-  
-  const step1 = document.getElementById('calc-step-1');
-  const step2 = document.getElementById('calc-step-2');
-  const step3 = document.getElementById('calc-step-3');
-  const resultPanel = document.getElementById('calc-result');
-  const navBtns = document.getElementById('calc-nav-btns');
-  const backBtn = document.getElementById('calc-back-btn');
-  const priceDisplay = document.getElementById('calc-price-display');
-  const bookBtn = document.getElementById('calc-book-btn');
-  
-  const resGroups = document.querySelectorAll('.calc-group-residential');
-  const comGroups = document.querySelectorAll('.calc-group-commercial');
-
-  let state = {
-    type: null,
-    sub: null,
-    size: null,
-    currentStep: 1
-  };
-
-  const prices = {
-    residential: {
-      'basic': { '1/1': 160, '2/2': 215, '3/2': 245, '4/2-3': 310, '2story': 420 },
-      'deep':  { '1/1': 260, '2/2': 350, '3/2': 460, '4/2-3': 520, '2story': 620 }
-    },
-    commercial: {
-      '1x': { '<1000': 110, '<2000': 160, '2000-5000': 320, '5000-10000': 550 },
-      '3x': { '<1000': 255, '<2000': 390, '2000-5000': 780, '5000-10000': 1350 },
-      '5x': { '<1000': 350, '<2000': 550, '2000-5000': 1100, '5000-10000': 2000 }
-    }
-  };
-
-  // Commercial types that get frequency→size pricing
-  const COM_PRICED = ['office', 'retail'];
-  // Types that need custom quote
-  const COM_QUOTE  = ['airbnb', 'postconstruction', 'medical', 'restaurant', 'warehouse', 'other-com'];
-  // Residential types that skip to size directly
-  const RES_SIZED  = ['basic', 'deep'];
-
-  const step2b       = document.getElementById('calc-step-2b');
-  const step2bBtns   = document.querySelectorAll('#calc-step-2b .calc-btn');
-
-  function updateSteps() {
-    if (!step1) return;
-    step1.style.display  = state.currentStep === 1    ? 'block' : 'none';
-    step2.style.display  = state.currentStep === 2    ? 'block' : 'none';
-    if (step2b) step2b.style.display = state.currentStep === 2.5  ? 'block' : 'none';
-    step3.style.display  = state.currentStep === 3    ? 'block' : 'none';
-    if (resultPanel) resultPanel.style.display = state.currentStep === 4 ? 'block' : 'none';
-
-    // Show back btn on steps 2, 2.5, 3
-    if (navBtns) navBtns.style.display = (state.currentStep > 1 && state.currentStep < 4) ? 'flex' : 'none';
-
-    if (state.currentStep === 4 && resultPanel) {
-      const p = prices[state.type];
-      const sub = state.sub;
-      const sz  = state.size;
-      const disclaimer = resultPanel.querySelector('.calc-disclaimer');
-      const calcBookBtnEl = document.getElementById('calc-book-btn');
-      const calcPriceLbl = resultPanel.querySelector('.calc-price-label');
-
-      if (p && p[sub] && p[sub][sz]) {
-        if (priceDisplay) priceDisplay.textContent = '$' + p[sub][sz];
-        if (disclaimer) disclaimer.style.display = '';
-        if (calcBookBtnEl) {
-          calcBookBtnEl.textContent = currentLang === 'es' ? 'Agendar con esta Cotización' : 'Book with this Estimate';
-          calcBookBtnEl.style.display = '';
-        }
-      } else {
-        // Custom quote case
-        if (priceDisplay) priceDisplay.textContent = '📋';
-        if (calcPriceLbl) calcPriceLbl.textContent = currentLang === 'es' ? 'Cotización Personalizada' : 'Custom Quote';
-        if (disclaimer) disclaimer.style.display = 'none';
-        if (calcBookBtnEl) {
-          calcBookBtnEl.textContent = currentLang === 'es' ? 'Solicitar Cotización Personalizada' : 'Request Custom Quote';
-          calcBookBtnEl.style.display = '';
-        }
-      }
-    }
-  }
-
-  step1Btns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      step1Btns.forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      state.type = btn.getAttribute('data-type');
-      state.sub = null; state.size = null; state.freq = null;
-
-      document.querySelectorAll('#quote-calculator .calc-btn').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-
-      if (state.type === 'residential') {
-        resGroups.forEach(g => g.style.display = 'grid');
-        comGroups.forEach(g => g.style.display = 'none');
-      } else {
-        resGroups.forEach(g => g.style.display = 'none');
-        comGroups.forEach(g => g.style.display = 'grid');
-      }
-      state.currentStep = 2;
-      updateSteps();
-    });
-  });
-
-  step2Btns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      step2Btns.forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      const sub = btn.getAttribute('data-sub');
-      state.sub = sub;
-
-      if (state.type === 'commercial') {
-        if (COM_PRICED.includes(sub)) {
-          // Goes to frequency step
-          state.currentStep = 2.5;
-        } else if (COM_QUOTE.includes(sub)) {
-          // Jump straight to result with custom quote
-          state.size = 'custom';
-          state.currentStep = 4;
-        }
-      } else {
-        // Residential: basic/deep → size | moveinout → result
-        if (sub === 'moveinout') {
-          state.size = 'moveinout';
-          state.currentStep = 4;
-        } else {
-          state.currentStep = 3;
-        }
-      }
-      updateSteps();
-    });
-  });
-
-  // Step 2b: frequency buttons (commercial office/retail)
-  step2bBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      step2bBtns.forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      // Store frequency into sub (overwrite service type → use freq as the key)
-      state.sub = btn.getAttribute('data-freq');
-      state.currentStep = 3;
-      updateSteps();
-    });
-  });
-
-  step3Btns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      step3Btns.forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      state.size = btn.getAttribute('data-size');
-      state.currentStep = 4;
-      updateSteps();
-    });
-  });
-
-
-  if (backBtn) {
-    backBtn.addEventListener('click', () => {
-      if (state.currentStep === 4) {
-        if (state.size === 'custom' || state.size === 'moveinout') {
-          state.currentStep = 2;
-        } else {
-          state.currentStep = 3;
-        }
-      } else if (state.currentStep === 3) {
-        if (state.type === 'commercial' && ['1x', '3x', '5x'].includes(state.sub)) {
-          state.currentStep = 2.5;
-        } else {
-          state.currentStep = 2;
-        }
-      } else if (state.currentStep === 2.5) {
-        state.currentStep = 2;
-      } else if (state.currentStep === 2) {
-        state.currentStep = 1;
-      }
-      updateSteps();
-    });
-  }
-
-  if (bookBtn) {
-    bookBtn.addEventListener('click', () => {
-      const contactSec = document.getElementById('contact');
-      if (contactSec) contactSec.scrollIntoView({ behavior: 'smooth' });
-      
-      let valToSelect = '';
-      if (state.type === 'residential') {
-        if (state.sub === 'basic') valToSelect = 'Standard-Cleaning';
-        else if (state.sub === 'deep') valToSelect = 'Deep-Cleaning';
-      } else {
-        valToSelect = 'Office-Workspace';
-      }
-      
-      if (typeof selectCustomOption === 'function') {
-        selectCustomOption(valToSelect);
-      } else {
-        const opt = document.querySelector('#cs-panel .cs-option[data-value="' + valToSelect + '"]');
-        if (opt) opt.click();
-      }
-    });
-  }
-
-  const restartBtn = document.getElementById('calc-restart-btn');
-  if (restartBtn) {
-    restartBtn.addEventListener('click', () => {
-      // Reset all state
-      state.type = null;
-      state.sub = null;
-      state.size = null;
-      state.currentStep = 1;
-
-      // Clear all selected buttons
-      document.querySelectorAll('#quote-calculator .calc-btn').forEach(b => b.classList.remove('selected'));
-
-      // Hide type-specific option groups (they'll re-show when user picks type again)
-      resGroups.forEach(g => g.style.display = 'none');
-      comGroups.forEach(g => g.style.display = 'none');
-
-      updateSteps();
-
-      // Smooth scroll back to the top of the calculator
-      const calcSection = document.getElementById('quote-calculator');
-      if (calcSection) calcSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  }
-
 });
+
 
 /* ==========================================================================
    DECORATIVE JS: Liquid Glass Interactions
-   (Added at the end to not interfere with core logic)
    ========================================================================== */
 (function initLiquidGlassEffects() {
-  // 1. Cursor-reactive highlights for glass cards
-  const glassCards = document.querySelectorAll('.service-card, .pillar-item, .hero-visual-card');
-  
+  const glassCards = document.querySelectorAll('.pillar-item, .hero-visual-card, .testimonial-card');
+
   glassCards.forEach(card => {
     card.addEventListener('mousemove', e => {
       const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      // Pass coordinates to CSS variables
-      card.style.setProperty('--mouse-x', `${x}px`);
-      card.style.setProperty('--mouse-y', `${y}px`);
+      card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+      card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
     });
-    
-    // Reset on mouse leave so the glow doesn't stay stuck
     card.addEventListener('mouseleave', () => {
       card.style.setProperty('--mouse-x', `50%`);
       card.style.setProperty('--mouse-y', `50%`);
     });
   });
 
-  // 2. Scroll Reveal Animation for Glass Elements
-  // Adds .glass-reveal class to elements we want to animate on scroll
-  const revealElements = document.querySelectorAll('.service-card, .pillar-item, .trust-glass-card, .pricing-panel');
-  
+  // Scroll Reveal
+  const revealElements = document.querySelectorAll('.pillar-item, .trust-glass-card, .testimonial-card, .hiw-step, .faq-item');
   revealElements.forEach(el => {
-    // Only add if it doesn't already have a conflicting animation class
-    if (!el.classList.contains('fade-in')) {
-      el.classList.add('glass-reveal');
-    }
+    if (!el.classList.contains('fade-in')) el.classList.add('glass-reveal');
   });
-
-  const revealOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px"
-  };
 
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
@@ -1426,9 +1043,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.unobserve(entry.target);
       }
     });
-  }, revealOptions);
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
-  document.querySelectorAll('.glass-reveal').forEach(el => {
-    revealObserver.observe(el);
-  });
+  document.querySelectorAll('.glass-reveal').forEach(el => revealObserver.observe(el));
 })();
