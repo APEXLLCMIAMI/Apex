@@ -1,0 +1,26 @@
+﻿<Window x:Class="ejercicio5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ejercicio5"
+        mc:Ignorable="d"
+        Title="VentanaPrincipal" Height="450" Width="800">
+    <Grid Margin="20">
+        <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="PROCESAMIENTO CONCURRENTE AUTODRIVE"
+                   FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <Button x:Name="btnIniciar" Content="Iniciar Simulación de Lote"
+                Padding="10" FontSize="14" Click="BtnIniciar_Click" Margin="0,0,0,15"/>
+
+            <TextBlock x:Name="txtEstadoHilo" Text="Estado inicial: Hilo sin crear"
+                   FontSize="14" HorizontalAlignment="Center" Foreground="#475569" Margin="0,0,0,15"/>
+
+            <ProgressBar x:Name="progresoBarra" Minimum="0" Maximum="100" Value="0" Height="25" Margin="0,0,0,5"/>
+
+            <Label x:Name="lblPorcentaje" Content="0% Procesado"
+               FontSize="13" HorizontalAlignment="Center" FontWeight="SemiBold"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarberShop Elite — Iniciar Sesión</title>
+    <meta name="description"
+        content="Inicia sesión o regístrate en BarberShop Elite para agendar tus citas y gestionar tu perfil.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="auth.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="bg-gradient bg-gradient-2"></div>
+        <div class="bg-noise"></div>
+    </div>
+
+    <!-- Back to Home -->
+    <a href="index.html" class="back-home" id="backHome">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+        <span>Volver al Inicio</span>
+    </a>
+
+    <!-- Auth Container -->
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="card-glow"></div>
+
+            <!-- Logo -->
+            <div class="auth-logo">
+                <span class="logo-icon">✂</span>
+                <span class="logo-text">BarberShop <span class="logo-accent">Elite</span></span>
+            </div>
+
+            <!-- Tabs -->
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login" id="tabLogin">Iniciar Sesión</button>
+                <button class="auth-tab" data-tab="register" id="tabRegister">Registrarse</button>
+                <div class="tab-indicator" id="tabIndicator"></div>
+            </div>
+
+            <!-- Login Form -->
+            <form class="auth-form active" id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Correo Electrónico</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        <input type="email" id="loginEmail" placeholder="tu@correo.com" required autocomplete="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Contraseña</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                            <path d="M7 11V7a5 5 0 0110 0v4" />
+                        </svg>
+                        <input type="password" id="loginPassword" placeholder="••••••••" required
+                            autocomplete="current-password">
+                        <button type="button" class="toggle-password" data-target="loginPassword"
+                            aria-label="Mostrar contraseña">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-message" id="loginMessage"></div>
+
+                <button type="submit" class="btn btn-primary btn-auth" id="loginBtn">
+                    <span>Iniciar Sesión</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </button>
+
+                <p class="form-switch">
+                    ¿No tienes cuenta? <button type="button" class="switch-btn" id="goToRegister">Regístrate
+                        aquí</button>
+                </p>
+            </form>
+
+            <!-- Register Form -->
+            <form class="auth-form" id="registerForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="regName">Nombre Completo *</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                                <circle cx="12" cy="7" r="4" />
+                            </svg>
+                            <input type="text" id="regName" placeholder="Juan Pérez" required autocomplete="name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPhone">Teléfono *</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                            </svg>
+                            <input type="tel" id="regPhone" placeholder="55 1234 5678" required autocomplete="tel">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Correo Electrónico *</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        <input type="email" id="regEmail" placeholder="tu@correo.com" required autocomplete="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Contraseña *</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                            <path d="M7 11V7a5 5 0 0110 0v4" />
+                        </svg>
+                        <input type="password" id="regPassword" placeholder="Mínimo 6 caracteres" required minlength="6"
+                            autocomplete="new-password">
+                        <button type="button" class="toggle-password" data-target="regPassword"
+                            aria-label="Mostrar contraseña">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="password-strength" id="passwordStrength">
+                        <div class="strength-bar">
+                            <div class="strength-fill" id="strengthFill"></div>
+                        </div>
+                        <span class="strength-text" id="strengthText"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="regPasswordConfirm">Confirmar Contraseña *</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                            <path d="M7 11V7a5 5 0 0110 0v4" />
+                        </svg>
+                        <input type="password" id="regPasswordConfirm" placeholder="Repite tu contraseña" required
+                            minlength="6" autocomplete="new-password">
+                    </div>
+                </div>
+
+                <div class="form-message" id="registerMessage"></div>
+
+                <button type="submit" class="btn btn-primary btn-auth" id="registerBtn">
+                    <span>Crear Cuenta</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                        <circle cx="8.5" cy="7" r="4" />
+                        <line x1="20" y1="8" x2="20" y2="14" />
+                        <line x1="23" y1="11" x2="17" y2="11" />
+                    </svg>
+                </button>
+
+                <p class="form-switch">
+                    ¿Ya tienes cuenta? <button type="button" class="switch-btn" id="goToLogin">Inicia sesión</button>
+                </p>
+            </form>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="auth-decoration">
+            <div class="deco-ring"></div>
+            <div class="deco-ring deco-ring-2"></div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,344 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Windows.Forms;
+
+namespace RegistroLibrosApp
+{
+
+    public partial class FormRegistroLibro : Form
+    {
+        public FormRegistroLibro()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            CargarLibros();
+        }
+
+        private void CargarLibros()
+        {
+            try
+            {
+                LibroDAO dao = new LibroDAO();
+                List<Libro> libros = dao.ObtenerLibros();
+
+                // Limpiar el DataGridView
+                dgvLibros.Rows.Clear();
+
+                // Llenar el DataGridView con los libros
+                foreach (Libro libro in libros)
+                {
+                    dgvLibros.Rows.Add(libro.Titulo, libro.Codigo, libro.Precio.ToString("F2"), libro.Stock);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar libros: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnReguistrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Validar que los campos no estén vacíos
+                if (string.IsNullOrWhiteSpace(txtTitulo.Text) || 
+                    string.IsNullOrWhiteSpace(txtCodigo.Text) ||
+                    string.IsNullOrWhiteSpace(txtPrecio.Text) ||
+                    string.IsNullOrWhiteSpace(txtStock.Text))
+                {
+                    MessageBox.Show("Por favor, complete todos los campos", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Validar que Precio y Stock sean números
+                if (!decimal.TryParse(txtPrecio.Text, out decimal precio))
+                {
+                    MessageBox.Show("El Precio debe ser un número válido", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!int.TryParse(txtStock.Text, out int stock))
+                {
+                    MessageBox.Show("El Stock debe ser un número entero", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Crear objeto Libro
+                Libro libro = new Libro
+                {
+                    Titulo = txtTitulo.Text,
+                    Codigo = txtCodigo.Text,
+                    Precio = precio,
+                    Stock = stock
+                };
+
+                // Registrar en la base de datos
+                LibroDAO dao = new LibroDAO();
+                dao.RegistrarLibro(libro);
+
+                MessageBox.Show("✓ Libro registrado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Limpiar los campos
+                txtTitulo.Clear();
+                txtCodigo.Clear();
+                txtPrecio.Clear();
+                txtStock.Clear();
+                txtTitulo.Focus();
+
+                // Recargar la lista de libros
+                CargarLibros();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("❌ Error al registrar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void InitializeComponent()
+        {
+            this.btnReguistrar = new System.Windows.Forms.Button();
+            this.txtTitulo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtStock = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dgvLibros = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // btnReguistrar
+            // 
+            this.btnReguistrar.Location = new System.Drawing.Point(397, 129);
+            this.btnReguistrar.Name = "btnReguistrar";
+            this.btnReguistrar.Size = new System.Drawing.Size(75, 23);
+            this.btnReguistrar.TabIndex = 0;
+            this.btnReguistrar.Text = "Click";
+            this.btnReguistrar.UseVisualStyleBackColor = true;
+            this.btnReguistrar.Click += new System.EventHandler(this.btnReguistrar_Click);
+            // 
+            // txtTitulo
+            // 
+            this.txtTitulo.Location = new System.Drawing.Point(224, 83);
+            this.txtTitulo.Name = "txtTitulo";
+            this.txtTitulo.Size = new System.Drawing.Size(100, 22);
+            this.txtTitulo.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(256, 64);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 16);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Titulo";
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Location = new System.Drawing.Point(224, 178);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(100, 22);
+            this.txtCodigo.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(256, 136);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 16);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Codigo";
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Location = new System.Drawing.Point(12, 83);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(100, 22);
+            this.txtPrecio.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 64);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 16);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Precio";
+            // 
+            // txtStock
+            // 
+            this.txtStock.Location = new System.Drawing.Point(12, 178);
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(100, 22);
+            this.txtStock.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 136);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 16);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Stock";
+            // 
+            // dgvLibros
+            // 
+            this.dgvLibros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLibros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
+            this.dgvLibros.Location = new System.Drawing.Point(12, 223);
+            this.dgvLibros.Name = "dgvLibros";
+            this.dgvLibros.RowHeadersWidth = 51;
+            this.dgvLibros.RowTemplate.Height = 24;
+            this.dgvLibros.Size = new System.Drawing.Size(528, 197);
+            this.dgvLibros.TabIndex = 5;
+            this.dgvLibros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLibros_CellContentClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Titulo";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 125;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Codigo";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 125;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Precio";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 125;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Stock";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 125;
+            // 
+            // FormRegistroLibro
+            // 
+            this.ClientSize = new System.Drawing.Size(594, 420);
+            this.Controls.Add(this.dgvLibros);
+            this.Controls.Add(this.txtStock);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtPrecio);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtTitulo);
+            this.Controls.Add(this.btnReguistrar);
+            this.Name = "FormRegistroLibro";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+        }
+
+        private System.Windows.Forms.Button btnReguistrar;
+        private System.Windows.Forms.TextBox txtTitulo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtStock;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dgvLibros;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+
+
+    public class Libro
+    {
+        public int Id { get; set; }
+        public string Titulo { get; set; }
+        public string Codigo { get; set; }
+        public decimal Precio { get; set; }
+        public int Stock { get; set; }
+    }
+
+
+    public class ConexionBD
+    {
+        private readonly string cadenaConexion =
+            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SBLI;Integrated Security=True";
+
+        public SqlConnection ObtenerConexion()
+        {
+            return new SqlConnection(cadenaConexion);
+        }
+    }
+
+
+    public class LibroDAO
+    {
+        private ConexionBD conexion = new ConexionBD();
+
+        public void RegistrarLibro(Libro libro)
+        {
+            using (SqlConnection conn = conexion.ObtenerConexion())
+            {
+                conn.Open();
+                string query = "INSERT INTO Libros (Titulo, Codigo, Precio, Stock) VALUES (@Titulo, @Codigo, @Precio, @Stock)";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Titulo", libro.Titulo);
+                cmd.Parameters.AddWithValue("@Codigo", libro.Codigo);
+                cmd.Parameters.AddWithValue("@Precio", libro.Precio);
+                cmd.Parameters.AddWithValue("@Stock", libro.Stock);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public List<Libro> ObtenerLibros()
+        {
+            List<Libro> lista = new List<Libro>();
+            using (SqlConnection conn = conexion.ObtenerConexion())
+            {
+                conn.Open();
+                string query = "SELECT Id, Titulo, Codigo, Precio, Stock FROM Libros";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    lista.Add(new Libro
+                    {
+                        Id = reader.GetInt32(0),
+                        Titulo = reader.GetString(1),
+                        Codigo = reader.GetString(2),
+                        Precio = reader.GetDecimal(3),
+                        Stock = reader.GetInt32(4)
+                    });
+                }
+            }
+            return lista;
+        }
+    }
+
+    }

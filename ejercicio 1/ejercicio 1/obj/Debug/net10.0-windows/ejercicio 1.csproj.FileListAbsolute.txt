@@ -1,0 +1,16 @@
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejercicio 1\ejercicio 1\bin\Debug\net10.0-windows\ejercicio 1.exe
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejercicio 1\ejercicio 1\bin\Debug\net10.0-windows\ejercicio 1.deps.json
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejercicio 1\ejercicio 1\bin\Debug\net10.0-windows\ejercicio 1.runtimeconfig.json
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejercicio 1\ejercicio 1\bin\Debug\net10.0-windows\ejercicio 1.dll
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejercicio 1\ejercicio 1\bin\Debug\net10.0-windows\ejercicio 1.pdb
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejercicio 1\ejercicio 1\obj\Debug\net10.0-windows\ejercicio_1.Form1.resources
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejercicio 1\ejercicio 1\obj\Debug\net10.0-windows\ejercicio 1.csproj.GenerateResource.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejercicio 1\ejercicio 1\obj\Debug\net10.0-windows\ejercicio 1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejercicio 1\ejercicio 1\obj\Debug\net10.0-windows\ejercicio 1.AssemblyInfoInputs.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejercicio 1\ejercicio 1\obj\Debug\net10.0-windows\ejercicio 1.AssemblyInfo.cs
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejercicio 1\ejercicio 1\obj\Debug\net10.0-windows\ejercicio 1.csproj.CoreCompileInputs.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejercicio 1\ejercicio 1\obj\Debug\net10.0-windows\ejercicio 1.dll
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejercicio 1\ejercicio 1\obj\Debug\net10.0-windows\refint\ejercicio 1.dll
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejercicio 1\ejercicio 1\obj\Debug\net10.0-windows\ejercicio 1.pdb
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejercicio 1\ejercicio 1\obj\Debug\net10.0-windows\ejercicio 1.genruntimeconfig.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejercicio 1\ejercicio 1\obj\Debug\net10.0-windows\ref\ejercicio 1.dll

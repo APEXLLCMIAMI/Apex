@@ -1,0 +1,68 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\APLICACION 3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E0D5F389-C244-7397-AF67-D221B8B2EE64}|APLICACION 3\\APLICACION 3.csproj|c:\\users\\olive\\downloads\\office\\visual studio\\aplicacion 3\\aplicacion 3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E0D5F389-C244-7397-AF67-D221B8B2EE64}|APLICACION 3\\APLICACION 3.csproj|solutionrelative:aplicacion 3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE3EB648-67D8-494B-ADC6-1709210E5D09}|APLICACION 3\\APLICACION 3.csproj|C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\APLICACION 3\\aplicacion 3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EE3EB648-67D8-494B-ADC6-1709210E5D09}|APLICACION 3\\APLICACION 3.csproj|solutionrelative:aplicacion 3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E0D5F389-C244-7397-AF67-D221B8B2EE64}|APLICACION 3\\APLICACION 3.csproj|c:\\users\\olive\\downloads\\office\\visual studio\\aplicacion 3\\aplicacion 3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E0D5F389-C244-7397-AF67-D221B8B2EE64}|APLICACION 3\\APLICACION 3.csproj|solutionrelative:aplicacion 3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\APLICACION 3\\APLICACION 3\\Form1.cs",
+              "RelativeDocumentMoniker": "APLICACION 3\\Form1.cs",
+              "ToolTip": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\APLICACION 3\\APLICACION 3\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "APLICACION 3\\Form1.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T18:44:47.626Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\APLICACION 3\\APLICACION 3\\Form1.cs",
+              "RelativeDocumentMoniker": "APLICACION 3\\Form1.cs",
+              "ToolTip": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\APLICACION 3\\APLICACION 3\\Form1.cs",
+              "RelativeToolTip": "APLICACION 3\\Form1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T04:07:00.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\APLICACION 3\\APLICACION 3\\Form1.cs",
+              "RelativeDocumentMoniker": "APLICACION 3\\Form1.cs",
+              "ToolTip": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\APLICACION 3\\APLICACION 3\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "APLICACION 3\\Form1.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T04:00:26.554Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

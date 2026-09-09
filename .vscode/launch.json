@@ -1,0 +1,44 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach to Chrome",
+            "port": 9222,
+            "request": "attach",
+            "type": "chrome",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Abrir index.html de Apex Cleaning en Chrome",
+            "file": "${workspaceFolder}/apex-cleaning/index.html"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Abrir index.html (Directo) en Chrome",
+            "file": "${workspaceFolder}/index.html"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Iniciar Chrome con Live Server (http://127.0.0.1:5500)",
+            "url": "http://127.0.0.1:5500/apex-cleaning/index.html",
+            "webRoot": "${workspaceFolder}/apex-cleaning"
+        },
+        {
+            "name": "Lanzar en Chrome (Archivo Actual)",
+            "type": "chrome",
+            "request": "launch",
+            "file": "${file}"
+        },
+        {
+            "name": "Live Server (Archivo Actual)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://127.0.0.1:5500/${relativeFile}",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}

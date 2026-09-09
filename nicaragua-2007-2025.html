@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revolución Nicaragua 2007–2025 | Logros y Avances</title>
+  <meta name="description" content="Página informativa sobre los logros de la Revolución en Nicaragua entre 2007 y 2025: salud, educación, infraestructura, energía renovable, seguridad ciudadana y más." />
+  <meta name="keywords" content="Nicaragua, Revolución, logros, 2007-2025, salud, educación, infraestructura, energía renovable, seguridad" />
+  <meta name="author" content="Gobierno de Nicaragua" />
+  <meta property="og:title" content="Revolución Nicaragua 2007–2025 | Logros y Avances" />
+  <meta property="og:description" content="Conoce los avances en salud, educación, infraestructura, energía y seguridad alcanzados en Nicaragua." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Roboto:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== CSS RESET & VARIABLES ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --azul-primario: #003893;
+      --azul-oscuro: #001f5b;
+      --azul-claro: #1a6fd4;
+      --rojo-primario: #c8102e;
+      --rojo-oscuro: #9b0a20;
+      --blanco: #ffffff;
+      --dorado: #d4a843;
+      --dorado-claro: #f0d078;
+      --verde-dato: #2ecc71;
+      --verde-oscuro: #1a9b52;
+      --gris-fondo: #f4f6fa;
+      --gris-texto: #444;
+      --gris-claro: #e8ecf2;
+      --sombra: 0 8px 32px rgba(0, 56, 147, 0.12);
+      --sombra-hover: 0 16px 48px rgba(0, 56, 147, 0.22);
+      --transicion: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      --radio: 16px;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Roboto', 'Lato', sans-serif;
+      color: var(--gris-texto);
+      background: var(--gris-fondo);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--azul-oscuro);
+      line-height: 1.2;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== NAVIGATION ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(0, 31, 91, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 2px solid var(--dorado);
+      transition: var(--transicion);
+    }
+
+    nav .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    nav .nav-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--blanco);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    nav .nav-logo .flag-icon {
+      width: 32px;
+      height: 20px;
+      border-radius: 3px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav .nav-logo .flag-icon span:nth-child(1),
+    nav .nav-logo .flag-icon span:nth-child(3) {
+      background: var(--azul-primario);
+      flex: 1;
+    }
+    nav .nav-logo .flag-icon span:nth-child(2) {
+      background: var(--blanco);
+      flex: 1;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 8px;
+      list-style: none;
+    }
+
+    nav .nav-links a {
+      color: rgba(255,255,255,0.85);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: var(--transicion);
+      letter-spacing: 0.3px;
+    }
+
+    nav .nav-links a:hover {
+      background: rgba(255,255,255,0.12);
+      color: var(--dorado-claro);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .hamburger span {
+      width: 26px;
+      height: 3px;
+      background: var(--blanco);
+      border-radius: 3px;
+      transition: var(--transicion);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-primario) 40%, #1565c0 70%, var(--azul-oscuro) 100%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1920&q=80') center/cover no-repeat;
+      opacity: 0.18;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,31,91,0.6) 0%, rgba(0,56,147,0.4) 50%, rgba(0,31,91,0.85) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 120px 24px 80px;
+      max-width: 900px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212, 168, 67, 0.2);
+      border: 1px solid var(--dorado);
+      padding: 8px 24px;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--dorado-claro);
+      margin-bottom: 28px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      font-weight: 900;
+      color: var(--blanco);
+      margin-bottom: 20px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--dorado-claro), var(--dorado));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-slogan {
+      font-family: 'Lato', sans-serif;
+      font-size: clamp(1.05rem, 2.5vw, 1.4rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 36px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: none;
+      transition: var(--transicion);
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--rojo-primario), var(--rojo-oscuro));
+      color: var(--blanco);
+      box-shadow: 0 6px 24px rgba(200, 16, 46, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 36px rgba(200, 16, 46, 0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.12);
+      color: var(--blanco);
+      border: 2px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.22);
+      border-color: var(--dorado-claro);
+      color: var(--dorado-claro);
+      transform: translateY(-3px);
+    }
+
+    .hero-scroll-indicator {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      animation: bounce 2s infinite;
+    }
+
+    .hero-scroll-indicator svg {
+      width: 32px;
+      height: 32px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(12px); }
+    }
+
+    /* ===== ANIMATED PARTICLES ===== */
+    .particles {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(212, 168, 67, 0.4);
+      border-radius: 50%;
+      animation: float-up linear infinite;
+    }
+
+    @keyframes float-up {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* ===== SECTION STYLES ===== */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--azul-claro);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+
+    .section-label::before,
+    .section-label::after {
+      content: '';
+      width: 32px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--dorado), transparent);
+    }
+
+    .section-label::before {
+      background: linear-gradient(90deg, transparent, var(--dorado));
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: var(--azul-oscuro);
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 680px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    /* ===== INTRO SECTION ===== */
+    .intro {
+      background: var(--blanco);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .intro-image {
+      position: relative;
+      border-radius: var(--radio);
+      overflow: hidden;
+      box-shadow: var(--sombra);
+    }
+
+    .intro-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .intro-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,56,147,0.15), transparent);
+    }
+
+    .intro-text h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .intro-text h2 span {
+      color: var(--rojo-primario);
+    }
+
+    .intro-text p {
+      margin-bottom: 16px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .intro-highlight {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: linear-gradient(135deg, rgba(0,56,147,0.06), rgba(26,111,212,0.04));
+      padding: 20px 24px;
+      border-radius: 12px;
+      border-left: 4px solid var(--azul-primario);
+      margin-top: 24px;
+    }
+
+    .intro-highlight-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .intro-highlight p {
+      font-size: 0.95rem;
+      margin: 0;
+      font-style: italic;
+      color: var(--azul-oscuro);
+    }
+
+    /* ===== LOGROS CARDS ===== */
+    .logros {
+      background: var(--gris-fondo);
+    }
+
+    .logros-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--blanco);
+      border-radius: var(--radio);
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      transition: var(--transicion);
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--sombra-hover);
+    }
+
+    .card-image {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transicion);
+    }
+
+    .card:hover .card-image img {
+      transform: scale(1.08);
+    }
+
+    .card-image .card-category {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(0, 31, 91, 0.85);
+      backdrop-filter: blur(8px);
+      color: var(--blanco);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .card-image .card-icon-overlay {
+      position: absolute;
+      bottom: -24px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--azul-primario), var(--azul-claro));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 6px 20px rgba(0,56,147,0.3);
+      z-index: 2;
+    }
+
+    .card-body {
+      padding: 28px 24px 24px;
+    }
+
+    .card-body h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--azul-oscuro);
+    }
+
+    .card-body p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #555;
+      margin-bottom: 16px;
+    }
+
+    .card-stats {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .card-stat {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, rgba(46,204,113,0.08), rgba(26,155,82,0.05));
+      padding: 6px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(46,204,113,0.15);
+    }
+
+    .card-stat .stat-icon {
+      color: var(--verde-dato);
+      font-size: 0.85rem;
+    }
+
+    .card-stat span {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--verde-oscuro);
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline-section {
+      background: linear-gradient(180deg, var(--azul-oscuro) 0%, var(--azul-primario) 100%);
+      color: var(--blanco);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect fill="url(%23g)" width="100" height="100"/></svg>');
+    }
+
+    .timeline-section .section-title {
+      color: var(--blanco);
+    }
+
+    .timeline-section .section-subtitle {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .timeline-section .section-label {
+      color: var(--dorado-claro);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: linear-gradient(180deg, var(--dorado), var(--dorado-claro), var(--dorado));
+      transform: translateX(-50%);
+      border-radius: 3px;
+    }
+
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 0 40px 48px;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      text-align: left;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      top: 8px;
+      width: 20px;
+      height: 20px;
+      background: var(--dorado);
+      border: 4px solid var(--azul-oscuro);
+      border-radius: 50%;
+      z-index: 2;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot {
+      right: -10px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+      left: -10px;
+    }
+
+    .timeline-content {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 24px;
+      border-radius: 14px;
+      transition: var(--transicion);
+    }
+
+    .timeline-content:hover {
+      background: rgba(255,255,255,0.14);
+      transform: scale(1.02);
+    }
+
+    .timeline-year {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: var(--dorado-claro);
+      margin-bottom: 8px;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--blanco);
+      margin-bottom: 8px;
+    }
+
+    .timeline-content p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+    }
+
+    /* ===== INDICADORES ===== */
+    .indicadores {
+      background: var(--blanco);
+    }
+
+    .indicadores-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    .indicador {
+      text-align: center;
+      padding: 40px 24px;
+      background: linear-gradient(135deg, rgba(0,56,147,0.03), rgba(26,111,212,0.02));
+      border-radius: var(--radio);
+      border: 1px solid var(--gris-claro);
+      transition: var(--transicion);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .indicador::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--azul-primario), var(--dorado), var(--rojo-primario));
+      opacity: 0;
+      transition: var(--transicion);
+    }
+
+    .indicador:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--sombra);
+    }
+
+    .indicador:hover::before {
+      opacity: 1;
+    }
+
+    .indicador-icon {
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+    }
+
+    .indicador-numero {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 2.6rem;
+      color: var(--azul-primario);
+      margin-bottom: 4px;
+      line-height: 1;
+    }
+
+    .indicador-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ===== TESTIMONIOS ===== */
+    .testimonios {
+      background: var(--gris-fondo);
+    }
+
+    .testimonios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    .testimonio {
+      background: var(--blanco);
+      padding: 36px 32px;
+      border-radius: var(--radio);
+      box-shadow: var(--sombra);
+      position: relative;
+      transition: var(--transicion);
+    }
+
+    .testimonio:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--sombra-hover);
+    }
+
+    .testimonio::before {
+      content: '"';
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 5rem;
+      font-weight: 900;
+      color: rgba(0,56,147,0.06);
+      line-height: 1;
+    }
+
+    .testimonio-stars {
+      color: var(--dorado);
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+
+    .testimonio p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #555;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .testimonio-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .testimonio-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--gris-claro);
+    }
+
+    .testimonio-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--azul-oscuro);
+    }
+
+    .testimonio-role {
+      font-size: 0.82rem;
+      color: #888;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: linear-gradient(135deg, var(--azul-oscuro) 0%, #0a0e27 100%);
+      color: rgba(255,255,255,0.7);
+      padding: 60px 0 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-brand h3 {
+      font-size: 1.3rem;
+      color: var(--blanco);
+      margin-bottom: 12px;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .footer-symbols {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .footer-flag {
+      width: 64px;
+      height: 40px;
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .footer-flag span:nth-child(1),
+    .footer-flag span:nth-child(3) {
+      background: var(--azul-primario);
+      flex: 1;
+    }
+    .footer-flag span:nth-child(2) {
+      background: var(--blanco);
+      flex: 1;
+      position: relative;
+    }
+
+    .footer-escudo {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      box-shadow: 0 2px 12px rgba(212,168,67,0.3);
+    }
+
+    .footer-col h4 {
+      font-size: 0.85rem;
+      color: var(--blanco);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul a {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      transition: var(--transicion);
+    }
+
+    .footer-col ul a:hover {
+      color: var(--dorado-claro);
+      padding-left: 6px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: var(--transicion);
+    }
+
+    .footer-social a:hover {
+      background: var(--azul-claro);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      padding: 24px 0;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    .footer-bottom span {
+      color: var(--dorado-claro);
+      font-weight: 600;
+    }
+
+    /* ===== FADE-IN ANIMATION ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .fade-in-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ===== COUNT-UP ANIMATION ===== */
+    .count-up {
+      display: inline-block;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--azul-oscuro);
+        flex-direction: column;
+        padding: 80px 32px 32px;
+        gap: 4px;
+        transition: var(--transicion);
+        box-shadow: -8px 0 32px rgba(0,0,0,0.3);
+      }
+
+      nav .nav-links.open {
+        right: 0;
+      }
+
+      nav .nav-links a {
+        font-size: 1rem;
+        padding: 14px 16px;
+        display: block;
+        border-radius: 10px;
+      }
+
+      .hamburger { display: flex; }
+
+      .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .intro-image { order: -1; }
+
+      .intro-image img { height: 280px; }
+
+      .logros-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding: 0 0 40px 56px;
+        text-align: left;
+      }
+
+      .timeline-item:nth-child(odd) {
+        text-align: left;
+      }
+
+      .timeline-item:nth-child(even) {
+        left: 0;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-dot,
+      .timeline-item:nth-child(even) .timeline-dot {
+        left: 10px;
+        right: auto;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-symbols {
+        justify-content: center;
+      }
+
+      .footer-social {
+        justify-content: center;
+      }
+
+      .testimonios-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .indicadores-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      section { padding: 56px 0; }
+
+      .hero-content { padding: 100px 16px 60px; }
+
+      .indicadores-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card-image { height: 170px; }
+
+      .indicador-numero { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav aria-label="Navegación principal">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="Inicio">
+        <div class="flag-icon">
+          <span></span><span></span><span></span>
+        </div>
+        Nicaragua 2007–2025
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#introduccion">Contexto</a></li>
+        <li><a href="#logros">Logros</a></li>
+        <li><a href="#linea-de-tiempo">Cronología</a></li>
+        <li><a href="#indicadores">Indicadores</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger" aria-label="Menú" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="inicio">
+    <div class="particles" id="particles"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🇳🇮 República de Nicaragua</div>
+      <h1>Revolución Nicaragua <span>2007–2025</span></h1>
+      <p class="hero-slogan">Un pueblo que avanza en unidad, soberanía y dignidad. Dieciocho años de restitución de derechos, crecimiento económico y transformación social.</p>
+      <div class="hero-buttons">
+        <a href="#logros" class="btn btn-primary">Conocer Logros ↓</a>
+        <a href="#indicadores" class="btn btn-secondary">Ver Indicadores</a>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+    </div>
+  </section>
+
+  <!-- ===== INTRODUCCIÓN ===== -->
+  <section class="intro" id="introduccion">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-image fade-in-left">
+          <img src="https://images.unsplash.com/photo-1590012314607-cda9d9b699ae?w=800&q=80" alt="Vista de Managua, capital de Nicaragua" />
+        </div>
+        <div class="intro-text fade-in-right">
+          <h2>De la exclusión a la <span>restitución de derechos</span></h2>
+          <p>Entre 1990 y 2006, las políticas neoliberales privatizaron la salud, la educación y los servicios básicos, incrementando la pobreza y la desigualdad en Nicaragua. Millones de nicaragüenses quedaron excluidos del acceso a oportunidades.</p>
+          <p>A partir de enero de 2007, con el retorno de la Revolución Sandinista, se inició un proceso de profunda transformación social, económica e institucional, priorizando a las familias más empobrecidas y restituyendo derechos fundamentales.</p>
+          <div class="intro-highlight">
+            <span class="intro-highlight-icon">📊</span>
+            <p>"Nicaragua redujo la pobreza general del 48.3 % en 2005 al 24.9 % en 2016, según datos del INIDE y el Banco Mundial."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LOGROS POR ÁREAS ===== -->
+  <section class="logros" id="logros">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-label">Transformaciones</div>
+        <h2 class="section-title">Logros por Áreas Estratégicas</h2>
+        <p class="section-subtitle">Avances concretos que han cambiado la vida de millones de familias nicaragüenses en los últimos 18 años.</p>
+      </div>
+
+      <div class="logros-grid">
+
+        <!-- Card 1: Salud -->
+        <div class="card fade-in">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=600&q=80" alt="Hospital moderno de Nicaragua" loading="lazy" />
+            <span class="card-category">Salud</span>
+            <div class="card-icon-overlay">🏥</div>
+          </div>
+          <div class="card-body">
+            <h3>Salud Pública Universal y Gratuita</h3>
+            <p>Construcción de 18 hospitales nuevos y más de 178 centros de salud. Atención 100 % gratuita en la red pública, con programas de vacunación que alcanzan cobertura superior al 98 %. La mortalidad infantil se redujo de 35 a 12.6 por cada 1,000 nacidos vivos (MINSA, 2024).</p>
+            <div class="card-stats">
+              <div class="card-stat"><span class="stat-icon">▲</span><span>18 hospitales nuevos</span></div>
+              <div class="card-stat"><span class="stat-icon">▲</span><span>98 % vacunación</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Educación -->
+        <div class="card fade-in">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80" alt="Estudiantes en aula de clase" loading="lazy" />
+            <span class="card-category">Educación</span>
+            <div class="card-icon-overlay">📚</div>
+          </div>
+          <div class="card-body">
+            <h3>Educación Gratuita y de Calidad</h3>
+            <p>Nicaragua fue declarada "Territorio Libre de Analfabetismo" por la UNESCO en 2009, reduciendo la tasa del 22 % al 3.56 %. Se construyeron más de 4,200 aulas nuevas, se entregan mochilas y meriendas escolares, y se ampliaron las universidades públicas y tecnológicos.</p>
+            <div class="card-stats">
+              <div class="card-stat"><span class="stat-icon">▲</span><span>3.56 % analfabetismo</span></div>
+              <div class="card-stat"><span class="stat-icon">▲</span><span>4,200+ aulas</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Infraestructura -->
+        <div class="card fade-in">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&q=80" alt="Carretera moderna en Nicaragua" loading="lazy" />
+            <span class="card-category">Infraestructura</span>
+            <div class="card-icon-overlay">🛤️</div>
+          </div>
+          <div class="card-body">
+            <h3>Carreteras, Puentes y Viviendas</h3>
+            <p>Más de 4,578 km de carreteras construidas y mejoradas, 130 puentes vehiculares, y entrega de más de 130,000 viviendas de interés social (Plan Bismarck Martínez). Ampliación del aeropuerto internacional Augusto C. Sandino y puertos marítimos.</p>
+            <div class="card-stats">
+              <div class="card-stat"><span class="stat-icon">▲</span><span>4,578 km carreteras</span></div>
+              <div class="card-stat"><span class="stat-icon">▲</span><span>130,000+ viviendas</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Energía -->
+        <div class="card fade-in">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80" alt="Energía renovable en Nicaragua" loading="lazy" />
+            <span class="card-category">Energía</span>
+            <div class="card-icon-overlay">⚡</div>
+          </div>
+          <div class="card-body">
+            <h3>Matriz Energética Renovable</h3>
+            <p>Nicaragua transformó su matriz energética: del 25 % renovable en 2006 al 75.7 % en 2024 (MEM/ENATREL). La cobertura eléctrica pasó del 54 % al 99.2 %, prácticamente eliminando los apagones crónicos. Proyectos eólicos, geotérmicos, solares e hidroeléctricos lideran la región.</p>
+            <div class="card-stats">
+              <div class="card-stat"><span class="stat-icon">▲</span><span>75.7 % renovable</span></div>
+              <div class="card-stat"><span class="stat-icon">▲</span><span>99.2 % cobertura</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Economía -->
+        <div class="card fade-in">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1604689598793-b8bf1dc445a1?w=600&q=80" alt="Crecimiento económico y comercio" loading="lazy" />
+            <span class="card-category">Economía</span>
+            <div class="card-icon-overlay">📈</div>
+          </div>
+          <div class="card-body">
+            <h3>Crecimiento Económico Sostenido</h3>
+            <p>El PIB de Nicaragua creció en promedio un 4.5 % anual entre 2007 y 2024 (BCN). La inversión extranjera directa se multiplicó, las zonas francas generan más de 130,000 empleos formales, y el turismo superó los 2.1 millones de visitantes en 2024.</p>
+            <div class="card-stats">
+              <div class="card-stat"><span class="stat-icon">▲</span><span>4.5 % PIB promedio</span></div>
+              <div class="card-stat"><span class="stat-icon">▲</span><span>2.1 M turistas</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6: Seguridad -->
+        <div class="card fade-in">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1517732306149-e8f829eb588a?w=600&q=80" alt="Comunidad segura en Nicaragua" loading="lazy" />
+            <span class="card-category">Seguridad</span>
+            <div class="card-icon-overlay">🛡️</div>
+          </div>
+          <div class="card-body">
+            <h3>País Más Seguro de Centroamérica</h3>
+            <p>Nicaragua mantiene la tasa de homicidios más baja de la región: 7.1 por cada 100 mil habitantes (Policía Nacional, 2024). El modelo de seguridad preventivo, comunitario y proactivo ha sido reconocido internacionalmente como referencia para América Latina.</p>
+            <div class="card-stats">
+              <div class="card-stat"><span class="stat-icon">▲</span><span>7.1 por 100 mil</span></div>
+              <div class="card-stat"><span class="stat-icon">▲</span><span>Modelo preventivo</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 7: Derechos de la Mujer -->
+        <div class="card fade-in">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80" alt="Mujeres emprendedoras en Nicaragua" loading="lazy" />
+            <span class="card-category">Género</span>
+            <div class="card-icon-overlay">👩‍💼</div>
+          </div>
+          <div class="card-body">
+            <h3>Derechos y Empoderamiento de la Mujer</h3>
+            <p>Aprobación de la Ley 779 (Ley Integral contra la Violencia hacia las Mujeres). Nicaragua ocupa el 7.° lugar mundial en equidad de género (WEF, 2023), con un 50 % de participación femenina en el gabinete y programas como "Usura Cero" que han beneficiado a más de 700,000 mujeres.</p>
+            <div class="card-stats">
+              <div class="card-stat"><span class="stat-icon">▲</span><span>7.° mundial en equidad</span></div>
+              <div class="card-stat"><span class="stat-icon">▲</span><span>700,000+ beneficiarias</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 8: Soberanía Alimentaria -->
+        <div class="card fade-in">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=600&q=80" alt="Agricultura en Nicaragua" loading="lazy" />
+            <span class="card-category">Alimentación</span>
+            <div class="card-icon-overlay">🌾</div>
+          </div>
+          <div class="card-body">
+            <h3>Soberanía y Seguridad Alimentaria</h3>
+            <p>Programas como el Bono Productivo Alimentario (Hambre Cero) beneficiaron a más de 300,000 familias rurales. La producción de granos básicos creció un 68 %. Nicaragua exporta café, carne, lácteos y azúcar como motores de la economía rural.</p>
+            <div class="card-stats">
+              <div class="card-stat"><span class="stat-icon">▲</span><span>300,000+ familias</span></div>
+              <div class="card-stat"><span class="stat-icon">▲</span><span>+68 % producción</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 9: Tecnología -->
+        <div class="card fade-in">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80" alt="Conectividad y tecnología" loading="lazy" />
+            <span class="card-category">Tecnología</span>
+            <div class="card-icon-overlay">🌐</div>
+          </div>
+          <div class="card-body">
+            <h3>Tecnología y Conectividad Digital</h3>
+            <p>Instalación de más de 5,500 km de fibra óptica. Internet gratuito en parques, plazas y espacios públicos. Desarrollo del Gobierno Digital para trámites en línea. Se entregaron más de 600,000 tablets y computadoras a estudiantes y docentes.</p>
+            <div class="card-stats">
+              <div class="card-stat"><span class="stat-icon">▲</span><span>5,500 km fibra óptica</span></div>
+              <div class="card-stat"><span class="stat-icon">▲</span><span>600,000+ tablets</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LÍNEA DE TIEMPO ===== -->
+  <section class="timeline-section" id="linea-de-tiempo">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-label">Cronología</div>
+        <h2 class="section-title">Hitos Históricos 2007–2025</h2>
+        <p class="section-subtitle">Un recorrido por los momentos decisivos de la transformación de Nicaragua.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">2007</div>
+            <h3>Retorno de la Revolución</h3>
+            <p>Inicio de la restitución de derechos: educación y salud gratuita, programas de combate a la pobreza, Hambre Cero y Usura Cero.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">2009</div>
+            <h3>Territorio Libre de Analfabetismo</h3>
+            <p>La UNESCO reconoce a Nicaragua como territorio libre de analfabetismo tras la campaña nacional "Yo Sí Puedo", que alfabetizó a más de 500,000 personas.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">2014</div>
+            <h3>Transformación Energética</h3>
+            <p>La matriz energética renovable supera el 50 % por primera vez. Se inaugura el parque eólico más grande de Centroamérica en Rivas.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">2018</div>
+            <h3>Resiliencia y Estabilidad</h3>
+            <p>Ante el intento de desestabilización, el pueblo nicaragüense defendió la paz y la institucionalidad. El diálogo y la reconciliación marcaron el camino.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">2021</div>
+            <h3>Reconstrucción y Avance</h3>
+            <p>A pesar de la pandemia, Nicaragua mantuvo su economía abierta con protocolos sanitarios efectivos. Se inicia el Hospital Nacional "Solidaridad", la obra de salud más grande de la historia.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">2025</div>
+            <h3>Nicaragua en el Siglo XXI</h3>
+            <p>Cobertura eléctrica del 99.2 %, consolidación del modelo de seguridad ciudadana, gobierno digital y avance hacia la economía del conocimiento.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INDICADORES ===== -->
+  <section class="indicadores" id="indicadores">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-label">Datos Clave</div>
+        <h2 class="section-title">Indicadores Destacados</h2>
+        <p class="section-subtitle">Cifras que reflejan el impacto real de las políticas de restitución de derechos.</p>
+      </div>
+
+      <div class="indicadores-grid">
+        <div class="indicador fade-in">
+          <div class="indicador-icon">🛣️</div>
+          <div class="indicador-numero"><span class="count-up" data-target="4578" data-suffix="">0</span>+</div>
+          <div class="indicador-label">KM de Carreteras</div>
+        </div>
+
+        <div class="indicador fade-in">
+          <div class="indicador-icon">⚡</div>
+          <div class="indicador-numero"><span class="count-up" data-target="75.7" data-suffix="%" data-decimal="true">0</span></div>
+          <div class="indicador-label">Energía Renovable</div>
+        </div>
+
+        <div class="indicador fade-in">
+          <div class="indicador-icon">🏥</div>
+          <div class="indicador-numero"><span class="count-up" data-target="18" data-suffix="">0</span></div>
+          <div class="indicador-label">Hospitales Nuevos</div>
+        </div>
+
+        <div class="indicador fade-in">
+          <div class="indicador-icon">🏠</div>
+          <div class="indicador-numero"><span class="count-up" data-target="130" data-suffix="K+">0</span></div>
+          <div class="indicador-label">Viviendas Entregadas</div>
+        </div>
+
+        <div class="indicador fade-in">
+          <div class="indicador-icon">🛡️</div>
+          <div class="indicador-numero"><span class="count-up" data-target="7.1" data-suffix="" data-decimal="true">0</span></div>
+          <div class="indicador-label">Homicidios / 100 mil</div>
+        </div>
+
+        <div class="indicador fade-in">
+          <div class="indicador-icon">🎓</div>
+          <div class="indicador-numero"><span class="count-up" data-target="3.56" data-suffix="%" data-decimal="true">0</span></div>
+          <div class="indicador-label">Tasa Analfabetismo</div>
+        </div>
+
+        <div class="indicador fade-in">
+          <div class="indicador-icon">💡</div>
+          <div class="indicador-numero"><span class="count-up" data-target="99.2" data-suffix="%" data-decimal="true">0</span></div>
+          <div class="indicador-label">Cobertura Eléctrica</div>
+        </div>
+
+        <div class="indicador fade-in">
+          <div class="indicador-icon">👩‍💼</div>
+          <div class="indicador-numero">7.°</div>
+          <div class="indicador-label">Equidad de Género (WEF)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIOS ===== -->
+  <section class="testimonios" id="testimonios">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-label">Voces del Pueblo</div>
+        <h2 class="section-title">Testimonios de Beneficiarios</h2>
+        <p class="section-subtitle">Historias reales de nicaragüenses que han transformado su vida gracias a los programas de restitución de derechos.</p>
+      </div>
+
+      <div class="testimonios-grid">
+
+        <div class="testimonio fade-in">
+          <div class="testimonio-stars">★★★★★</div>
+          <p>"Con el Bono Productivo recibimos vacas, cerdos y gallinas. Hoy producimos nuestros propios alimentos y vendemos el excedente. Mis hijos ya no pasan hambre y los tres están en la escuela. La revolución cambió nuestra vida."</p>
+          <div class="testimonio-author">
+            <div class="testimonio-avatar" style="background: linear-gradient(135deg, var(--azul-primario), var(--verde-dato)); display:flex; align-items:center; justify-content:center; color:white; font-size:1.3rem; font-weight:700;">JM</div>
+            <div>
+              <div class="testimonio-name">José María López</div>
+              <div class="testimonio-role">Campesino · Matagalpa</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonio fade-in">
+          <div class="testimonio-stars">★★★★★</div>
+          <p>"Gracias a la beca del gobierno estudié ingeniería en la UNAN. Soy la primera de mi familia en ir a la universidad. Hoy trabajo en una empresa de energía renovable. La educación gratuita me abrió las puertas al futuro."</p>
+          <div class="testimonio-author">
+            <div class="testimonio-avatar" style="background: linear-gradient(135deg, var(--rojo-primario), var(--dorado)); display:flex; align-items:center; justify-content:center; color:white; font-size:1.3rem; font-weight:700;">KR</div>
+            <div>
+              <div class="testimonio-name">Karen Rodríguez</div>
+              <div class="testimonio-role">Joven becada · León</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonio fade-in">
+          <div class="testimonio-stars">★★★★★</div>
+          <p>"Con el programa Usura Cero obtuve mi primer crédito para una pequeña panadería. Hoy tengo 3 empleadas y atiendo a todo el barrio. Como mujer, sentí por primera vez que el gobierno creyó en mí."</p>
+          <div class="testimonio-author">
+            <div class="testimonio-avatar" style="background: linear-gradient(135deg, var(--dorado), var(--verde-dato)); display:flex; align-items:center; justify-content:center; color:white; font-size:1.3rem; font-weight:700;">MF</div>
+            <div>
+              <div class="testimonio-name">Martha Flores</div>
+              <div class="testimonio-role">Dueña de microempresa · Managua</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="contacto">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>🇳🇮 Revolución Nicaragua 2007–2025</h3>
+          <p>Página informativa sobre los avances y logros alcanzados por el pueblo nicaragüense en 18 años de transformación social, económica y cultural.</p>
+          <div class="footer-symbols">
+            <div class="footer-flag" aria-label="Bandera de Nicaragua">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="footer-escudo" aria-label="Escudo de Nicaragua">🏔️</div>
+            <span style="font-size:0.8rem; color:rgba(255,255,255,0.5); font-family:'Montserrat',sans-serif;">Bandera y Escudo Nacional</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Secciones</h4>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#introduccion">Contexto Histórico</a></li>
+            <li><a href="#logros">Logros por Áreas</a></li>
+            <li><a href="#linea-de-tiempo">Cronología</a></li>
+            <li><a href="#indicadores">Indicadores</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Fuentes Oficiales</h4>
+          <ul>
+            <li><a href="#">BCN – Banco Central</a></li>
+            <li><a href="#">MINSA – Salud</a></li>
+            <li><a href="#">MINED – Educación</a></li>
+            <li><a href="#">MEM – Energía y Minas</a></li>
+            <li><a href="#">INIDE – Estadísticas</a></li>
+            <li><a href="#">ENATREL – Electricidad</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Redes Oficiales</h4>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="Twitter / X">🐦</a>
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="#" aria-label="YouTube">▶️</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="currentYear">2025</span> · Revolución Nicaragua 2007–2025 · Todos los derechos reservados · Hecho con ❤️ por el pueblo y para el pueblo · <span>¡Nicaragua Siempre Bendita!</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // — Current Year —
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // — Mobile Navigation —
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // — Scroll Fade-In Animation (Intersection Observer) —
+    const observerOptions = {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          // Stagger the animation
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Add stagger delays to grid children
+    document.querySelectorAll('.logros-grid .fade-in, .indicadores-grid .fade-in, .testimonios-grid .fade-in').forEach((el, i) => {
+      el.dataset.delay = i * 100;
+    });
+
+    document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+      observer.observe(el);
+    });
+
+    // — Count-Up Animation —
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseFloat(el.dataset.target);
+          const suffix = el.dataset.suffix || '';
+          const isDecimal = el.dataset.decimal === 'true';
+          const duration = 2000;
+          const startTime = performance.now();
+
+          function animate(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = target * eased;
+
+            if (isDecimal) {
+              el.textContent = current.toFixed(1) + suffix;
+            } else {
+              el.textContent = Math.floor(current).toLocaleString('es-NI') + suffix;
+            }
+
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            } else {
+              if (isDecimal) {
+                el.textContent = target.toFixed(1) + suffix;
+              } else {
+                el.textContent = target.toLocaleString('es-NI') + suffix;
+              }
+            }
+          }
+
+          requestAnimationFrame(animate);
+          countObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.count-up').forEach(el => {
+      countObserver.observe(el);
+    });
+
+    // — Particles Animation —
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDuration = (Math.random() * 8 + 6) + 's';
+      particle.style.animationDelay = Math.random() * 10 + 's';
+      particle.style.width = (Math.random() * 4 + 2) + 'px';
+      particle.style.height = particle.style.width;
+      particlesContainer.appendChild(particle);
+    }
+
+    // — Navbar background change on scroll —
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        nav.style.background = 'rgba(0, 15, 45, 0.98)';
+      } else {
+        nav.style.background = 'rgba(0, 31, 91, 0.92)';
+      }
+    });
+  </script>
+
+</body>
+</html>

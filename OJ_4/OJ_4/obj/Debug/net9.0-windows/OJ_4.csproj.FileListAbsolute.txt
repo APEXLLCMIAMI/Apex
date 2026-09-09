@@ -1,0 +1,16 @@
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_4\OJ_4\bin\Debug\net9.0-windows\OJ_4.exe
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_4\OJ_4\bin\Debug\net9.0-windows\OJ_4.deps.json
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_4\OJ_4\bin\Debug\net9.0-windows\OJ_4.runtimeconfig.json
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_4\OJ_4\bin\Debug\net9.0-windows\OJ_4.dll
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_4\OJ_4\bin\Debug\net9.0-windows\OJ_4.pdb
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_4\OJ_4\obj\Debug\net9.0-windows\OJ_4.Form1.resources
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_4\OJ_4\obj\Debug\net9.0-windows\OJ_4.csproj.GenerateResource.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_4\OJ_4\obj\Debug\net9.0-windows\OJ_4.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_4\OJ_4\obj\Debug\net9.0-windows\OJ_4.AssemblyInfoInputs.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_4\OJ_4\obj\Debug\net9.0-windows\OJ_4.AssemblyInfo.cs
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_4\OJ_4\obj\Debug\net9.0-windows\OJ_4.csproj.CoreCompileInputs.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_4\OJ_4\obj\Debug\net9.0-windows\OJ_4.dll
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_4\OJ_4\obj\Debug\net9.0-windows\refint\OJ_4.dll
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_4\OJ_4\obj\Debug\net9.0-windows\OJ_4.pdb
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_4\OJ_4\obj\Debug\net9.0-windows\OJ_4.genruntimeconfig.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_4\OJ_4\obj\Debug\net9.0-windows\ref\OJ_4.dll

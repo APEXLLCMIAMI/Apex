@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarberShop Elite — Agenda tu Cita</title>
+    <meta name="description"
+        content="Agenda tu cita en BarberShop Elite. Los mejores barberos, el mejor estilo. Reserva fácil y rápido.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="bg-noise"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">✂</span>
+                <span class="logo-text">BarberShop <span class="logo-accent">Elite</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#barberos">Barberos</a></li>
+                <li><a href="#agendar" class="nav-cta">Agendar Cita</a></li>
+                <li id="navAuthItem" style="display:none;"></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#barberos">Barberos</a></li>
+            <li><a href="#agendar">Agendar Cita</a></li>
+            <li id="mobileAuthItem"></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Horario: Lun — Sáb | 9:00 AM — 8:00 PM
+            </div>
+            <h1 class="hero-title">
+                Tu Estilo,<br>
+                <span class="title-gradient">Nuestra Pasión</span>
+            </h1>
+            <p class="hero-subtitle">
+                Más que un corte, una experiencia premium. Agenda tu cita y déjate transformar por los mejores barberos
+                de la ciudad.
+            </p>
+            <div class="hero-actions">
+                <a href="#agendar" class="btn btn-primary">
+                    <span>Agendar Ahora</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <a href="#servicios" class="btn btn-outline">Ver Servicios</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" data-count="2500">0</span>+
+                    <span class="stat-label">Clientes Felices</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number" data-count="8">0</span>
+                    <span class="stat-label">Años de Experiencia</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number" data-count="5">0</span>
+                    <span class="stat-label">Barberos Expertos</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-card">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <div class="card-icon">💈</div>
+                    <h3>Próxima Disponibilidad</h3>
+                    <p class="card-time" id="nextAvailable">Hoy — 3:00 PM</p>
+                    <a href="#agendar" class="card-link">Reservar →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicios">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Nuestros Servicios</span>
+                <h2 class="section-title">Servicios <span class="title-gradient">Premium</span></h2>
+                <p class="section-desc">Cada servicio es una experiencia personalizada pensada para ti</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-service="corte-clasico" data-price="250">
+                    <div class="service-icon">✂️</div>
+                    <h3>Corte Clásico</h3>
+                    <p>Corte de cabello con estilo, incluye lavado y secado profesional.</p>
+                    <div class="service-footer">
+                        <span class="service-price">$250</span>
+                        <span class="service-time">30 min</span>
+                    </div>
+                </div>
+                <div class="service-card" data-service="corte-barba" data-price="400">
+                    <div class="service-icon">🪒</div>
+                    <h3>Corte + Barba</h3>
+                    <p>Corte de cabello y perfilado de barba con navaja y toalla caliente.</p>
+                    <div class="service-footer">
+                        <span class="service-price">$400</span>
+                        <span class="service-time">50 min</span>
+                    </div>
+                </div>
+                <div class="service-card featured" data-service="premium" data-price="600">
+                    <div class="featured-badge">⭐ Popular</div>
+                    <div class="service-icon">💈</div>
+                    <h3>Experiencia Premium</h3>
+                    <p>Corte, barba, masaje facial, tratamiento capilar y bebida de cortesía.</p>
+                    <div class="service-footer">
+                        <span class="service-price">$600</span>
+                        <span class="service-time">75 min</span>
+                    </div>
+                </div>
+                <div class="service-card" data-service="barba" data-price="200">
+                    <div class="service-icon">🧔</div>
+                    <h3>Solo Barba</h3>
+                    <p>Perfilado, recorte y cuidado completo de barba con productos premium.</p>
+                    <div class="service-footer">
+                        <span class="service-price">$200</span>
+                        <span class="service-time">25 min</span>
+                    </div>
+                </div>
+                <div class="service-card" data-service="color" data-price="500">
+                    <div class="service-icon">🎨</div>
+                    <h3>Color & Diseño</h3>
+                    <p>Coloración, mechas, decoloración o diseños artísticos personalizados.</p>
+                    <div class="service-footer">
+                        <span class="service-price">$500</span>
+                        <span class="service-time">60 min</span>
+                    </div>
+                </div>
+                <div class="service-card" data-service="kids" data-price="180">
+                    <div class="service-icon">👦</div>
+                    <h3>Corte Kids</h3>
+                    <p>Corte para niños en un ambiente divertido y cómodo.</p>
+                    <div class="service-footer">
+                        <span class="service-price">$180</span>
+                        <span class="service-time">20 min</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Barbers Section -->
+    <section class="barbers" id="barberos">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Nuestro Equipo</span>
+                <h2 class="section-title">Barberos <span class="title-gradient">Expertos</span></h2>
+                <p class="section-desc">Conoce a los artistas detrás de tu nuevo look</p>
+            </div>
+            <div class="barbers-grid">
+                <div class="barber-card" data-barber="carlos">
+                    <div class="barber-avatar">
+                        <div class="avatar-placeholder">CG</div>
+                    </div>
+                    <h3>Carlos García</h3>
+                    <p class="barber-role">Master Barber</p>
+                    <div class="barber-rating">
+                        <span class="stars">★★★★★</span>
+                        <span>4.9</span>
+                    </div>
+                    <p class="barber-specialty">Especialista en Fade & Diseño</p>
+                </div>
+                <div class="barber-card" data-barber="miguel">
+                    <div class="barber-avatar">
+                        <div class="avatar-placeholder">ML</div>
+                    </div>
+                    <h3>Miguel López</h3>
+                    <p class="barber-role">Senior Barber</p>
+                    <div class="barber-rating">
+                        <span class="stars">★★★★★</span>
+                        <span>4.8</span>
+                    </div>
+                    <p class="barber-specialty">Experto en Barba & Afeitado</p>
+                </div>
+                <div class="barber-card" data-barber="andres">
+                    <div class="barber-avatar">
+                        <div class="avatar-placeholder">AR</div>
+                    </div>
+                    <h3>Andrés Ramírez</h3>
+                    <p class="barber-role">Color Specialist</p>
+                    <div class="barber-rating">
+                        <span class="stars">★★★★★</span>
+                        <span>4.9</span>
+                    </div>
+                    <p class="barber-specialty">Coloración & Tendencias</p>
+                </div>
+                <div class="barber-card" data-barber="daniel">
+                    <div class="barber-avatar">
+                        <div class="avatar-placeholder">DM</div>
+                    </div>
+                    <h3>Daniel Martínez</h3>
+                    <p class="barber-role">Style Expert</p>
+                    <div class="barber-rating">
+                        <span class="stars">★★★★★</span>
+                        <span>4.7</span>
+                    </div>
+                    <p class="barber-specialty">Cortes Clásicos & Modernos</p>
+                </div>
+                <div class="barber-card" data-barber="ricardo">
+                    <div class="barber-avatar">
+                        <div class="avatar-placeholder">RH</div>
+                    </div>
+                    <h3>Ricardo Hernández</h3>
+                    <p class="barber-role">Junior Barber</p>
+                    <div class="barber-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span>4.6</span>
+                    </div>
+                    <p class="barber-specialty">Cortes Kids & Juveniles</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking" id="agendar">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Reservación</span>
+                <h2 class="section-title">Agenda tu <span class="title-gradient">Cita</span></h2>
+                <p class="section-desc">Selecciona tu servicio, barbero, fecha y horario preferido</p>
+            </div>
+
+            <div class="booking-container">
+                <!-- Progress Steps -->
+                <div class="booking-progress">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-circle">1</div>
+                        <span>Servicio</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-circle">2</div>
+                        <span>Barbero</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-circle">3</div>
+                        <span>Fecha & Hora</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="4">
+                        <div class="step-circle">4</div>
+                        <span>Datos</span>
+                    </div>
+                </div>
+
+                <!-- Step 1: Service Selection -->
+                <div class="booking-step active" id="step1">
+                    <h3 class="step-title">¿Qué servicio deseas?</h3>
+                    <div class="booking-services" id="bookingServices">
+                        <!-- Populated by JS -->
+                    </div>
+                    <div class="step-actions">
+                        <button class="btn btn-primary" id="toStep2" disabled>
+                            Continuar
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Barber Selection -->
+                <div class="booking-step" id="step2">
+                    <h3 class="step-title">Elige tu barbero</h3>
+                    <div class="booking-barbers" id="bookingBarbers">
+                        <!-- Populated by JS -->
+                    </div>
+                    <div class="step-actions">
+                        <button class="btn btn-outline" id="backStep1">← Atrás</button>
+                        <button class="btn btn-primary" id="toStep3" disabled>
+                            Continuar
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Date & Time -->
+                <div class="booking-step" id="step3">
+                    <h3 class="step-title">Selecciona fecha y hora</h3>
+                    <div class="datetime-container">
+                        <div class="calendar-section">
+                            <div class="calendar-header">
+                                <button class="cal-nav" id="prevMonth">‹</button>
+                                <h4 id="calendarMonth">Febrero 2026</h4>
+                                <button class="cal-nav" id="nextMonth">›</button>
+                            </div>
+                            <div class="calendar-weekdays">
+                                <span>Dom</span><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span>
+                            </div>
+                            <div class="calendar-days" id="calendarDays">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                        <div class="time-section">
+                            <h4>Horarios Disponibles</h4>
+                            <p class="time-hint" id="timeHint">Selecciona una fecha primero</p>
+                            <div class="time-slots" id="timeSlots">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-actions">
+                        <button class="btn btn-outline" id="backStep2">← Atrás</button>
+                        <button class="btn btn-primary" id="toStep4" disabled>
+                            Continuar
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Personal Info -->
+                <div class="booking-step" id="step4">
+                    <h3 class="step-title">Tus datos de contacto</h3>
+                    <form class="booking-form" id="bookingForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="clientName">Nombre Completo *</label>
+                                <input type="text" id="clientName" placeholder="Ej: Juan Pérez" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="clientPhone">Teléfono *</label>
+                                <input type="tel" id="clientPhone" placeholder="Ej: 55 1234 5678" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="clientEmail">Correo Electrónico</label>
+                            <input type="email" id="clientEmail" placeholder="Ej: tu@correo.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="clientNotes">Notas adicionales</label>
+                            <textarea id="clientNotes" rows="3"
+                                placeholder="¿Alguna preferencia especial? Cuéntanos..."></textarea>
+                        </div>
+
+                        <!-- Booking Summary -->
+                        <div class="booking-summary" id="bookingSummary">
+                            <h4>Resumen de tu Cita</h4>
+                            <div class="summary-grid">
+                                <div class="summary-item">
+                                    <span class="summary-label">Servicio</span>
+                                    <span class="summary-value" id="sumService">—</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Barbero</span>
+                                    <span class="summary-value" id="sumBarber">—</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Fecha</span>
+                                    <span class="summary-value" id="sumDate">—</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Hora</span>
+                                    <span class="summary-value" id="sumTime">—</span>
+                                </div>
+                                <div class="summary-item total">
+                                    <span class="summary-label">Total</span>
+                                    <span class="summary-value" id="sumTotal">—</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step-actions">
+                            <button type="button" class="btn btn-outline" id="backStep3">← Atrás</button>
+                            <button type="submit" class="btn btn-primary btn-confirm" id="confirmBooking">
+                                <span>Confirmar Cita</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5" />
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal">
+            <div class="modal-icon">🎉</div>
+            <h2>¡Cita Agendada!</h2>
+            <p>Tu cita ha sido registrada exitosamente. Te enviaremos un recordatorio antes de tu visita.</p>
+            <div class="modal-details" id="modalDetails">
+                <!-- Populated by JS -->
+            </div>
+            <button class="btn btn-primary" id="closeModal">Entendido</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo-icon">✂</span>
+                    <span class="logo-text">BarberShop <span class="logo-accent">Elite</span></span>
+                    <p>Tu destino para un estilo impecable. Más que una barbería, una experiencia.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <p>📍 Av. Principal #123, Centro</p>
+                    <p>📞 (505) 88005687</p>
+                    <p>✉️ info@barbershopelite.com</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Horarios</h4>
+                    <p>Lunes — Viernes: 9:00 AM — 8:00 PM</p>
+                    <p>Sábado: 9:00 AM — 6:00 PM</p>
+                    <p>Domingo: Cerrado</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 BarberShop Elite. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+    <script>
+        // ===== AUTH INTEGRATION =====
+        (function () {
+            const session = JSON.parse(localStorage.getItem('bs_session') || 'null');
+            const users = JSON.parse(localStorage.getItem('bs_users') || '[]');
+            const navAuth = document.getElementById('navAuthItem');
+            const mobileAuth = document.getElementById('mobileAuthItem');
+
+            if (session && users.find(u => u.id === session.userId)) {
+                const user = users.find(u => u.id === session.userId);
+                const firstName = user.name.split(' ')[0];
+
+                // Desktop nav
+                navAuth.style.display = '';
+                navAuth.innerHTML = `
+                    <div class="nav-user-menu">
+                        <button class="nav-user-btn" id="navUserBtn">
+                            <span class="nav-user-avatar">${user.name.split(' ').map(w => w[0]).join('').slice(0, 2)}</span>
+                            <span>${firstName}</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="nav-dropdown" id="navDropdown">
+                            <a href="cuenta.html" class="dropdown-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                Mi Cuenta
+                            </a>
+                            <button class="dropdown-item dropdown-logout" id="navLogout">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                                Cerrar Sesión
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                // Dropdown toggle
+                document.getElementById('navUserBtn').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    document.getElementById('navDropdown').classList.toggle('show');
+                });
+                document.addEventListener('click', () => {
+                    const dd = document.getElementById('navDropdown');
+                    if (dd) dd.classList.remove('show');
+                });
+                document.getElementById('navLogout').addEventListener('click', () => {
+                    localStorage.removeItem('bs_session');
+                    window.location.reload();
+                });
+
+                // Mobile nav
+                mobileAuth.innerHTML = `
+                    <a href="cuenta.html">Mi Cuenta</a>
+                `;
+                const mobileLogout = document.createElement('li');
+                mobileLogout.innerHTML = '<a href="#" id="mobileLogoutLink" style="color:#f87171">Cerrar Sesión</a>';
+                mobileAuth.parentNode.appendChild(mobileLogout);
+                document.getElementById('mobileLogoutLink').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem('bs_session');
+                    window.location.reload();
+                });
+            } else {
+                // Not logged in
+                navAuth.style.display = '';
+                navAuth.innerHTML = '<a href="auth.html" class="nav-login-link">Iniciar Sesión</a>';
+                mobileAuth.innerHTML = '<a href="auth.html">Iniciar Sesión</a>';
+            }
+        })();
+    </script>
+</body>
+
+</html>

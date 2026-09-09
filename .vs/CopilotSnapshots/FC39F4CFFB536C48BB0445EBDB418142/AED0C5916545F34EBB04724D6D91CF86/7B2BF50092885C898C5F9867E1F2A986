@@ -1,0 +1,145 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Windows.Forms;
+
+namespace RegistroLibrosApp
+{
+
+    public partial class FormRegistroLibro : Form
+    {
+        private TextBox txtTitulo;
+        private TextBox txtAutor;
+        private TextBox txtAnio;
+        private TextBox txtEditorial;
+        private Button btnRegistrar;
+
+        public FormRegistroLibro()
+        {
+            InitializeComponent();
+        }
+
+        private void InitializeComponent()
+        {
+            this.txtTitulo = new TextBox { Left = 50, Top = 20, Width = 200, PlaceholderText = "Título" };
+            this.txtAutor = new TextBox { Left = 50, Top = 60, Width = 200, PlaceholderText = "Autor" };
+            this.txtAnio = new TextBox { Left = 50, Top = 100, Width = 200, PlaceholderText = "Año" };
+            this.txtEditorial = new TextBox { Left = 50, Top = 140, Width = 200, PlaceholderText = "Editorial" };
+            this.btnRegistrar = new Button { Left = 50, Top = 180, Text = "Registrar Libro" };
+
+            this.btnRegistrar.Click += new EventHandler(this.btnRegistrar_Click);
+
+            this.Controls.Add(txtTitulo);
+            this.Controls.Add(txtAutor);
+            this.Controls.Add(txtAnio);
+            this.Controls.Add(txtEditorial);
+            this.Controls.Add(btnRegistrar);
+
+            this.Text = "Registro de Libros";
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.ClientSize = new System.Drawing.Size(320, 250);
+        }
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Libro libro = new Libro
+                {
+                    Titulo = txtTitulo.Text,
+                    Autor = txtAutor.Text,
+                    AnioPublicacion = int.Parse(txtAnio.Text),
+                    Editorial = txtEditorial.Text
+                };
+
+                LibroDAO dao = new LibroDAO();
+                dao.RegistrarLibro(libro);
+
+                MessageBox.Show("Libro registrado correctamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al registrar el libro: " + ex.Message);
+            }
+        }
+    }
+
+
+    public class Libro
+    {
+        public int Id { get; set; }
+        public string Titulo { get; set; }
+        public string Autor { get; set; }
+        public int AnioPublicacion { get; set; }
+        public string Editorial { get; set; }
+    }
+
+
+    public class ConexionBD
+    {
+        private readonly string cadenaConexion =
+            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SBLI;Integrated Security=True;Trust Server Certificate=True";
+
+        public SqlConnection ObtenerConexion()
+        {
+            return new SqlConnection(cadenaConexion);
+        }
+    }
+
+
+    public class LibroDAO
+    {
+        private ConexionBD conexion = new ConexionBD();
+
+        public void RegistrarLibro(Libro libro)
+        {
+            using (SqlConnection conn = conexion.ObtenerConexion())
+            {
+                conn.Open();
+                string query = "INSERT INTO Libros (Titulo, Autor, AnioPublicacion, Editorial) VALUES (@Titulo, @Autor, @Anio, @Editorial)";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Titulo", libro.Titulo);
+                cmd.Parameters.AddWithValue("@Autor", libro.Autor);
+                cmd.Parameters.AddWithValue("@Anio", libro.AnioPublicacion);
+                cmd.Parameters.AddWithValue("@Editorial", libro.Editorial);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public List<Libro> ObtenerLibros()
+        {
+            List<Libro> lista = new List<Libro>();
+            using (SqlConnection conn = conexion.ObtenerConexion())
+            {
+                conn.Open();
+                string query = "SELECT Id, Titulo, Autor, AnioPublicacion, Editorial FROM Libros";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    lista.Add(new Libro
+                    {
+                        Id = reader.GetInt32(0),
+                        Titulo = reader.GetString(1),
+                        Autor = reader.GetString(2),
+                        AnioPublicacion = reader.GetInt32(3),
+                        Editorial = reader.GetString(4)
+                    });
+                }
+            }
+            return lista;
+        }
+    }
+
+   
+    static class Program
+    {
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new FormRegistroLibro());
+        }
+    }
+}

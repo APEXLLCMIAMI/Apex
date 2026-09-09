@@ -1,0 +1,10 @@
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\EJERCICIO-1\EJERCICIO-1\bin\Debug\EJERCICIO-1.exe.config
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\EJERCICIO-1\EJERCICIO-1\bin\Debug\EJERCICIO-1.exe
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\EJERCICIO-1\EJERCICIO-1\bin\Debug\EJERCICIO-1.pdb
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\EJERCICIO-1\EJERCICIO-1\obj\Debug\EJERCICIO-1.csproj.AssemblyReference.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\EJERCICIO-1\EJERCICIO-1\obj\Debug\EJERCICIO_1.Form1.resources
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\EJERCICIO-1\EJERCICIO-1\obj\Debug\EJERCICIO_1.Properties.Resources.resources
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\EJERCICIO-1\EJERCICIO-1\obj\Debug\EJERCICIO-1.csproj.GenerateResource.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\EJERCICIO-1\EJERCICIO-1\obj\Debug\EJERCICIO-1.csproj.CoreCompileInputs.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\EJERCICIO-1\EJERCICIO-1\obj\Debug\EJERCICIO-1.exe
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\EJERCICIO-1\EJERCICIO-1\obj\Debug\EJERCICIO-1.pdb

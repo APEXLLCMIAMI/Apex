@@ -1,0 +1,129 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Windows.Forms;
+
+namespace RegistroLibrosApp
+{
+
+    public partial class FormRegistroLibro : Form
+    {
+        public FormRegistroLibro()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void btnReguistrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Validar que los campos no estén vacíos
+                if (string.IsNullOrWhiteSpace(txtTitulo.Text) || string.IsNullOrWhiteSpace(txtCodigo.Text))
+                {
+                    MessageBox.Show("Por favor, complete todos los campos", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Crear objeto Libro
+                Libro libro = new Libro
+                {
+                    Titulo = txtTitulo.Text,
+                    Autor = txtCodigo.Text, // Usando txtCodigo como Autor por ahora
+                    AnioPublicacion = DateTime.Now.Year,
+                    Editorial = "Desconocida"
+                };
+
+                // Registrar en la base de datos
+                LibroDAO dao = new LibroDAO();
+                dao.RegistrarLibro(libro);
+
+                MessageBox.Show("✓ Libro registrado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Limpiar los campos
+                txtTitulo.Clear();
+                txtCodigo.Clear();
+                txtTitulo.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("❌ Error al registrar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+    }
+
+
+    public class Libro
+    {
+        public int Id { get; set; }
+        public string Titulo { get; set; }
+        public string Codigo { get; set; }
+        public decimal Precio { get; set; }
+        public int Stock { get; set; }
+    }
+
+
+    public class ConexionBD
+    {
+        private readonly string cadenaConexion =
+            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SBLI;Integrated Security=True;Trust Server Certificate=True";
+
+        public SqlConnection ObtenerConexion()
+        {
+            return new SqlConnection(cadenaConexion);
+        }
+    }
+
+
+    public class LibroDAO
+    {
+        private ConexionBD conexion = new ConexionBD();
+
+        public void RegistrarLibro(Libro libro)
+        {
+            using (SqlConnection conn = conexion.ObtenerConexion())
+            {
+                conn.Open();
+                string query = "INSERT INTO Libros (Titulo, Autor, AnioPublicacion, Editorial) VALUES (@Titulo, @Autor, @Anio, @Editorial)";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Titulo", libro.Titulo);
+                cmd.Parameters.AddWithValue("@Autor", libro.Autor);
+                cmd.Parameters.AddWithValue("@Anio", libro.AnioPublicacion);
+                cmd.Parameters.AddWithValue("@Editorial", libro.Editorial);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public List<Libro> ObtenerLibros()
+        {
+            List<Libro> lista = new List<Libro>();
+            using (SqlConnection conn = conexion.ObtenerConexion())
+            {
+                conn.Open();
+                string query = "SELECT Id, Titulo, Autor, AnioPublicacion, Editorial FROM Libros";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    lista.Add(new Libro
+                    {
+                        Id = reader.GetInt32(0),
+                        Titulo = reader.GetString(1),
+                        Autor = reader.GetString(2),
+                        AnioPublicacion = reader.GetInt32(3),
+                        Editorial = reader.GetString(4)
+                    });
+                }
+            }
+            return lista;
+        }
+    }
+
+    }

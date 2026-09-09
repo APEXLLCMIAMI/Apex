@@ -1,0 +1,16 @@
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_1\OJ_1\bin\Debug\net9.0-windows\OJ_1.exe
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_1\OJ_1\bin\Debug\net9.0-windows\OJ_1.deps.json
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_1\OJ_1\bin\Debug\net9.0-windows\OJ_1.runtimeconfig.json
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_1\OJ_1\bin\Debug\net9.0-windows\OJ_1.dll
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_1\OJ_1\bin\Debug\net9.0-windows\OJ_1.pdb
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_1\OJ_1\obj\Debug\net9.0-windows\OJ_1.Form1.resources
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_1\OJ_1\obj\Debug\net9.0-windows\OJ_1.csproj.GenerateResource.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_1\OJ_1\obj\Debug\net9.0-windows\OJ_1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_1\OJ_1\obj\Debug\net9.0-windows\OJ_1.AssemblyInfoInputs.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_1\OJ_1\obj\Debug\net9.0-windows\OJ_1.AssemblyInfo.cs
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_1\OJ_1\obj\Debug\net9.0-windows\OJ_1.csproj.CoreCompileInputs.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_1\OJ_1\obj\Debug\net9.0-windows\OJ_1.dll
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_1\OJ_1\obj\Debug\net9.0-windows\refint\OJ_1.dll
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_1\OJ_1\obj\Debug\net9.0-windows\OJ_1.pdb
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_1\OJ_1\obj\Debug\net9.0-windows\OJ_1.genruntimeconfig.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\OJ_1\OJ_1\obj\Debug\net9.0-windows\ref\OJ_1.dll

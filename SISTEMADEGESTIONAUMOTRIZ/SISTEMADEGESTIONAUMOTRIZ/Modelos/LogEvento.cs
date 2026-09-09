@@ -1,0 +1,11 @@
+﻿using System;
+
+namespace SISTEMADEGESTIONAUMOTRIZ.Modelos
+{
+    public class LogEvento
+    {
+        public int Id { get; set; }
+        public string Descripcion { get; set; }
+        public DateTime Fecha { get; set; }
+    }
+}

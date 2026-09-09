@@ -1,0 +1,185 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Windows.Forms;
+
+namespace RegistroLibrosApp
+{
+
+    public partial class FormRegistroLibro : Form
+    {
+        public FormRegistroLibro()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            CargarLibros();
+        }
+
+        private void CargarLibros()
+        {
+            try
+            {
+                LibroDAO dao = new LibroDAO();
+                List<Libro> libros = dao.ObtenerLibros();
+
+                // Limpiar el DataGridView
+                dgvLibros.Rows.Clear();
+
+                // Llenar el DataGridView con los libros
+                foreach (Libro libro in libros)
+                {
+                    dgvLibros.Rows.Add(libro.Titulo, libro.Codigo, libro.Precio.ToString("F2"), libro.Stock);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar libros: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnReguistrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Validar que los campos no estén vacíos
+                if (string.IsNullOrWhiteSpace(txtTitulo.Text) || 
+                    string.IsNullOrWhiteSpace(txtCodigo.Text) ||
+                    string.IsNullOrWhiteSpace(txtPrecio.Text) ||
+                    string.IsNullOrWhiteSpace(txtStock.Text))
+                {
+                    MessageBox.Show("Por favor, complete todos los campos", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Validar que Precio y Stock sean números
+                if (!decimal.TryParse(txtPrecio.Text, out decimal precio))
+                {
+                    MessageBox.Show("El Precio debe ser un número válido", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!int.TryParse(txtStock.Text, out int stock))
+                {
+                    MessageBox.Show("El Stock debe ser un número entero", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Crear objeto Libro
+                Libro libro = new Libro
+                {
+                    Titulo = txtTitulo.Text,
+                    Codigo = txtCodigo.Text,
+                    Precio = precio,
+                    Stock = stock
+                };
+
+                // Registrar en la base de datos
+                LibroDAO dao = new LibroDAO();
+                dao.RegistrarLibro(libro);
+
+                MessageBox.Show("✓ Libro registrado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Limpiar los campos
+                txtTitulo.Clear();
+                txtCodigo.Clear();
+                txtPrecio.Clear();
+                txtStock.Clear();
+                txtTitulo.Focus();
+
+                // Recargar la lista de libros
+                CargarLibros();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("❌ Error al registrar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // FormRegistroLibro
+            // 
+            this.ClientSize = new System.Drawing.Size(603, 336);
+            this.Name = "FormRegistroLibro";
+            this.ResumeLayout(false);
+
+        }
+    }
+
+
+    public class Libro
+    {
+        public int Id { get; set; }
+        public string Titulo { get; set; }
+        public string Codigo { get; set; }
+        public decimal Precio { get; set; }
+        public int Stock { get; set; }
+    }
+
+
+    public class ConexionBD
+    {
+        private readonly string cadenaConexion =
+            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SBLI;Integrated Security=True";
+
+        public SqlConnection ObtenerConexion()
+        {
+            return new SqlConnection(cadenaConexion);
+        }
+    }
+
+
+    public class LibroDAO
+    {
+        private ConexionBD conexion = new ConexionBD();
+
+        public void RegistrarLibro(Libro libro)
+        {
+            using (SqlConnection conn = conexion.ObtenerConexion())
+            {
+                conn.Open();
+                string query = "INSERT INTO Libros (Titulo, Codigo, Precio, Stock) VALUES (@Titulo, @Codigo, @Precio, @Stock)";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Titulo", libro.Titulo);
+                cmd.Parameters.AddWithValue("@Codigo", libro.Codigo);
+                cmd.Parameters.AddWithValue("@Precio", libro.Precio);
+                cmd.Parameters.AddWithValue("@Stock", libro.Stock);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public List<Libro> ObtenerLibros()
+        {
+            List<Libro> lista = new List<Libro>();
+            using (SqlConnection conn = conexion.ObtenerConexion())
+            {
+                conn.Open();
+                string query = "SELECT Id, Titulo, Codigo, Precio, Stock FROM Libros";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    lista.Add(new Libro
+                    {
+                        Id = reader.GetInt32(0),
+                        Titulo = reader.GetString(1),
+                        Codigo = reader.GetString(2),
+                        Precio = reader.GetDecimal(3),
+                        Stock = reader.GetInt32(4)
+                    });
+                }
+            }
+            return lista;
+        }
+    }
+
+    }

@@ -1,0 +1,136 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\SISTEMADEGESTIONAUMOTRIZ\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B00AE014-F5E5-5370-A525-D2B86E9BEB5D}|SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ.csproj|c:\\users\\olive\\downloads\\office\\visual studio\\sistemadegestionaumotriz\\sistemadegestionaumotriz\\datos\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B00AE014-F5E5-5370-A525-D2B86E9BEB5D}|SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ.csproj|solutionrelative:sistemadegestionaumotriz\\datos\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B00AE014-F5E5-5370-A525-D2B86E9BEB5D}|SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ.csproj|C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\SISTEMADEGESTIONAUMOTRIZ\\sistemadegestionaumotriz\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B00AE014-F5E5-5370-A525-D2B86E9BEB5D}|SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ.csproj|solutionrelative:sistemadegestionaumotriz\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B00AE014-F5E5-5370-A525-D2B86E9BEB5D}|SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ.csproj|c:\\users\\olive\\downloads\\office\\visual studio\\sistemadegestionaumotriz\\sistemadegestionaumotriz\\form2prt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B00AE014-F5E5-5370-A525-D2B86E9BEB5D}|SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ.csproj|solutionrelative:sistemadegestionaumotriz\\form2prt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B00AE014-F5E5-5370-A525-D2B86E9BEB5D}|SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ.csproj|c:\\users\\olive\\downloads\\office\\visual studio\\sistemadegestionaumotriz\\sistemadegestionaumotriz\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B00AE014-F5E5-5370-A525-D2B86E9BEB5D}|SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ.csproj|solutionrelative:sistemadegestionaumotriz\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B00AE014-F5E5-5370-A525-D2B86E9BEB5D}|SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ.csproj|c:\\users\\olive\\downloads\\office\\visual studio\\sistemadegestionaumotriz\\sistemadegestionaumotriz\\servicio\\efservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B00AE014-F5E5-5370-A525-D2B86E9BEB5D}|SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ.csproj|solutionrelative:sistemadegestionaumotriz\\servicio\\efservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B00AE014-F5E5-5370-A525-D2B86E9BEB5D}|SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ.csproj|C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\SISTEMADEGESTIONAUMOTRIZ\\sistemadegestionaumotriz\\form2prt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B00AE014-F5E5-5370-A525-D2B86E9BEB5D}|SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ.csproj|solutionrelative:sistemadegestionaumotriz\\form2prt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B00AE014-F5E5-5370-A525-D2B86E9BEB5D}|SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ.csproj|c:\\users\\olive\\downloads\\office\\visual studio\\sistemadegestionaumotriz\\sistemadegestionaumotriz\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B00AE014-F5E5-5370-A525-D2B86E9BEB5D}|SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ.csproj|solutionrelative:sistemadegestionaumotriz\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EFService.cs",
+              "DocumentMoniker": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ\\Servicio\\EFService.cs",
+              "RelativeDocumentMoniker": "SISTEMADEGESTIONAUMOTRIZ\\Servicio\\EFService.cs",
+              "ToolTip": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ\\Servicio\\EFService.cs*",
+              "RelativeToolTip": "SISTEMADEGESTIONAUMOTRIZ\\Servicio\\EFService.cs*",
+              "ViewState": "AgIAADkAAAAAAAAAAAAowJkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T01:28:17.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ\\Form1.cs",
+              "RelativeDocumentMoniker": "SISTEMADEGESTIONAUMOTRIZ\\Form1.cs",
+              "ToolTip": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ\\Form1.cs",
+              "RelativeToolTip": "SISTEMADEGESTIONAUMOTRIZ\\Form1.cs",
+              "ViewState": "AgIAAIAAAAAAAAAAAAA6wN8AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T00:01:52.365Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Form2PRT.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ\\Form2PRT.cs",
+              "RelativeDocumentMoniker": "SISTEMADEGESTIONAUMOTRIZ\\Form2PRT.cs",
+              "ToolTip": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ\\Form2PRT.cs [Dise\u00F1o]",
+              "RelativeToolTip": "SISTEMADEGESTIONAUMOTRIZ\\Form2PRT.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-21T05:02:52.468Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ\\Program.cs",
+              "RelativeDocumentMoniker": "SISTEMADEGESTIONAUMOTRIZ\\Program.cs",
+              "ToolTip": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ\\Program.cs",
+              "RelativeToolTip": "SISTEMADEGESTIONAUMOTRIZ\\Program.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAiwBcAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-21T04:50:53.151Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form2PRT.cs",
+              "DocumentMoniker": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ\\Form2PRT.cs",
+              "RelativeDocumentMoniker": "SISTEMADEGESTIONAUMOTRIZ\\Form2PRT.cs",
+              "ToolTip": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ\\Form2PRT.cs",
+              "RelativeToolTip": "SISTEMADEGESTIONAUMOTRIZ\\Form2PRT.cs",
+              "ViewState": "AgIAAMkAAAAAAAAAAAA+wPgAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T00:39:53.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ\\Datos\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "SISTEMADEGESTIONAUMOTRIZ\\Datos\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ\\Datos\\AppDbContext.cs",
+              "RelativeToolTip": "SISTEMADEGESTIONAUMOTRIZ\\Datos\\AppDbContext.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAYwB0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T01:05:10.625Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ\\Form1.cs",
+              "RelativeDocumentMoniker": "SISTEMADEGESTIONAUMOTRIZ\\Form1.cs",
+              "ToolTip": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\SISTEMADEGESTIONAUMOTRIZ\\SISTEMADEGESTIONAUMOTRIZ\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "SISTEMADEGESTIONAUMOTRIZ\\Form1.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T07:55:07.324Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

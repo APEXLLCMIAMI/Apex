@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\PROGRAMACIONESCRITORIO\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{50DEBD12-0E85-421D-A9ED-FDAF9E8F150B}|PROGRAMACIONESCRITORIO\\PROGRAMACIONESCRITORIO.csproj|c:\\users\\olive\\downloads\\office\\visual studio\\programacionescritorio\\programacionescritorio\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50DEBD12-0E85-421D-A9ED-FDAF9E8F150B}|PROGRAMACIONESCRITORIO\\PROGRAMACIONESCRITORIO.csproj|solutionrelative:programacionescritorio\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50DEBD12-0E85-421D-A9ED-FDAF9E8F150B}|PROGRAMACIONESCRITORIO\\PROGRAMACIONESCRITORIO.csproj|c:\\users\\olive\\downloads\\office\\visual studio\\programacionescritorio\\programacionescritorio\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50DEBD12-0E85-421D-A9ED-FDAF9E8F150B}|PROGRAMACIONESCRITORIO\\PROGRAMACIONESCRITORIO.csproj|solutionrelative:programacionescritorio\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50DEBD12-0E85-421D-A9ED-FDAF9E8F150B}|PROGRAMACIONESCRITORIO\\PROGRAMACIONESCRITORIO.csproj|c:\\users\\olive\\downloads\\office\\visual studio\\programacionescritorio\\programacionescritorio\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{50DEBD12-0E85-421D-A9ED-FDAF9E8F150B}|PROGRAMACIONESCRITORIO\\PROGRAMACIONESCRITORIO.csproj|solutionrelative:programacionescritorio\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\PROGRAMACIONESCRITORIO\\PROGRAMACIONESCRITORIO\\Form1.cs",
+              "RelativeDocumentMoniker": "PROGRAMACIONESCRITORIO\\Form1.cs",
+              "ToolTip": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\PROGRAMACIONESCRITORIO\\PROGRAMACIONESCRITORIO\\Form1.cs*",
+              "RelativeToolTip": "PROGRAMACIONESCRITORIO\\Form1.cs*",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAkwCoAAAB5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T01:32:48.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApiService.cs",
+              "DocumentMoniker": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\PROGRAMACIONESCRITORIO\\PROGRAMACIONESCRITORIO\\ApiService.cs",
+              "RelativeDocumentMoniker": "PROGRAMACIONESCRITORIO\\ApiService.cs",
+              "ToolTip": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\PROGRAMACIONESCRITORIO\\PROGRAMACIONESCRITORIO\\ApiService.cs",
+              "RelativeToolTip": "PROGRAMACIONESCRITORIO\\ApiService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T01:24:02.665Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\PROGRAMACIONESCRITORIO\\PROGRAMACIONESCRITORIO\\Form1.cs",
+              "RelativeDocumentMoniker": "PROGRAMACIONESCRITORIO\\Form1.cs",
+              "ToolTip": "C:\\Users\\olive\\Downloads\\OFFICE\\VISUAL STUDIO\\PROGRAMACIONESCRITORIO\\PROGRAMACIONESCRITORIO\\Form1.cs [Dise\u00F1o]*",
+              "RelativeToolTip": "PROGRAMACIONESCRITORIO\\Form1.cs [Dise\u00F1o]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T01:20:38.449Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

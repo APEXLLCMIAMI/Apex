@@ -1,0 +1,6 @@
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\EJE_1\EJE_1\obj\Debug\net10.0-windows\EJE_1.Form1.resources
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\EJE_1\EJE_1\obj\Debug\net10.0-windows\EJE_1.csproj.GenerateResource.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\EJE_1\EJE_1\obj\Debug\net10.0-windows\EJE_1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\EJE_1\EJE_1\obj\Debug\net10.0-windows\EJE_1.AssemblyInfoInputs.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\EJE_1\EJE_1\obj\Debug\net10.0-windows\EJE_1.AssemblyInfo.cs
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\EJE_1\EJE_1\obj\Debug\net10.0-windows\EJE_1.csproj.CoreCompileInputs.cache

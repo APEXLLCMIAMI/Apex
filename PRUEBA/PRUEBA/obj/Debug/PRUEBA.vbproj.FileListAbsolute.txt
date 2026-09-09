@@ -1,0 +1,12 @@
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\PRUEBA\PRUEBA\bin\Debug\PRUEBA.exe.config
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\PRUEBA\PRUEBA\bin\Debug\PRUEBA.exe
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\PRUEBA\PRUEBA\bin\Debug\PRUEBA.pdb
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\PRUEBA\PRUEBA\bin\Debug\PRUEBA.xml
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\PRUEBA\PRUEBA\obj\Debug\PRUEBA.vbproj.AssemblyReference.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\PRUEBA\PRUEBA\obj\Debug\PRUEBA.Form1.resources
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\PRUEBA\PRUEBA\obj\Debug\PRUEBA.Resources.resources
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\PRUEBA\PRUEBA\obj\Debug\PRUEBA.vbproj.GenerateResource.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\PRUEBA\PRUEBA\obj\Debug\PRUEBA.vbproj.CoreCompileInputs.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\PRUEBA\PRUEBA\obj\Debug\PRUEBA.exe
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\PRUEBA\PRUEBA\obj\Debug\PRUEBA.xml
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\PRUEBA\PRUEBA\obj\Debug\PRUEBA.pdb

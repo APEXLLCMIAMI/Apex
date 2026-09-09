@@ -1,0 +1,16 @@
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejer 02\ejer 02\bin\Debug\net10.0-windows\ejer 02.exe
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejer 02\ejer 02\bin\Debug\net10.0-windows\ejer 02.deps.json
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejer 02\ejer 02\bin\Debug\net10.0-windows\ejer 02.runtimeconfig.json
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejer 02\ejer 02\bin\Debug\net10.0-windows\ejer 02.dll
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejer 02\ejer 02\bin\Debug\net10.0-windows\ejer 02.pdb
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejer 02\ejer 02\obj\Debug\net10.0-windows\ejer_02.Form1.resources
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejer 02\ejer 02\obj\Debug\net10.0-windows\ejer 02.csproj.GenerateResource.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejer 02\ejer 02\obj\Debug\net10.0-windows\ejer 02.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejer 02\ejer 02\obj\Debug\net10.0-windows\ejer 02.AssemblyInfoInputs.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejer 02\ejer 02\obj\Debug\net10.0-windows\ejer 02.AssemblyInfo.cs
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejer 02\ejer 02\obj\Debug\net10.0-windows\ejer 02.csproj.CoreCompileInputs.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejer 02\ejer 02\obj\Debug\net10.0-windows\ejer 02.dll
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejer 02\ejer 02\obj\Debug\net10.0-windows\refint\ejer 02.dll
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejer 02\ejer 02\obj\Debug\net10.0-windows\ejer 02.pdb
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejer 02\ejer 02\obj\Debug\net10.0-windows\ejer 02.genruntimeconfig.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\ejer 02\ejer 02\obj\Debug\net10.0-windows\ref\ejer 02.dll

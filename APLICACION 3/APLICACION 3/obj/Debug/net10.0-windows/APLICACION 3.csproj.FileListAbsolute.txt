@@ -1,0 +1,16 @@
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\APLICACION 3\APLICACION 3\bin\Debug\net10.0-windows\APLICACION 3.exe
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\APLICACION 3\APLICACION 3\bin\Debug\net10.0-windows\APLICACION 3.deps.json
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\APLICACION 3\APLICACION 3\bin\Debug\net10.0-windows\APLICACION 3.runtimeconfig.json
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\APLICACION 3\APLICACION 3\bin\Debug\net10.0-windows\APLICACION 3.dll
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\APLICACION 3\APLICACION 3\bin\Debug\net10.0-windows\APLICACION 3.pdb
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\APLICACION 3\APLICACION 3\obj\Debug\net10.0-windows\APLICACION_3.Form1.resources
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\APLICACION 3\APLICACION 3\obj\Debug\net10.0-windows\APLICACION 3.csproj.GenerateResource.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\APLICACION 3\APLICACION 3\obj\Debug\net10.0-windows\APLICACION 3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\APLICACION 3\APLICACION 3\obj\Debug\net10.0-windows\APLICACION 3.AssemblyInfoInputs.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\APLICACION 3\APLICACION 3\obj\Debug\net10.0-windows\APLICACION 3.AssemblyInfo.cs
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\APLICACION 3\APLICACION 3\obj\Debug\net10.0-windows\APLICACION 3.csproj.CoreCompileInputs.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\APLICACION 3\APLICACION 3\obj\Debug\net10.0-windows\APLICACION 3.dll
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\APLICACION 3\APLICACION 3\obj\Debug\net10.0-windows\refint\APLICACION 3.dll
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\APLICACION 3\APLICACION 3\obj\Debug\net10.0-windows\APLICACION 3.pdb
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\APLICACION 3\APLICACION 3\obj\Debug\net10.0-windows\APLICACION 3.genruntimeconfig.cache
+C:\Users\olive\Downloads\OFFICE\VISUAL STUDIO\APLICACION 3\APLICACION 3\obj\Debug\net10.0-windows\ref\APLICACION 3.dll

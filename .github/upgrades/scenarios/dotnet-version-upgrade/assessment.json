@@ -1,0 +1,720 @@
+{
+  "settings": {
+    "components": {
+      "code": true,
+      "binaries": false
+    },
+    "targetId": "net10.0",
+    "targetDisplayName": ".NETCoreApp,Version=v10.0"
+  },
+  "analysisStartTime": "2026-07-02T19:50:26.5363186Z",
+  "analysisEndTime": "2026-07-02T19:50:26.8588724Z",
+  "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2270980",
+  "stats": {
+    "summary": {
+      "projects": 1,
+      "issues": 6,
+      "incidents": 26,
+      "effort": 26
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 24,
+        "Optional": 0,
+        "Potential": 2,
+        "Information": 0
+      },
+      "category": {
+        "Project": 2,
+        "Api": 24
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "EXAMEN01\\EXAMEN01.csproj",
+      "startingProject": true,
+      "issues": 4,
+      "storyPoints": 26,
+      "properties": {
+        "appName": "EXAMEN01",
+        "projectKind": "ClassicWinForms",
+        "frameworks": [
+          "net472"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": false,
+        "numberOfFiles": 8,
+        "numberOfCodeFiles": 6,
+        "linesTotal": 453,
+        "linesOfCode": 216,
+        "totalApiScanned": 83,
+        "minLinesOfCodeToChange": 24,
+        "maxLinesOfCodeToChange": 24
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "bec67087-94b0-4834-b452-ae24535c92e7",
+          "ruleId": "Project.0001",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "EXAMEN01\\EXAMEN01.csproj"
+          }
+        },
+        {
+          "incidentId": "d2536e49-af53-4c54-9250-ae160b2da7da",
+          "ruleId": "Project.0002",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Marco de destino actual: .NETFramework,Version=v4.7.2\nMarco de destino recomendado: net10.0-windows",
+              "protected": "Marco de destino actual: .NETFramework,Version=v4.7.2\nMarco de destino recomendado: net10.0-windows"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\EXAMEN01.csproj",
+            "snippet": "Marco de destino actual: .NETFramework,Version=v4.7.2\nMarco de destino recomendado: net10.0-windows",
+            "protectedSnippet": "Marco de destino actual: .NETFramework,Version=v4.7.2\nMarco de destino recomendado: net10.0-windows",
+            "properties": {
+              "CurrentTargetFramework": ".NETFramework,Version=v4.7.2",
+              "RecommendedTargetFramework": "net10.0-windows"
+            }
+          }
+        },
+        {
+          "incidentId": "ad06cdfc-8319-46ff-8b15-ca4fd182f584",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "ApplicationSettingsBase",
+              "protected": "M:System.Configuration.ApplicationSettingsBase.#ctor"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Properties\\Settings.Designer.cs",
+            "snippet": "ApplicationSettingsBase",
+            "protectedSnippet": "M:System.Configuration.ApplicationSettingsBase.#ctor",
+            "label": "M:System.Configuration.ApplicationSettingsBase.#ctor",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 16,
+            "column": 74
+          }
+        },
+        {
+          "incidentId": "9aa69795-2739-440e-96b8-53324d73b6de",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "ApplicationSettingsBase",
+              "protected": "T:System.Configuration.ApplicationSettingsBase"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Properties\\Settings.Designer.cs",
+            "snippet": "ApplicationSettingsBase",
+            "protectedSnippet": "T:System.Configuration.ApplicationSettingsBase",
+            "label": "T:System.Configuration.ApplicationSettingsBase",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 16,
+            "column": 74
+          }
+        },
+        {
+          "incidentId": "21432f8a-6f57-4289-bab2-8b8c467b9e74",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Application.Run(new Form1());",
+              "protected": "T:System.Windows.Forms.Application"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Program.cs",
+            "snippet": "Application.Run(new Form1());",
+            "protectedSnippet": "T:System.Windows.Forms.Application",
+            "label": "T:System.Windows.Forms.Application",
+            "line": 18,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "32dbb54b-854d-45da-93ac-194a75c32b54",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Application.Run(new Form1());",
+              "protected": "M:System.Windows.Forms.Application.Run(System.Windows.Forms.Form)"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Program.cs",
+            "snippet": "Application.Run(new Form1());",
+            "protectedSnippet": "M:System.Windows.Forms.Application.Run(System.Windows.Forms.Form)",
+            "label": "M:System.Windows.Forms.Application.Run(System.Windows.Forms.Form)",
+            "line": 18,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "4af6211e-b886-46cb-9b1b-3c8e83a17c7a",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Application.SetCompatibleTextRenderingDefault(false);",
+              "protected": "T:System.Windows.Forms.Application"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Program.cs",
+            "snippet": "Application.SetCompatibleTextRenderingDefault(false);",
+            "protectedSnippet": "T:System.Windows.Forms.Application",
+            "label": "T:System.Windows.Forms.Application",
+            "line": 17,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "c8e57f9b-de1e-448a-b386-9fa03fd6e116",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Application.SetCompatibleTextRenderingDefault(false);",
+              "protected": "M:System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(System.Boolean)"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Program.cs",
+            "snippet": "Application.SetCompatibleTextRenderingDefault(false);",
+            "protectedSnippet": "M:System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(System.Boolean)",
+            "label": "M:System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(System.Boolean)",
+            "line": 17,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "d3591987-7a8e-43a2-a00d-67704969f729",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Application.EnableVisualStyles();",
+              "protected": "T:System.Windows.Forms.Application"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Program.cs",
+            "snippet": "Application.EnableVisualStyles();",
+            "protectedSnippet": "T:System.Windows.Forms.Application",
+            "label": "T:System.Windows.Forms.Application",
+            "line": 16,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "1433f2c9-527e-453b-a4ee-82b278b65263",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Application.EnableVisualStyles();",
+              "protected": "M:System.Windows.Forms.Application.EnableVisualStyles"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Program.cs",
+            "snippet": "Application.EnableVisualStyles();",
+            "protectedSnippet": "M:System.Windows.Forms.Application.EnableVisualStyles",
+            "label": "M:System.Windows.Forms.Application.EnableVisualStyles",
+            "line": 16,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "77d217ce-5435-4b63-b3e5-303bab9ef0bd",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public Form1()\r\n        {\r\n            InitializeComponent();\r\n        }",
+              "protected": "M:System.Windows.Forms.Form.#ctor"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Form1.cs",
+            "snippet": "public Form1()\r\n        {\r\n            InitializeComponent();\r\n        }",
+            "protectedSnippet": "M:System.Windows.Forms.Form.#ctor",
+            "label": "M:System.Windows.Forms.Form.#ctor",
+            "line": 14,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "3211aa9f-35ee-4fde-90f9-d89780f6c725",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.ResumeLayout(false);",
+              "protected": "M:System.Windows.Forms.Control.ResumeLayout(System.Boolean)"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Form1.Designer.cs",
+            "snippet": "this.ResumeLayout(false);",
+            "protectedSnippet": "M:System.Windows.Forms.Control.ResumeLayout(System.Boolean)",
+            "label": "M:System.Windows.Forms.Control.ResumeLayout(System.Boolean)",
+            "line": 40,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "01caf754-3a02-4b1e-83af-98316e237879",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.Load \u002B= new System.EventHandler(this.Form1_Load);",
+              "protected": "E:System.Windows.Forms.Form.Load"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Form1.Designer.cs",
+            "snippet": "this.Load \u002B= new System.EventHandler(this.Form1_Load);",
+            "protectedSnippet": "E:System.Windows.Forms.Form.Load",
+            "label": "E:System.Windows.Forms.Form.Load",
+            "line": 39,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "5191065d-b0cb-41de-9ce8-0a19552554b0",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.Text = \u0022Form1\u0022;",
+              "protected": "P:System.Windows.Forms.Form.Text"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Form1.Designer.cs",
+            "snippet": "this.Text = \u0022Form1\u0022;",
+            "protectedSnippet": "P:System.Windows.Forms.Form.Text",
+            "label": "P:System.Windows.Forms.Form.Text",
+            "line": 38,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "d85cd828-8968-4a18-b3a3-af5c3a10260a",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.Name = \u0022Form1\u0022;",
+              "protected": "P:System.Windows.Forms.Control.Name"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Form1.Designer.cs",
+            "snippet": "this.Name = \u0022Form1\u0022;",
+            "protectedSnippet": "P:System.Windows.Forms.Control.Name",
+            "label": "P:System.Windows.Forms.Control.Name",
+            "line": 37,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "8fe63f0e-23bb-415b-8250-e5c724baf956",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.ClientSize = new System.Drawing.Size(800, 450);",
+              "protected": "P:System.Windows.Forms.Form.ClientSize"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Form1.Designer.cs",
+            "snippet": "this.ClientSize = new System.Drawing.Size(800, 450);",
+            "protectedSnippet": "P:System.Windows.Forms.Form.ClientSize",
+            "label": "P:System.Windows.Forms.Form.ClientSize",
+            "line": 36,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "9bf1e9e3-63b0-4042-bf4f-d2ffc3ebe0d1",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;",
+              "protected": "T:System.Windows.Forms.AutoScaleMode"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Form1.Designer.cs",
+            "snippet": "this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;",
+            "protectedSnippet": "T:System.Windows.Forms.AutoScaleMode",
+            "label": "T:System.Windows.Forms.AutoScaleMode",
+            "line": 35,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "ebe0dc09-ca3f-4daf-a15a-2a23a69cc321",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;",
+              "protected": "T:System.Windows.Forms.AutoScaleMode"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Form1.Designer.cs",
+            "snippet": "this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;",
+            "protectedSnippet": "T:System.Windows.Forms.AutoScaleMode",
+            "label": "T:System.Windows.Forms.AutoScaleMode",
+            "line": 35,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "edf32873-d5f5-44c0-b527-b0b2ec4a7474",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;",
+              "protected": "F:System.Windows.Forms.AutoScaleMode.Font"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Form1.Designer.cs",
+            "snippet": "this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;",
+            "protectedSnippet": "F:System.Windows.Forms.AutoScaleMode.Font",
+            "label": "F:System.Windows.Forms.AutoScaleMode.Font",
+            "line": 35,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "17bc459a-03e6-4bdf-b8c0-adb96b21161e",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;",
+              "protected": "T:System.Windows.Forms.AutoScaleMode"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Form1.Designer.cs",
+            "snippet": "this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;",
+            "protectedSnippet": "T:System.Windows.Forms.AutoScaleMode",
+            "label": "T:System.Windows.Forms.AutoScaleMode",
+            "line": 35,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "0c69589f-2d74-4b4b-af3f-a7ef14f9aa24",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;",
+              "protected": "P:System.Windows.Forms.ContainerControl.AutoScaleMode"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Form1.Designer.cs",
+            "snippet": "this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;",
+            "protectedSnippet": "P:System.Windows.Forms.ContainerControl.AutoScaleMode",
+            "label": "P:System.Windows.Forms.ContainerControl.AutoScaleMode",
+            "line": 35,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "3e0ddf9a-de74-4cfc-b2c7-ac8a6fcb284c",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);",
+              "protected": "P:System.Windows.Forms.ContainerControl.AutoScaleDimensions"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Form1.Designer.cs",
+            "snippet": "this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);",
+            "protectedSnippet": "P:System.Windows.Forms.ContainerControl.AutoScaleDimensions",
+            "label": "P:System.Windows.Forms.ContainerControl.AutoScaleDimensions",
+            "line": 34,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "f8fce9f4-7dfb-4126-ae26-f7cdb7f0cbbd",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.SuspendLayout();",
+              "protected": "M:System.Windows.Forms.Control.SuspendLayout"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Form1.Designer.cs",
+            "snippet": "this.SuspendLayout();",
+            "protectedSnippet": "M:System.Windows.Forms.Control.SuspendLayout",
+            "label": "M:System.Windows.Forms.Control.SuspendLayout",
+            "line": 30,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "b665d563-ccc0-4bdf-9089-300474c3c3e2",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "base.Dispose(disposing);",
+              "protected": "M:System.Windows.Forms.Form.Dispose(System.Boolean)"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Form1.Designer.cs",
+            "snippet": "base.Dispose(disposing);",
+            "protectedSnippet": "M:System.Windows.Forms.Form.Dispose(System.Boolean)",
+            "label": "M:System.Windows.Forms.Form.Dispose(System.Boolean)",
+            "line": 19,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "c4a34670-26f0-4b79-93fa-ce73a878bfe5",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public Form1()\r\n        {\r\n            InitializeComponent();\r\n        }",
+              "protected": "M:System.Windows.Forms.Form.#ctor"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Form1.cs",
+            "snippet": "public Form1()\r\n        {\r\n            InitializeComponent();\r\n        }",
+            "protectedSnippet": "M:System.Windows.Forms.Form.#ctor",
+            "label": "M:System.Windows.Forms.Form.#ctor",
+            "line": 14,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "ae560345-874f-4070-b586-ea332641526c",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "EXAMEN01\\EXAMEN01.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Form",
+              "protected": "T:System.Windows.Forms.Form"
+            },
+            "kind": "File",
+            "path": "EXAMEN01\\Form1.cs",
+            "snippet": "Form",
+            "protectedSnippet": "T:System.Windows.Forms.Form",
+            "label": "T:System.Windows.Forms.Form",
+            "line": 12,
+            "column": 33
+          }
+        }
+      ],
+      "features": [
+        {
+          "featureId": "LegacyConfiguration",
+          "incidents": [
+            "9aa69795-2739-440e-96b8-53324d73b6de",
+            "ad06cdfc-8319-46ff-8b15-ca4fd182f584"
+          ]
+        },
+        {
+          "featureId": "WinForms",
+          "incidents": [
+            "ae560345-874f-4070-b586-ea332641526c",
+            "c4a34670-26f0-4b79-93fa-ce73a878bfe5",
+            "b665d563-ccc0-4bdf-9089-300474c3c3e2",
+            "f8fce9f4-7dfb-4126-ae26-f7cdb7f0cbbd",
+            "3e0ddf9a-de74-4cfc-b2c7-ac8a6fcb284c",
+            "0c69589f-2d74-4b4b-af3f-a7ef14f9aa24",
+            "17bc459a-03e6-4bdf-b8c0-adb96b21161e",
+            "edf32873-d5f5-44c0-b527-b0b2ec4a7474",
+            "ebe0dc09-ca3f-4daf-a15a-2a23a69cc321",
+            "9bf1e9e3-63b0-4042-bf4f-d2ffc3ebe0d1",
+            "8fe63f0e-23bb-415b-8250-e5c724baf956",
+            "d85cd828-8968-4a18-b3a3-af5c3a10260a",
+            "5191065d-b0cb-41de-9ce8-0a19552554b0",
+            "01caf754-3a02-4b1e-83af-98316e237879",
+            "3211aa9f-35ee-4fde-90f9-d89780f6c725",
+            "77d217ce-5435-4b63-b3e5-303bab9ef0bd",
+            "1433f2c9-527e-453b-a4ee-82b278b65263",
+            "d3591987-7a8e-43a2-a00d-67704969f729",
+            "c8e57f9b-de1e-448a-b386-9fa03fd6e116",
+            "4af6211e-b886-46cb-9b1b-3c8e83a17c7a",
+            "32dbb54b-854d-45da-93ac-194a75c32b54",
+            "21432f8a-6f57-4289-bab2-8b8c467b9e74"
+          ]
+        }
+      ]
+    }
+  ],
+  "rules": {
+    "Project.0001": {
+      "id": "Project.0001",
+      "isFeature": false,
+      "description": "El archivo de proyecto debe convertirse al estilo SDK. Los proyectos modernos de .NET Framework requieren un cambio en el formato de archivo del proyecto y usan el SDK correspondiente al tipo y la funcionalidad del proyecto.",
+      "label": "El archivo de proyecto debe convertirse al estilo SDK",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Informaci\u00F3n general sobre la portabilidad de .NET Framework a .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": "SDK de proyecto .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    },
+    "Project.0002": {
+      "id": "Project.0002",
+      "isFeature": false,
+      "description": "El marco de destino del proyecto deben cambiarse al nuevo marco de destino que seleccion\u00F3 para esta actualizaci\u00F3n.\n\nDurante la actualizaci\u00F3n, el marco de destino se ajustar\u00E1 a la plataforma correspondiente cuando proceda. En algunos casos, el proyecto dar\u00EDa como resultado varios marcos de destino despu\u00E9s de la actualizaci\u00F3n si usara caracter\u00EDsticas que ahora tienen sus propias plataformas en marcos de .NET modernos (windows, iOS, Android, etc.).",
+      "label": "Es necesario cambiar el marco de destino del proyecto",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Informaci\u00F3n general sobre la portabilidad de .NET Framework a .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": "SDK de proyecto .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    },
+    "Api.0002": {
+      "id": "Api.0002",
+      "isFeature": false,
+      "description": "La API es incompatible a nivel de origen para la versi\u00F3n de .NET seleccionada: requiere cambios en el c\u00F3digo para compilarse correctamente cuando se dirige a una nueva versi\u00F3n, como eliminar API obsoletas o cambiar las firmas de los m\u00E9todos.",
+      "label": "El origen no es compatible con la versi\u00F3n de .NET seleccionada",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Cambios importantes en .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679",
+          "isCustom": false
+        }
+      ]
+    },
+    "Api.0001": {
+      "id": "Api.0001",
+      "isFeature": false,
+      "description": "La API es binariamente incompatible con la versi\u00F3n de .NET seleccionada: afecta a los archivos binarios existentes y suele requerir recompilaci\u00F3n, porque la API ha cambiado de forma que impide que los binarios antiguos se carguen o ejecuten.",
+      "label": "Binario incompatible para la versi\u00F3n de .NET seleccionada",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Cambios importantes en .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679",
+          "isCustom": false
+        }
+      ]
+    },
+    "LegacyConfiguration": {
+      "id": "LegacyConfiguration",
+      "isFeature": false,
+      "description": "Legacy XML-based configuration system (app.config/web.config) that has been replaced by a more flexible configuration model in .NET Core. The old system was rigid and XML-based. Migrate to Microsoft.Extensions.Configuration with JSON/environment variables; use System.Configuration.ConfigurationManager NuGet package as interim bridge if needed.",
+      "label": "Legacy Configuration System",
+      "severity": "Mandatory",
+      "effort": 2,
+      "links": [
+        {
+          "title": "Configuration in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2341702",
+          "isCustom": false
+        }
+      ]
+    },
+    "WinForms": {
+      "id": "WinForms",
+      "isFeature": false,
+      "description": "Windows Forms APIs for building Windows desktop applications with traditional Forms-based UI that are available in .NET on Windows. Enable Windows Desktop support: Option 1 (Recommended): Target net9.0-windows; Option 2: Add \u003CUseWindowsDesktop\u003Etrue\u003C/UseWindowsDesktop\u003E; Option 3 (Legacy): Use Microsoft.NET.Sdk.WindowsDesktop SDK.",
+      "label": "Windows Forms",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Windows Forms on .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2341906",
+          "isCustom": false
+        }
+      ]
+    }
+  }
+}
