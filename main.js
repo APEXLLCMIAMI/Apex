@@ -4,12 +4,9 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // --- 0. Language state (declared early so all handlers can access it) ---
-  let currentLang = 'en';
-
-  // --- 1. Sticky Header Scroll Effect (Apple-style: gains shadow on scroll) ---
+  // --- 1. Sticky Header Scroll Effect ---
   const header = document.getElementById('site-header');
-  const scrollThreshold = 40;
+  const scrollThreshold = 50;
 
   function handleScroll() {
     if (window.scrollY > scrollThreshold) {
@@ -19,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   
-  window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener('scroll', handleScroll);
   handleScroll(); // Initial check on load
 
 
@@ -254,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 7. Language Toggle (EN / ES) ---
   const translateBtn = document.getElementById('translate-btn');
-  // Note: currentLang is declared at the top of DOMContentLoaded (Section 0)
+  let currentLang = 'en';
 
   const T = {
     en: {
@@ -837,58 +834,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (activePanel) activePanel.classList.add('active');
     });
   });
-
-
-  // --- 9. Scroll-Reveal Animations (Apple-style fade-up on scroll) ---
-  function setupScrollReveal() {
-    // Programmatically mark elements that should animate in
-    const targets = [
-      '.section-header',
-      '.hero-visual-card',
-      '.pillar-item',
-      '.pricing-rows',
-      '.pricing-cta-row',
-      '.coverage-content',
-      '.coverage-map-visual',
-      '.contact-info-block',
-      '.form-container-card',
-      '.meta-box',
-      '.office-includes-box',
-      '.office-sqft-table-wrapper',
-    ];
-
-    targets.forEach(selector => {
-      document.querySelectorAll(selector).forEach(el => {
-        el.setAttribute('data-animate', '');
-      });
-    });
-
-    // Stagger sibling pillar items
-    document.querySelectorAll('.pillar-item').forEach((el, i) => {
-      el.setAttribute('data-animate-delay', String(Math.min(i + 1, 5)));
-    });
-
-    // Stagger meta boxes
-    document.querySelectorAll('.meta-box').forEach((el, i) => {
-      el.setAttribute('data-animate-delay', String(Math.min(i + 1, 5)));
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.08,
-      rootMargin: '0px 0px -50px 0px'
-    });
-
-    document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
-  }
-
-  setupScrollReveal();
 
 });
 
