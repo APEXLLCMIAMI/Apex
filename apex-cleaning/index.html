@@ -8,6 +8,27 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <script>
+    // Reset reloads before the browser restores a scroll position or follows a fragment.
+    // Normal visits and in-page navigation keep their section links.
+    if (performance.getEntriesByType('navigation')[0]?.type === 'reload') {
+      const previousRestoration = history.scrollRestoration;
+      history.scrollRestoration = 'manual';
+      if (location.hash) {
+        history.replaceState(history.state, '', location.pathname + location.search);
+      }
+      const returnToStart = () => window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.addEventListener('DOMContentLoaded', returnToStart, { once: true });
+      window.addEventListener('pageshow', () => {
+        returnToStart();
+        requestAnimationFrame(() => {
+          returnToStart();
+          history.scrollRestoration = previousRestoration;
+        });
+      }, { once: true });
+    }
+  </script>
+
   <title>Apex Elite Cleaning Services | Luxury Residential & Commercial Cleaning in Miami</title>
 
   <meta name="description"
