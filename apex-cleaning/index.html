@@ -25,15 +25,6 @@
 
 
 
-  <!-- Google Fonts: Inter -->
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
-
   <!-- Preconnect performance hint -->
   <link rel="preload" href="style.css" as="style">
 
@@ -41,10 +32,12 @@
 
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="refinement.css">
 
 </head>
 
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
 
 
@@ -124,7 +117,7 @@
         <button class="lang-toggle-btn" id="translate-btn" aria-label="Translate page"><span
             class="lang-icon">🌐</span><span class="lang-text"> Ver en Español</span></button>
 
-        <button class="mobile-nav-toggle" aria-label="Toggle Navigation Menu">
+        <button class="mobile-nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu-drawer">
 
           <span class="hamburger-bar"></span>
 
@@ -144,7 +137,7 @@
 
   <!-- Mobile Menu Drawer -->
 
-  <div class="mobile-menu-drawer" id="mobile-menu-drawer">
+  <div class="mobile-menu-drawer" id="mobile-menu-drawer" inert>
 
     <nav class="mobile-nav" aria-label="Mobile Navigation">
 
@@ -170,146 +163,29 @@
 
 
 
-  <main>
-
-    <!-- HERO SECTION (Above the Fold) -->
+  <main id="main-content">
 
     <section class="hero-section" id="hero">
-
-      <div class="hero-bg-overlay"></div>
-
       <div class="container hero-container">
-
         <div class="hero-content">
-
-          <div class="badge-row">
-
-            <span class="hero-badge">Miami's Most Trusted Cleaning Team</span>
-
-            <span class="hero-badge badge-outline">Licensed, Bonded & Insured</span>
-
-          </div>
-
-          <h1 class="hero-title">
-
-            Luxury Cleaning Services in Miami: <span class="highlight-text">Impeccable Spaces, Absolute
-              Confidence.</span>
-
-          </h1>
-
-          <p class="hero-description">
-
-            Experience the peace of mind that comes with a cleaning service built on trust, discretion, and obsessive
-            attention to detail — for your home and your business.
-
-          </p>
-
+          <div class="badge-row"><span class="hero-badge">MIAMI · RESIDENTIAL & COMMERCIAL</span></div>
+          <h1 class="hero-title">A cleaner space.<br><span class="highlight-text">A lighter day.</span></h1>
+          <p class="hero-description">Come home to a space that feels as good as it looks. Thoughtful cleaning for homes and businesses across Miami.</p>
           <div class="hero-cta-group">
-
-            <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
-
-            <a href="#services" class="btn btn-secondary">Explore Services</a>
-
+            <a href="#contact" class="btn btn-primary">Get a free quote</a>
+            <a href="#services" class="btn btn-secondary">Explore services</a>
           </div>
-
           <div class="hero-trust-indicators">
-
-            <div class="trust-indicator">
-
-              <span class="indicator-icon">✓</span>
-
-              <span class="indicator-text">2-Hour Operations Response</span>
-
-            </div>
-
-            <div class="trust-indicator">
-
-              <span class="indicator-icon">✓</span>
-
-              <span class="indicator-text">100% Background-Vetted Team</span>
-
-            </div>
-
+            <div class="trust-indicator"><span class="indicator-icon" aria-hidden="true">✓</span><span class="indicator-text">Licensed & insured</span></div>
+            <div class="trust-indicator"><span class="indicator-icon" aria-hidden="true">✓</span><span class="indicator-text">Background-checked team</span></div>
           </div>
-
         </div>
-
-
-
-        <!-- Interactive visual hero card representing operations control -->
-
-        <div class="hero-visual-card">
-
-          <div class="visual-card-header">
-
-            <div class="status-indicator-dot"></div>
-
-            <span class="status-indicator-text">Operations Live & Fully Booked</span>
-
-          </div>
-
-          <div class="visual-card-metrics">
-
-            <div class="metric-item">
-
-              <span class="metric-val">10k+</span>
-
-              <span class="metric-label">Cleanings Completed</span>
-
-            </div>
-
-          </div>
-
-          <div class="visual-card-checklist">
-
-            <div class="checklist-item done">
-
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-
-              <span>Property Manager Approved Protocols</span>
-
-            </div>
-
-            <div class="checklist-item done">
-
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-
-              <span>EPA-Approved Disinfectants Only</span>
-
-            </div>
-
-            <div class="checklist-item done">
-
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-
-              <span>Instant Photo Verification Reports</span>
-
-            </div>
-
-          </div>
-
-          <div class="visual-card-cta-wrapper">
-
-            <a href="#contact" class="btn btn-accent-outline btn-full-width">Book Property Walkthrough</a>
-
-          </div>
-
-        </div>
-
+        <figure class="hero-photo">
+          <img src="images/hero-living-room.webp" srcset="images/hero-living-room-640.webp 640w, images/hero-living-room.webp 1024w" sizes="(max-width: 700px) calc(100vw - 44px), (max-width: 1248px) 46vw, 560px" alt="Bright Miami living room with floor-to-ceiling windows overlooking the water" width="1024" height="1024" fetchpriority="high">
+          <figcaption><span class="photo-caption-label">THE APEX STANDARD</span><span class="photo-caption-text">Care in every detail.</span><span class="photo-caption-mark" aria-hidden="true">↗</span></figcaption>
+        </figure>
       </div>
-
     </section>
-
-
 
     <!-- SERVICES SECTION -->
     <section class="pricing-section" id="services">
@@ -325,16 +201,16 @@
         </div>
 
         <!-- Service Tab Buttons -->
-        <div class="pricing-tabs" role="tablist">
-          <button class="pricing-tab active" data-tab="basic" role="tab" aria-selected="true" id="tab-basic">Standard
+        <div class="pricing-tabs" role="tablist" aria-label="Cleaning services">
+          <button class="pricing-tab active" data-tab="basic" role="tab" aria-selected="true" id="tab-basic" aria-controls="panel-basic" tabindex="0">Standard
             Cleaning</button>
-          <button class="pricing-tab" data-tab="deep" role="tab" aria-selected="false" id="tab-deep">Deep
+          <button class="pricing-tab" data-tab="deep" role="tab" aria-selected="false" id="tab-deep" aria-controls="panel-deep" tabindex="-1">Deep
             Cleaning</button>
-          <button class="pricing-tab" data-tab="move" role="tab" aria-selected="false" id="tab-move">Move In / Move
+          <button class="pricing-tab" data-tab="move" role="tab" aria-selected="false" id="tab-move" aria-controls="panel-move" tabindex="-1">Move In / Move
             Out</button>
-          <button class="pricing-tab" data-tab="large" role="tab" aria-selected="false" id="tab-large">Large Homes /
+          <button class="pricing-tab" data-tab="large" role="tab" aria-selected="false" id="tab-large" aria-controls="panel-large" tabindex="-1">Large Homes /
             2-Story</button>
-          <button class="pricing-tab" data-tab="office" role="tab" aria-selected="false" id="tab-office">Offices /
+          <button class="pricing-tab" data-tab="office" role="tab" aria-selected="false" id="tab-office" aria-controls="panel-office" tabindex="-1">Offices /
             Commercial</button>
         </div>
 
@@ -945,8 +821,6 @@
 
             <!-- FormSubmit direct email routing -->
 
-            <input type="hidden" name="_replyto" value="apexllcmiami@gmail.com">
-
             <input type="hidden" name="_subject" value="New Quote Request — Apex LLC">
 
             <h3 class="form-card-title">Request Your Free Quote</h3>
@@ -961,7 +835,7 @@
 
                 <label for="full-name" class="form-label">Full Name <span class="required">*</span></label>
 
-                <input type="text" id="full-name" name="fullName" class="form-input" placeholder="e.g. John Doe"
+                <input type="text" autocomplete="name" id="full-name" name="fullName" class="form-input" placeholder="e.g. John Doe"
                   required>
 
               </div>
@@ -972,7 +846,7 @@
 
                 <label for="phone-number" class="form-label">Phone / WhatsApp <span class="required">*</span></label>
 
-                <input type="tel" id="phone-number" name="phoneNumber" class="form-input"
+                <input type="tel" autocomplete="tel" inputmode="tel" id="phone-number" name="phoneNumber" class="form-input"
                   placeholder="e.g. +1 (786) 817-7387" required>
 
               </div>
@@ -983,28 +857,51 @@
 
                 <label for="email-address" class="form-label">Email Address <span class="required">*</span></label>
 
-                <input type="email" id="email-address" name="emailAddress" class="form-input"
+                <input type="email" autocomplete="email" id="email-address" name="emailAddress" class="form-input"
                   placeholder="e.g. yourname@gmail.com" required>
 
               </div>
 
 
 
-              <div class="form-group full-width">
+              <fieldset class="form-group full-width property-picker" id="property-type">
+                <legend class="form-label">Service Type <span class="required">*</span></legend>
+                <div class="property-options">
+                  <label class="property-option">
+                    <input type="radio" name="propertyType" value="Residential" required>
+                    <span class="property-card">
+                      <span class="property-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7M5 9v11h14V9M9 20v-7h6v7"/></svg>
+                      </span>
+                      <span class="property-check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8 3 3 7-7"/></svg></span>
+                      <span class="property-name">Home</span>
+                      <span class="property-description">House or apartment</span>
+                    </span>
+                  </label>
+                  <label class="property-option">
+                    <input type="radio" name="propertyType" value="Commercial" required>
+                    <span class="property-card">
+                      <span class="property-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h1m4 0h1M9 11h1m4 0h1m-6 9v-5h6v5"/></svg>
+                      </span>
+                      <span class="property-check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8 3 3 7-7"/></svg></span>
+                      <span class="property-name">Business</span>
+                      <span class="property-description">Office or commercial space</span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
 
-                <label for="property-type" class="form-label">Service Type <span class="required">*</span></label>
-
-                <select id="property-type" name="propertyType" class="form-select" required>
-
-                  <option value="" disabled selected>&mdash; Select property type &mdash;</option>
-
-                  <option value="Residential">&#127968; Residential / Apartment</option>
-
-                  <option value="Commercial">&#127962; Commercial / Corporate Office</option>
-
-                </select>
-
-              </div>
+              <fieldset class="form-group full-width cleaning-picker">
+                <legend class="category-label">Cleaning category <span class="required">*</span></legend>
+                <div class="cleaning-options">
+                  <label class="cleaning-option"><input type="radio" name="cleaningCategory" value="basic" required><span class="cleaning-card"><span class="cleaning-name">Standard cleaning</span><span class="cleaning-description">Regular care to keep your space fresh.</span></span></label>
+                  <label class="cleaning-option"><input type="radio" name="cleaningCategory" value="deep" required><span class="cleaning-card"><span class="cleaning-name">Deep cleaning</span><span class="cleaning-description">More detail, including inside appliances.</span></span></label>
+                  <label class="cleaning-option"><input type="radio" name="cleaningCategory" value="move" required><span class="cleaning-card"><span class="cleaning-name">Move in / Move out</span><span class="cleaning-description">A thorough clean for an empty property.</span></span></label>
+                  <label class="cleaning-option"><input type="radio" name="cleaningCategory" value="large" required><span class="cleaning-card"><span class="cleaning-name">Large homes</span><span class="cleaning-description">Two stories or more than four bedrooms.</span></span></label>
+                  <label class="cleaning-option"><input type="radio" name="cleaningCategory" value="office" required><span class="cleaning-card"><span class="cleaning-name">Offices & commercial</span><span class="cleaning-description">Recurring cleaning for your workplace.</span></span></label>
+                </div>
+              </fieldset>
 
 
 
@@ -1021,6 +918,7 @@
 
 
 
+            <p id="form-error" class="form-error" role="alert" hidden></p>
             <button type="submit" class="btn btn-primary btn-full-width btn-form-submit">
 
               <span class="btn-text">Submit Quote Request</span>
@@ -1049,7 +947,7 @@
 
           <!-- Quote Form Success State -->
 
-          <div class="form-success-state" id="form-success-state">
+          <div class="form-success-state" id="form-success-state" role="status" tabindex="-1">
 
             <div class="success-icon-box">
 
@@ -1155,7 +1053,7 @@
 
   <!-- Modal for Privacy Policy/Terms (Simple Interactive Component) -->
 
-  <div class="legal-modal-backdrop" id="legal-modal">
+  <div class="legal-modal-backdrop" id="legal-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" inert>
 
     <div class="legal-modal-content">
 
